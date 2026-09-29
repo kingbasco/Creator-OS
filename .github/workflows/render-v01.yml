@@ -1,0 +1,36 @@
+name: Render V01
+
+on:
+  workflow_dispatch:
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Type-check
+        run: npm run typecheck
+
+      - name: Render V01
+        run: npm run render:v01
+
+      - name: Upload rendered video
+        uses: actions/upload-artifact@v4
+        with:
+          name: v01-vibe-coding-motion-prototype
+          path: out/v01-silent.mp4
+          if-no-files-found: error
+          retention-days: 14
