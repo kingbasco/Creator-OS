@@ -1,5 +1,4 @@
 name: V01 Gemini Voice
-# RETIMED FINAL PASS
 
 on:
   workflow_dispatch:
@@ -21,10 +20,6 @@ on:
           - Sadaltager
           - Iapetus
         default: Sulafat
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/voice-v01.yml'
 
 jobs:
   voice:
@@ -33,7 +28,7 @@ jobs:
     env:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_TTS_MODEL: gemini-3.8-flash-lite-tts
-      GEMINI_TTS_VOICE: ${{ github.event_name == 'push' && 'Sulafat' || inputs.voice }}
+      GEMINI_TTS_VOICE: ${{ inputs.voice }}
 
     steps:
       - name: Checkout
@@ -55,11 +50,11 @@ jobs:
           fi
 
       - name: Generate voice auditions
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'audition' }}
+        if: ${{ inputs.mode == 'audition' }}
         run: npm run voice:audition
 
       - name: Upload voice auditions
-        if: ${{ github.event_name == 'workflow_dispatch' && inputs.mode == 'audition' }}
+        if: ${{ inputs.mode == 'audition' }}
         uses: actions/upload-artifact@v4
         with:
           name: v01-gemini-voice-auditions
@@ -68,19 +63,19 @@ jobs:
           retention-days: 14
 
       - name: Generate V01 voice scenes
-        if: ${{ github.event_name == 'push' || inputs.mode == 'full' }}
+        if: ${{ inputs.mode == 'full' }}
         run: npm run voice:v01
 
       - name: Type-check voiced timeline
-        if: ${{ github.event_name == 'push' || inputs.mode == 'full' }}
+        if: ${{ inputs.mode == 'full' }}
         run: npm run typecheck
 
       - name: Render voiced V01
-        if: ${{ github.event_name == 'push' || inputs.mode == 'full' }}
+        if: ${{ inputs.mode == 'full' }}
         run: npm run render:v01:voiced
 
       - name: Upload voiced V01 package
-        if: ${{ github.event_name == 'push' || inputs.mode == 'full' }}
+        if: ${{ inputs.mode == 'full' }}
         uses: actions/upload-artifact@v4
         with:
           name: v01-gemini-voiced-render
