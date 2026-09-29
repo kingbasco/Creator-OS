@@ -1,7 +1,7 @@
 import React from 'react';
-import {interpolate, useCurrentFrame} from 'remotion';
+import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {COLORS, RADIUS, TYPE} from '../tokens';
-import {clamp} from '../utils';
+import {clamp, drawProgress, physicalSpring} from '../utils';
 
 type Props = {
   label: string;
@@ -12,17 +12,61 @@ type Props = {
   align?: 'left'|'right';
 };
 
-export const ArrowCallout: React.FC<Props> = ({label, from, to, delay=0, color=COLORS.accent, align='left'}) => {
-  const frame = useCurrentFrame();
-  const p = interpolate(frame, [delay, delay+16], [0,1], clamp);
-  const opacity = interpolate(frame, [delay, delay+8], [0,1], clamp);
-  const dx=to.x-from.x; const dy=to.y-from.y;
-  const len=Math.max(1,Math.hypot(dx,dy));
-  const angle=Math.atan2(dy,dx)*180/Math.PI;
-  const tagLeft = align==='left' ? from.x : from.x-220;
-  return <>
-    <div style={{position:'absolute',left:from.x,top:from.y,width:len,height:4,background:color,borderRadius:99,transformOrigin:'0 50%',transform:`rotate(${angle}deg) scaleX(${p})`,opacity}}/>
-    <div style={{position:'absolute',left:to.x-9,top:to.y-9,width:18,height:18,borderRadius:99,background:color,boxShadow:`0 0 0 10px ${COLORS.accentSoft}`,opacity}}/>
-    <div style={{position:'absolute',left:tagLeft,top:from.y-58,padding:'10px 16px',background:COLORS.surface,border:`1px solid ${COLORS.border}`,borderRadius:RADIUS.sm,fontSize:TYPE.label-4,fontWeight:800,color:COLORS.foreground,opacity,boxShadow:'0 12px 34px rgba(16,17,20,.08)'}}>{label}</div>
-  </>;
+export const ArrowCallout: React.FC<Props> = ({
+  label,
+  from,
+  to,
+  delay=0,
+  color=COLORS.accent,
+  align='left',
+}) => {
+  const frame=useCurrentFrame();
+  const {fps}=useVideoConfig();
+  const p=drawProgress(frame,delay,14);
+  const tag=physicalSpring(frame,fps,delay+7,10);
+  const dx=to.x-from.x;
+  const dy=to.y-from.y;
+  const bend=Math.min(110,Math.max(42,Math.abs(dx)*.18));
+  const c1x=from.x+(dx>=0?bend:-bend);
+  const c1y=from.y+dy*.18;
+  const c2x=to.x-(dx>=0?bend:-bend);
+  const c2y=to.y-dy*.18;
+  const tagLeft=align==='left'?from.x:from.x-220;
+
+  return (
+    <>
+      <svg style={{position:'absolute',inset:0,width:'100%',height:'100%',overflow:'visible',pointerEvents:'none'}}>
+        <path
+          d={`M ${from.x} ${from.y} C ${c1x} ${c1y}, ${c2x} ${c2y}, ${to.x} ${to.y}`}
+          fill="none"
+          stroke={color}
+          strokeWidth={4}
+          strokeLinecap="round"
+          pathLength={1}
+          strokeDasharray={1}
+          strokeDashoffset={1-p}
+        />
+        <circle cx={to.x} cy={to.y} r={10} fill={color} opacity={p}/>
+        <circle cx={to.x} cy={to.y} r={22} fill="none" stroke={color} strokeWidth={2} opacity={p*.22}/>
+      </svg>
+      <div style={{
+        position:'absolute',
+        left:tagLeft,
+        top:from.y-62,
+        padding:'10px 16px',
+        background:'rgba(255,255,255,.94)',
+        border:`1px solid ${COLORS.border}`,
+        borderRadius:RADIUS.sm,
+        fontSize:TYPE.label-5,
+        fontWeight:700,
+        color:COLORS.foreground,
+        opacity:tag,
+        transform:`translateY(${interpolate(tag,[0,1],[12,0],clamp)}px)`,
+        boxShadow:'0 12px 34px rgba(16,17,20,.08)',
+        backdropFilter:'blur(12px)',
+      }}>
+        {label}
+      </div>
+    </>
+  );
 };

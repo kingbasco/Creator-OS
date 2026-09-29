@@ -1,16 +1,52 @@
 import React from 'react';
-import {interpolate, useCurrentFrame} from 'remotion';
-import {COLORS, RADIUS, SHADOW} from '../tokens';
-import {clamp} from '../utils';
+import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
+import {COLORS, FLOAT_SHADOW, RADIUS} from '../tokens';
+import {clamp, physicalSpring} from '../utils';
 
 type Props = React.PropsWithChildren<{
-  x:number; y:number; width:number; delay?:number; rotate?:number; dark?:boolean; float?:number;
+  x:number;
+  y:number;
+  width:number;
+  delay?:number;
+  rotate?:number;
+  dark?:boolean;
+  float?:number;
 }>;
 
-export const FloatingCard: React.FC<Props> = ({x,y,width,delay=0,rotate=0,dark=false,float=10,children}) => {
+export const FloatingCard: React.FC<Props> = ({
+  x,
+  y,
+  width,
+  delay=0,
+  rotate=0,
+  dark=false,
+  children,
+}) => {
   const frame=useCurrentFrame();
-  const enter=interpolate(frame,[delay,delay+16],[0,1],clamp);
-  const rise=interpolate(frame,[delay,delay+16],[44,0],clamp);
-  const drift=Math.sin((frame-delay)/20)*float;
-  return <div style={{position:'absolute',left:x,top:y+rise+drift,width,padding:22,borderRadius:RADIUS.md,background:dark?COLORS.darkSurface:COLORS.surface,color:dark?'white':COLORS.foreground,border:`1px solid ${dark?'#2A303C':COLORS.border}`,boxShadow:SHADOW,opacity:enter,transform:`rotate(${rotate*(1-enter)}deg) scale(${0.94+enter*.06})`}}>{children}</div>;
+  const {fps}=useVideoConfig();
+  const p=physicalSpring(frame,fps,delay,12);
+  const travel=interpolate(p,[0,1],[54,0],clamp);
+  const startRotation=rotate+(rotate>=0?4:-4);
+  const rotation=interpolate(p,[0,1],[startRotation,rotate],clamp);
+
+  return (
+    <div style={{
+      position:'absolute',
+      left:x,
+      top:y+travel,
+      width,
+      padding:22,
+      borderRadius:RADIUS.md,
+      background:dark?COLORS.darkSurface:'rgba(255,255,255,.94)',
+      color:dark?COLORS.surface:COLORS.foreground,
+      border:`1px solid ${dark?COLORS.rimDark:'rgba(229,231,235,.9)'}`,
+      boxShadow:FLOAT_SHADOW,
+      backdropFilter:dark?undefined:'blur(14px)',
+      opacity:p,
+      transform:`rotate(${rotation}deg) scale(${interpolate(p,[0,1],[.96,1],clamp)})`,
+      transformOrigin:'50% 70%',
+    }}>
+      {children}
+    </div>
+  );
 };

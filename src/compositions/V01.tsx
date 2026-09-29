@@ -15,14 +15,20 @@ import {SceneMotion} from '../components/SceneMotion';
 
 const scenes=[HeroHook,ProcessLoop,LayerStack,CodeEditor,BrowserFrame,Checklist,ComparisonSplit,EpisodeEndcard];
 
-export const V01: React.FC = () => <AbsoluteFill>
-  {v01Scenes.map((scene,i)=>{
-    const Component=scenes[i];
-    const from=Math.round(scene.startSec*VIDEO.fps);
-    const durationInFrames=Math.round((scene.endSec-scene.startSec)*VIDEO.fps);
-    return <Sequence key={scene.id} from={from} durationInFrames={durationInFrames} name={scene.id}>
-      <SceneMotion durationInFrames={durationInFrames}><Component /></SceneMotion>
-      <Caption text={scene.narration} emphasis={scene.captionEmphasis}/>
-    </Sequence>;
-  })}
-</AbsoluteFill>;
+export const V01: React.FC = () => (
+  <AbsoluteFill>
+    {v01Scenes.map((scene,i)=>{
+      const Component=scenes[i];
+      const from=Math.round(scene.startSec*VIDEO.fps);
+      const durationInFrames=Math.round((scene.endSec-scene.startSec)*VIDEO.fps);
+      return (
+        <Sequence key={scene.id} from={from} durationInFrames={durationInFrames} name={scene.id}>
+          <SceneMotion durationInFrames={durationInFrames}>
+            <Component />
+          </SceneMotion>
+          <Caption text={scene.captionText ?? scene.narration} emphasis={scene.captionEmphasis}/>
+        </Sequence>
+      );
+    })}
+  </AbsoluteFill>
+);

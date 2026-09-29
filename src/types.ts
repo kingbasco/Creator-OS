@@ -6,5 +6,6 @@ export type SceneSpec = {
   endSec: number;
   narration: string;
   onScreenText: string;
+  captionText?: string;
   captionEmphasis?: string;
 };

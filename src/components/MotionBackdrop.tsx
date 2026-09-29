@@ -1,13 +1,30 @@
 import React from 'react';
-import {useCurrentFrame} from 'remotion';
-import {COLORS} from '../tokens';
 
 export const MotionBackdrop: React.FC<{dark?:boolean}> = ({dark=false}) => {
-  const frame=useCurrentFrame();
-  const drift=(frame%240)/240;
-  const line=dark?'rgba(255,255,255,.055)':'rgba(16,17,20,.045)';
-  return <div style={{position:'absolute',inset:0,overflow:'hidden',pointerEvents:'none'}}>
-    <div style={{position:'absolute',inset:-80,backgroundImage:`linear-gradient(${line} 1px, transparent 1px),linear-gradient(90deg,${line} 1px, transparent 1px)`,backgroundSize:'72px 72px',transform:`translate(${drift*-28}px,${drift*-18}px)`}}/>
-    <div style={{position:'absolute',width:420,height:420,borderRadius:999,left:-180,top:320,background:COLORS.accentSoft,opacity:dark ? 0.04 : 0.45,filter:'blur(10px)'}}/>
-  </div>;
+  const line=dark?'rgba(255,255,255,.045)':'rgba(16,17,20,.035)';
+  const wash=dark?'rgba(91,108,255,.08)':'rgba(91,108,255,.055)';
+
+  return (
+    <div style={{position:'absolute',inset:0,overflow:'hidden',pointerEvents:'none'}}>
+      <div style={{
+        position:'absolute',
+        inset:0,
+        backgroundImage:`
+          linear-gradient(${line} 1px, transparent 1px),
+          linear-gradient(90deg,${line} 1px, transparent 1px)
+        `,
+        backgroundSize:'96px 96px',
+        maskImage:'linear-gradient(to bottom, rgba(0,0,0,.55), transparent 72%)',
+      }}/>
+      <div style={{
+        position:'absolute',
+        width:760,
+        height:420,
+        left:160,
+        top:180,
+        background:`radial-gradient(ellipse at center, ${wash}, transparent 70%)`,
+        opacity:.9,
+      }}/>
+    </div>
+  );
 };
