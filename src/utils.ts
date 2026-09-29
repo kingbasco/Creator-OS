@@ -13,7 +13,7 @@ export const physicalSpring = (
   frame: number,
   fps: number,
   delay = 0,
-  durationInFrames = MOTION.focalFrames,
+  durationInFrames: number = MOTION.focalFrames,
 ) =>
   spring({
     fps,
@@ -22,7 +22,12 @@ export const physicalSpring = (
     durationInFrames,
   });
 
-export const fadeInUp = (frame: number, fps: number, start = 0, duration = MOTION.focalFrames) => {
+export const fadeInUp = (
+  frame: number,
+  fps: number,
+  start = 0,
+  duration: number = MOTION.focalFrames,
+) => {
   const p = physicalSpring(frame, fps, start, duration);
   return {
     opacity: interpolate(p, [0, 1], [0, 1], clamp),
