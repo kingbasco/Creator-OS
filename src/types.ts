@@ -8,4 +8,5 @@ export type SceneSpec = {
   onScreenText: string;
   captionText?: string;
   captionEmphasis?: string;
+  voiceDirection?: string;
 };

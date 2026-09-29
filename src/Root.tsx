@@ -1,6 +1,8 @@
 import React from 'react';
 import {Composition, Folder} from 'remotion';
 import {V01} from './compositions/V01';
+import {V01Voiced} from './compositions/V01Voiced';
+import {V01_VOICED_TOTAL_FRAMES} from './content/v01-timeline';
 import {VIDEO} from './tokens';
 
 export const RemotionRoot: React.FC = () => <>
@@ -9,6 +11,14 @@ export const RemotionRoot: React.FC = () => <>
       id="V01-Vibe-Coding-Isnt-Magic"
       component={V01}
       durationInFrames={78*VIDEO.fps}
+      fps={VIDEO.fps}
+      width={VIDEO.width}
+      height={VIDEO.height}
+    />
+    <Composition
+      id="V01-Vibe-Coding-Isnt-Magic-Voiced"
+      component={V01Voiced}
+      durationInFrames={V01_VOICED_TOTAL_FRAMES}
       fps={VIDEO.fps}
       width={VIDEO.width}
       height={VIDEO.height}

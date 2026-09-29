@@ -1,0 +1,86 @@
+name: V01 Gemini Voice
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: What should be generated?
+        required: true
+        type: choice
+        options:
+          - audition
+          - full
+        default: audition
+      voice:
+        description: Voice for the full V01 render
+        required: false
+        type: choice
+        options:
+          - Sulafat
+          - Sadaltager
+          - Iapetus
+        default: Sulafat
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_TTS_MODEL: gemini-3.8-flash-lite-tts
+      GEMINI_TTS_VOICE: ${{ inputs.voice }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify Gemini secret
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "GEMINI_API_KEY is not configured in GitHub Actions secrets."
+            exit 1
+          fi
+
+      - name: Generate voice auditions
+        if: ${{ inputs.mode == 'audition' }}
+        run: npm run voice:audition
+
+      - name: Upload voice auditions
+        if: ${{ inputs.mode == 'audition' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: v01-gemini-voice-auditions
+          path: out/voice-auditions
+          if-no-files-found: error
+          retention-days: 14
+
+      - name: Generate V01 voice scenes
+        if: ${{ inputs.mode == 'full' }}
+        run: npm run voice:v01
+
+      - name: Type-check voiced timeline
+        if: ${{ inputs.mode == 'full' }}
+        run: npm run typecheck
+
+      - name: Render voiced V01
+        if: ${{ inputs.mode == 'full' }}
+        run: npm run render:v01:voiced
+
+      - name: Upload voiced V01 package
+        if: ${{ inputs.mode == 'full' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: v01-gemini-voiced-render
+          path: |
+            out/v01-voiced.mp4
+            public/audio/v01
+          if-no-files-found: error
+          retention-days: 14
