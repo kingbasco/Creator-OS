@@ -3,12 +3,17 @@ import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, RADIUS, TYPE} from '../tokens';
 import {fadeInUp, springScale} from '../utils';
+import {FloatingCard} from './FloatingCard';
+import {ArrowCallout} from './ArrowCallout';
+import {MotionBackdrop} from './MotionBackdrop';
 
 const steps=[['PROMPT','Describe intent'],['CODE','AI edits'],['RUN','Execute'],['ERROR','Inspect'],['PROMPT','Correct']];
 export const ProcessLoop: React.FC = () => {
   const frame=useCurrentFrame(); const {fps}=useVideoConfig();
   return <Frame>
+    <MotionBackdrop/>
     <div style={{fontSize:TYPE.sceneTitle,fontWeight:800,lineHeight:1.02,...fadeInUp(frame,fps)}}>THE LOOP BEHIND<br/><span style={{color:COLORS.accent}}>VIBE CODING</span></div>
+    <FloatingCard x={720} y={220} width={230} delay={14} rotate={6}><div style={{fontSize:24,fontWeight:800,color:COLORS.accent}}>ERROR LOG</div><div style={{fontSize:22,marginTop:8,color:COLORS.muted}}>Feed it back</div></FloatingCard>
     <div style={{marginTop:150,display:'grid',gap:25}}>
       {steps.map((s,i)=>{
         const scale=springScale(frame,fps,i*10);
@@ -18,5 +23,6 @@ export const ProcessLoop: React.FC = () => {
         </div>;
       })}
     </div>
+    <ArrowCallout label="loop back" from={{x:865,y:1160}} to={{x:760,y:710}} delay={80} align="right"/>
   </Frame>;
 };
