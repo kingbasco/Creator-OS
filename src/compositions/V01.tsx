@@ -21,7 +21,7 @@ export const V01: React.FC = () => <AbsoluteFill>
     const from=Math.round(scene.startSec*VIDEO.fps);
     const durationInFrames=Math.round((scene.endSec-scene.startSec)*VIDEO.fps);
     return <Sequence key={scene.id} from={from} durationInFrames={durationInFrames} name={scene.id}>
-      <SceneMotion><Component /></SceneMotion>
+      <SceneMotion durationInFrames={durationInFrames}><Component /></SceneMotion>
       <Caption text={scene.narration} emphasis={scene.captionEmphasis}/>
     </Sequence>;
   })}
