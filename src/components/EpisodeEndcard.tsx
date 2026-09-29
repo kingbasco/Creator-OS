@@ -96,8 +96,11 @@ export const EpisodeEndcard: React.FC = () => {
             background:COLORS.accent,
             display:'grid',
             placeItems:'center',
-            fontSize:27,
-          }}>→</div>
+          }}>
+            <svg width="26" height="26" viewBox="0 0 26 26" fill="none">
+              <path d="M5 13h15M14 7l6 6-6 6" stroke="white" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
         <div style={{fontSize:48,fontWeight:700,lineHeight:1.08,letterSpacing:'-.035em',marginTop:24}}>
           What an AI coding agent is actually doing.

@@ -113,10 +113,11 @@ export const LayerStack: React.FC = () => {
             background:COLORS.accentSoft,
             display:'grid',
             placeItems:'center',
-            color:COLORS.accent,
-            fontSize:30,
-            fontWeight:700,
-          }}>↑</div>
+          }}>
+            <svg width="34" height="34" viewBox="0 0 34 34" fill="none">
+              <path d="M17 27V8M9 16l8-8 8 8" stroke={COLORS.accent} strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         </div>
         <div style={{fontSize:24,color:COLORS.muted,lineHeight:1.4,marginTop:18}}>
           Intent, trade-offs, review, and judgment move to the foreground.
