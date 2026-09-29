@@ -1,0 +1,23 @@
+{
+  "name": "creator-os-video-engine",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "remotion studio src/index.ts",
+    "render:v01": "remotion render src/index.ts V01-Vibe-Coding-Isnt-Magic out/v01-silent.mp4",
+    "still:v01": "remotion still src/index.ts V01-Vibe-Coding-Isnt-Magic out/v01-poster.png --frame=0",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@remotion/cli": "^4.0.0",
+    "@remotion/google-fonts": "^4.0.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "remotion": "^4.0.0"
+  },
+  "devDependencies": {
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.8.0"
+  }
+}
