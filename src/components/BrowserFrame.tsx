@@ -1,4 +1,5 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, FLOAT_SHADOW, RADIUS, TYPE} from '../tokens';
@@ -6,9 +7,8 @@ import {clamp, fadeInUp, physicalSpring} from '../utils';
 import {ArrowCallout} from './ArrowCallout';
 import {MotionBackdrop} from './MotionBackdrop';
 
-export const BrowserFrame: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const BrowserFrame: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,11);
   const corrected=physicalSpring(frame,fps,170,18);
   const issueOpacity=interpolate(frame,[0,145,180],[1,1,0],clamp);
   const cursorX=interpolate(frame,[40,88,126,165],[820,570,620,815],clamp);

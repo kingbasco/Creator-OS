@@ -32,7 +32,7 @@ export const V01Voiced: React.FC = () => (
       return (
         <Sequence key={scene.id} from={scene.from} durationInFrames={scene.durationInFrames} name={`${scene.id}-voiced`}>
           <SceneMotion durationInFrames={scene.durationInFrames}>
-            <Component />
+            <Component durationInFrames={scene.durationInFrames} />
           </SceneMotion>
           {v01Audio.enabled && scene.audioPath ? <Audio src={staticFile(scene.audioPath)} /> : null}
           <Caption text={scene.captionText ?? scene.narration} emphasis={scene.captionEmphasis}/>

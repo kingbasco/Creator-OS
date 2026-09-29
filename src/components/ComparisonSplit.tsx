@@ -1,4 +1,5 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, FLOAT_SHADOW, RADIUS, TYPE} from '../tokens';
@@ -17,9 +18,8 @@ const human=[
   ['Own the ship gate','Is it safe enough?'],
 ] as const;
 
-export const ComparisonSplit: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const ComparisonSplit: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,13);
   const ship=physicalSpring(frame,fps,210,16);
 
   return (

@@ -1,4 +1,5 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, FLOAT_SHADOW, RADIUS, TYPE} from '../tokens';
@@ -11,9 +12,8 @@ const words=[
   {label:'JUDGMENT',x:122,y:870,rotate:-1},
 ] as const;
 
-export const EpisodeEndcard: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const EpisodeEndcard: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,10);
   const synthesis=physicalSpring(frame,fps,72,18);
   const next=physicalSpring(frame,fps,128,18);
 

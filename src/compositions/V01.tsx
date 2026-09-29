@@ -24,7 +24,7 @@ export const V01: React.FC = () => (
       return (
         <Sequence key={scene.id} from={from} durationInFrames={durationInFrames} name={scene.id}>
           <SceneMotion durationInFrames={durationInFrames}>
-            <Component />
+            <Component durationInFrames={durationInFrames} />
           </SceneMotion>
           <Caption text={scene.captionText ?? scene.narration} emphasis={scene.captionEmphasis}/>
         </Sequence>

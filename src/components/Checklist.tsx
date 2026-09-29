@@ -1,4 +1,5 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {Frame} from './Frame';
 import {COLORS, RADIUS, TYPE} from '../tokens';
 import {fadeInUp, physicalSpring} from '../utils';
@@ -11,9 +12,8 @@ const gates=[
   {title:'Ship',copy:'It is ready for real users.',accent:COLORS.surface},
 ] as const;
 
-export const Checklist: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const Checklist: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,9);
 
   return (
     <Frame>

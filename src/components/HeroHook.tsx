@@ -1,13 +1,13 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, FLOAT_SHADOW, RADIUS, TYPE} from '../tokens';
 import {clamp, drawProgress, fadeInUp, physicalSpring} from '../utils';
 import {MotionBackdrop} from './MotionBackdrop';
 
-export const HeroHook: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const HeroHook: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,5);
 
   const app=physicalSpring(frame,fps,6,14);
   const prompt=physicalSpring(frame,fps,15,12);

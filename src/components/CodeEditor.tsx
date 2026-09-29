@@ -1,4 +1,5 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, RADIUS, TYPE} from '../tokens';
@@ -23,9 +24,8 @@ const lines=[
   'await sendResetEmail(email);',
 ];
 
-export const CodeEditor: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const CodeEditor: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,11);
   const reveal=interpolate(frame,[55,105],[0,1],clamp);
 
   return (

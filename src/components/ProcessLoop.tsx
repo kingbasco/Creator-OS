@@ -1,4 +1,5 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, RADIUS, TYPE} from '../tokens';
@@ -21,9 +22,8 @@ const connectors=[
   'M 230 1120 C 110 980, 110 700, 215 565',
 ];
 
-export const ProcessLoop: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const ProcessLoop: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,11);
 
   return (
     <Frame>

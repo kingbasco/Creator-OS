@@ -1,4 +1,5 @@
 import React from 'react';
+import {useScaledSceneFrame} from '../sceneTiming';
 import {interpolate, useCurrentFrame, useVideoConfig} from 'remotion';
 import {Frame} from './Frame';
 import {COLORS, FLOAT_SHADOW, RADIUS, TYPE} from '../tokens';
@@ -12,9 +13,8 @@ const layers=[
   {label:'DATA + AUTH',detail:'What the product trusts'},
 ] as const;
 
-export const LayerStack: React.FC = () => {
-  const frame=useCurrentFrame();
-  const {fps}=useVideoConfig();
+export const LayerStack: React.FC<{durationInFrames?: number}> = ({durationInFrames}) => {
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,8);
   const pullback=physicalSpring(frame,fps,28,20);
   const you=physicalSpring(frame,fps,74,16);
 
