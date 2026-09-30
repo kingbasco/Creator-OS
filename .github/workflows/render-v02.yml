@@ -1,12 +1,7 @@
 name: Render V02
-# final sweep QA
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/render-v02.yml'
 
 jobs:
   render:
