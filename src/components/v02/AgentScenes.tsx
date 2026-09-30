@@ -123,6 +123,7 @@ export const InspectScene:React.FC<SceneProps>=({durationInFrames})=>{
     ['lib/validation.ts','Validation','email rules'],
   ] as const;
   const cursor=interpolate(frame,[22,55,90,125],[500,606,712,712],clamp);
+  const focusOpacity=interpolate(frame,[22,110,125],[1,1,0],clamp);
   return <Frame>
     <MotionBackdrop/>
     <div style={{fontSize:TYPE.sceneTitle,fontWeight:700,...fadeInUp(frame,fps)}}>INSPECT THE <span style={{color:COLORS.accent}}>REPOSITORY</span></div>
@@ -139,7 +140,7 @@ export const InspectScene:React.FC<SceneProps>=({durationInFrames})=>{
       })}
       <div style={{
         position:'absolute',left:496,top:cursor,width:18,height:18,borderRadius:99,
-        background:COLORS.accent,boxShadow:`0 0 0 12px ${COLORS.accentSoft}`,
+        background:COLORS.accent,boxShadow:`0 0 0 12px ${COLORS.accentSoft}`,opacity:focusOpacity,
       }}/>
     </div>
     <div style={{position:'absolute',left:570,top:410,width:420,height:960}}>
