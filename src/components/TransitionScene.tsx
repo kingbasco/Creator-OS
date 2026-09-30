@@ -62,10 +62,11 @@ const enterStyle=(kind:TransitionKind,p:number):React.CSSProperties=>{
       };
     }
     case 'system-sweep': {
-      const headlineDelay=Math.pow(p,1.8);
+      const headlineDelay=Math.pow(p,2.4);
       return {
         transform:`translateX(${interpolate(p,[0,1],[190,0],clamp)}px)`,
-        clipPath:`inset(${interpolate(headlineDelay,[0,1],[30,0],clamp)}% 0 0 ${interpolate(p,[0,1],[44,0],clamp)}% round 24px)`,
+        clipPath:`inset(${interpolate(headlineDelay,[0,1],[34,0],clamp)}% 0 0 ${interpolate(p,[0,1],[44,0],clamp)}% round 24px)`,
+        opacity:interpolate(p,[0,.55,.9,1],[0,0,.72,1],clamp),
       };
     }
     default:return {};
