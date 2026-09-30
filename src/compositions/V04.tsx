@@ -6,6 +6,7 @@ import {Caption} from '../components/Caption';
 import {COLORS as C, TYPE, SHADOW} from '../tokens';
 import {v04Scenes} from '../content/v04';
 import {v04VoicedTimeline} from '../content/v04-timeline';
+import {V04SoundDesign} from '../components/V04SoundDesign';
 import {v04Audio} from '../generated/v04-audio';
 
 const clamp={extrapolateLeft:'clamp',extrapolateRight:'clamp',easing:Easing.inOut(Easing.cubic)} as const;
@@ -57,6 +58,6 @@ const SceneLayer:React.FC<{scene:Scene;index:number}>=({scene,index})=>{
 export const V04:React.FC=()=> <Film/>;
 export const V04Voiced:React.FC=()=>{
  if(!v04Audio.enabled||v04VoicedTimeline.some(s=>!s.audioPath))throw new Error('V04 narration is unavailable. Supply verified audio before final rendering.');
- return <Film voiced/>;
+ return <><Film voiced/><V04SoundDesign/></>;
 };
 
