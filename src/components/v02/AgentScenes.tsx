@@ -122,7 +122,7 @@ export const InspectScene:React.FC<SceneProps>=({durationInFrames})=>{
     ['components/ResetForm.tsx','UI','form states'],
     ['lib/validation.ts','Validation','email rules'],
   ] as const;
-  const cursor=interpolate(frame,[22,55,90,125],[360,610,835,1035],clamp);
+  const cursor=interpolate(frame,[22,55,90,125],[500,606,712,818],clamp);
   return <Frame>
     <MotionBackdrop/>
     <div style={{fontSize:TYPE.sceneTitle,fontWeight:700,...fadeInUp(frame,fps)}}>INSPECT THE <span style={{color:COLORS.accent}}>REPOSITORY</span></div>
@@ -138,7 +138,7 @@ export const InspectScene:React.FC<SceneProps>=({durationInFrames})=>{
         }}><Mono>{x}</Mono></div>;
       })}
       <div style={{
-        position:'absolute',right:16,top:cursor,width:18,height:18,borderRadius:99,
+        position:'absolute',left:496,top:cursor,width:18,height:18,borderRadius:99,
         background:COLORS.accent,boxShadow:`0 0 0 12px ${COLORS.accentSoft}`,
       }}/>
     </div>
