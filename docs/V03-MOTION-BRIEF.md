@@ -24,3 +24,13 @@ Narration makes two precision edits to the source draft: failure after a demo is
 ## Remaining production gates
 
 Generate and listen to narration; check scene boundaries and pronunciation; adjust motion to measured timing; add semantic sound cues; perform phone-speaker and transition QA; master and measure loudness; upload one publish master to Renders with previews archived separately. The silent preview is not a final master.
+
+## Final mix pipeline
+
+`npm run sound:v03` generates deterministic 48 kHz stereo cues. The mix places quiet transition sounds and only six meaningful state cues, with narration dominant. An ambient bed fades at the opening and ending.
+
+`npm run render:v03:final:4k` requires generated narration. `npm run master:v03` performs two-pass normalization, measures the encoded result and checks vertical 4K H.264 at 30 fps plus 48 kHz stereo AAC. Target: -14 LUFS and -1.5 dBTP, with a 1 LUFS and 0.2 dB encoded tolerance. QA reports are saved alongside the master.
+
+The manual **Render V03 Final 4K** workflow generates narration using the existing GitHub Gemini secret, derives scene timing, mixes sound, renders, masters and uploads a review package. It does not publish or upload files to Drive automatically. A successful render still requires narration listening and visual review before the file becomes the publish master. On rerun it regenerates narration; preserve and reuse the review audio package when further edits only affect motion or mixing.
+
+Verified silent preview: 84 seconds, 540×960, 30 fps. All eight scene keyframes were inspected, with no black intervals detected. The implementation passed local type-check, voice dry runs and GitHub Motion CI (36682118513). These checks do not verify generated speech or the final mix.

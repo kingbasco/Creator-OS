@@ -6,6 +6,7 @@ import {Caption} from '../components/Caption';
 import {COLORS as C, TYPE, SHADOW} from '../tokens';
 import {v03Scenes} from '../content/v03';
 import {v03VoicedTimeline} from '../content/v03-timeline';
+import {V03SoundDesign} from '../components/V03SoundDesign';
 import {v03Audio} from '../generated/v03-audio';
 
 type Scene = typeof v03VoicedTimeline[number];
@@ -59,3 +60,5 @@ export const V03Voiced:React.FC=()=>{
   if(!v03Audio.enabled||v03VoicedTimeline.some(s=>!s.audioPath))throw new Error('V03 narration is unavailable. Run voice:v03 before rendering the voiced composition.');
   return <Film voiced/>;
 };
+
+export const V03Final:React.FC=()=> <><V03Voiced/><V03SoundDesign/></>;

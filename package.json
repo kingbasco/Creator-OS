@@ -23,7 +23,10 @@
     "voice:v03": "node scripts/generate-v03-voice.mjs",
     "render:v03": "remotion render src/index.ts V03-Demo-To-Product out/v03-preview.mp4",
     "render:v03:4k": "remotion render src/index.ts V03-Demo-To-Product-4K out/v03-4k.mp4 --codec=h264 --crf=15 --concurrency=2",
-    "render:v03:voiced:4k": "remotion render src/index.ts V03-Demo-To-Product-Voiced-4K out/v03-voiced-4k.mp4 --codec=h264 --crf=15 --concurrency=2"
+    "render:v03:voiced:4k": "remotion render src/index.ts V03-Demo-To-Product-Voiced-4K out/v03-voiced-4k.mp4 --codec=h264 --crf=15 --concurrency=2",
+    "sound:v03": "node scripts/generate-v03-sfx.mjs",
+    "render:v03:final:4k": "remotion render src/index.ts V03-Demo-To-Product-Final-4K out/v03-final-mix-4k.mp4 --codec=h264 --crf=15 --concurrency=2",
+    "master:v03": "node scripts/master-v03.mjs"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",
