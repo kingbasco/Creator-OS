@@ -1,0 +1,82 @@
+[
+  {
+    "id":"S01",
+    "startSec":0,
+    "endSec":6,
+    "narration":"An AI coding agent does a lot more than autocomplete.",
+    "onScreenText":"AUTOCOMPLETE PREDICTS A LINE. AN AGENT PURSUES A GOAL.",
+    "captionText":"An agent does more than autocomplete.",
+    "captionEmphasis":"more than autocomplete",
+    "voiceDirection":"Crisp opening. Contrast autocomplete with agent without sounding dramatic."
+  },
+  {
+    "id":"S02",
+    "startSec":6,
+    "endSec":16,
+    "narration":"With autocomplete, the tool predicts what comes next in the file you’re already editing. An agent starts with a goal.",
+    "onScreenText":"START WITH A GOAL",
+    "captionText":"Autocomplete predicts. An agent starts with a goal.",
+    "captionEmphasis":"starts with a goal",
+    "voiceDirection":"Measured and explanatory. Small emphasis on goal."
+  },
+  {
+    "id":"S03",
+    "startSec":16,
+    "endSec":27,
+    "narration":"It can inspect the repository, find the files that matter, understand the current structure, and build context before it changes anything.",
+    "onScreenText":"INSPECT THE REPOSITORY",
+    "captionText":"Inspect the repository before changing it.",
+    "captionEmphasis":"Inspect the repository",
+    "voiceDirection":"Use a clear rhythm through inspect, find, understand."
+  },
+  {
+    "id":"S04",
+    "startSec":27,
+    "endSec":37,
+    "narration":"Then it can build a plan: which files need to change, what order the work should happen in, and what result it needs to verify.",
+    "onScreenText":"BUILD A PLAN",
+    "captionText":"Plan the change before editing.",
+    "captionEmphasis":"Plan the change",
+    "voiceDirection":"Practical and deliberate. Let the plan feel intentional, not robotic."
+  },
+  {
+    "id":"S05",
+    "startSec":37,
+    "endSec":49,
+    "narration":"Then it edits the code. Because it has repository context, that can mean coordinated changes across multiple files instead of one isolated suggestion.",
+    "onScreenText":"CHANGE MULTIPLE FILES",
+    "captionText":"One goal can become coordinated multi-file changes.",
+    "captionEmphasis":"multi-file changes",
+    "voiceDirection":"Confident, straightforward. Stress coordinated multi-file changes."
+  },
+  {
+    "id":"S06",
+    "startSec":49,
+    "endSec":61,
+    "narration":"But the important part is what happens next. It can run commands, execute tests, read the output, notice when something failed, and use that new information to keep going.",
+    "onScreenText":"RUN → TEST → EVALUATE → REPEAT",
+    "captionText":"Failure becomes new context for the next step.",
+    "captionEmphasis":"new context",
+    "voiceDirection":"Rhythmic but calm. Run, test, read, evaluate, repeat."
+  },
+  {
+    "id":"S07",
+    "startSec":61,
+    "endSec":73,
+    "narration":"That does not mean the agent should make every decision. You still review the diff, check whether the behavior matches what you asked for, and keep approval around sensitive changes.",
+    "onScreenText":"THE AGENT EXECUTES. YOU VERIFY.",
+    "captionText":"The agent executes. You still verify.",
+    "captionEmphasis":"You still verify",
+    "voiceDirection":"Grounded and firm. Human review is the point, not a warning."
+  },
+  {
+    "id":"S08",
+    "startSec":73,
+    "endSec":82,
+    "narration":"So the shift is simple: less “predict my next line,” more “take this goal, work through the steps, and bring me something I can verify.” Next, I’ll show you why a demo can work while the app is still fragile underneath.",
+    "onScreenText":"GOAL → INSPECT → PLAN → CHANGE → TEST → EVALUATE → REVIEW",
+    "captionText":"Goal-driven execution, with human verification.",
+    "captionEmphasis":"human verification",
+    "voiceDirection":"Decisive summary, then lighter forward motion into V03."
+  }
+]
