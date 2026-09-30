@@ -1,12 +1,7 @@
 name: Render V02 4K Voiced
-# one-time native 4K pass
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/render-v02-4k.yml'
 
 permissions:
   contents: read
