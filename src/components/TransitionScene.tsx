@@ -30,12 +30,12 @@ const enterStyle=(kind:TransitionKind,p:number):React.CSSProperties=>{
     case 'camera-push':
       return {
         transform:`scale(${interpolate(p,[0,1],[.93,1],clamp)}) translateY(${interpolate(p,[0,1],[80,0],clamp)}px)`,
-        clipPath:`inset(${interpolate(p,[0,1],[8,0],clamp)}% ${interpolate(p,[0,1],[6,0],clamp)}% round ${interpolate(p,[0,1],[52,0],clamp)}px)`,
+        clipPath:`inset(${interpolate(p,[0,1],[38,0],clamp)}% ${interpolate(p,[0,1],[6,0],clamp)}% ${interpolate(p,[0,1],[18,0],clamp)}% ${interpolate(p,[0,1],[6,0],clamp)}% round ${interpolate(p,[0,1],[52,0],clamp)}px)`,
       };
     case 'repo-handoff':
       return {
         transform:`translateX(${interpolate(p,[0,1],[150,0],clamp)}px) scale(${interpolate(p,[0,1],[.985,1],clamp)})`,
-        clipPath:`inset(0 ${interpolate(p,[0,1],[14,0],clamp)}% 0 0 round 28px)`,
+        clipPath:`inset(0 0 0 ${interpolate(p,[0,1],[28,0],clamp)}% round 28px)`,
       };
     case 'plan-compress':
       return {
@@ -50,17 +50,19 @@ const enterStyle=(kind:TransitionKind,p:number):React.CSSProperties=>{
     case 'terminal-flow':
       return {
         transform:`translateY(${interpolate(p,[0,1],[190,0],clamp)}px)`,
-        clipPath:`inset(${interpolate(p,[0,1],[12,0],clamp)}% 0 0 0 round 26px)`,
+        clipPath:`inset(${interpolate(p,[0,1],[32,0],clamp)}% 0 0 0 round 26px)`,
       };
-    case 'review-aperture':
+    case 'review-aperture': {
+      const delayed=Math.pow(p,1.45);
       return {
         transform:`scale(${interpolate(p,[0,1],[1.035,1],clamp)})`,
-        clipPath:`circle(${interpolate(p,[0,1],[18,86],clamp)}% at 72% 54%)`,
+        clipPath:`circle(${interpolate(delayed,[0,1],[12,88],clamp)}% at 72% 58%)`,
       };
+    }
     case 'system-sweep':
       return {
-        transform:`translateX(${interpolate(p,[0,1],[170,0],clamp)}px)`,
-        clipPath:`inset(0 0 0 ${interpolate(p,[0,1],[18,0],clamp)}% round 24px)`,
+        transform:`translateX(${interpolate(p,[0,1],[190,0],clamp)}px)`,
+        clipPath:`inset(0 0 0 ${interpolate(p,[0,1],[44,0],clamp)}% round 24px)`,
       };
     default:return {};
   }
