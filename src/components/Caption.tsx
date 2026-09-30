@@ -23,6 +23,7 @@ export const Caption: React.FC<{text: string; emphasis?: string}> = ({text, emph
       transform:`translateY(${interpolate(p,[0,1],[16,0],clamp)}px)`,
     }}>
       <div style={{
+        fontFamily:TYPE.fontFamily,
         fontSize:TYPE.caption,
         fontWeight:650,
         lineHeight:1.14,
