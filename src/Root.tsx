@@ -4,6 +4,7 @@ import {V01} from './compositions/V01';
 import {V01Voiced} from './compositions/V01Voiced';
 import {V02} from './compositions/V02';
 import {V02Voiced} from './compositions/V02Voiced';
+import {V02Final} from './compositions/V02Final';
 import {V01_VOICED_TOTAL_FRAMES} from './content/v01-timeline';
 import {V02_VOICED_TOTAL_FRAMES} from './content/v02-timeline';
 import {VIDEO} from './tokens';
@@ -53,6 +54,14 @@ export const RemotionRoot: React.FC = () => <>
     <Composition
       id="V02-What-An-AI-Coding-Agent-Actually-Does-Voiced-4K"
       component={V02Voiced}
+      durationInFrames={V02_VOICED_TOTAL_FRAMES}
+      fps={VIDEO.fps}
+      width={2160}
+      height={3840}
+    />
+    <Composition
+      id="V02-What-An-AI-Coding-Agent-Actually-Does-Final-4K"
+      component={V02Final}
       durationInFrames={V02_VOICED_TOTAL_FRAMES}
       fps={VIDEO.fps}
       width={2160}
