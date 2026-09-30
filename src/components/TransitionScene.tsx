@@ -98,7 +98,7 @@ export const TransitionScene:React.FC<Props>=({
   const frame=useCurrentFrame();
   const {fps}=useVideoConfig();
   const enter=enterFrames>0?progress(frame,0,enterFrames):1;
-  const exitStart=enterFrames+baseDurationInFrames;
+  const exitStart=Math.max(0,enterFrames+baseDurationInFrames-exitFrames);
   const exit=exitFrames>0?progress(frame,exitStart,exitStart+exitFrames):0;
 
   const entering=enterStyle(enterKind,enter);
