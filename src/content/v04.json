@@ -1,0 +1,75 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "MCP is a common way for AI applications to connect to tools and data. Here is what actually happens behind that connection.",
+    "onScreenText": "One connection pattern.",
+    "captionText": "AI applications ↔ tools and data",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "Start with three parts: your AI application, an MCP client inside it, and an MCP server that exposes capabilities from another system.",
+    "onScreenText": "Three parts. Clear roles.",
+    "captionText": "The host manages its MCP client.",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "First, the client discovers what the server supports. It can list tools and read their descriptions and input requirements before calling one.",
+    "onScreenText": "Discover before calling.",
+    "captionText": "List tools. Read their inputs.",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "For example, you ask the AI to find a project file. The client sends a tool call with a search query to the server.",
+    "onScreenText": "A request becomes a tool call.",
+    "captionText": "Example: search project files.",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "The server runs that tool against the connected system and returns a result. The AI application can then use that result to answer you.",
+    "onScreenText": "The result comes back.",
+    "captionText": "Tool result → useful context",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "The same pattern can connect to files, a database, or another service. MCP standardizes the exchange; each server still needs to implement its own capabilities.",
+    "onScreenText": "Same pattern. Different systems.",
+    "captionText": "A common protocol, specific tools.",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "In the July twenty twenty-six specification, the core is stateless: each request carries the relevant protocol metadata. Access permissions still matter, and sensitive actions still need appropriate controls.",
+    "onScreenText": "Common protocol. Real permissions.",
+    "captionText": "MCP does not grant unlimited access.",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 78,
+    "narration": "So an MCP server is a program exposing capabilities, not another AI model. Next, we will pull an app apart into the layers behind its screen.",
+    "onScreenText": "Tools around your AI.",
+    "captionText": "Next: the layers behind your app.",
+    "voiceDirection": "Warm, clear and conversational. Pronounce MCP as M-C-P and AI as A-I. Read verbatim."
+  }
+]
+

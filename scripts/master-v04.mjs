@@ -1,0 +1,34 @@
+import {spawnSync} from 'node:child_process';
+import fs from 'node:fs';
+
+const input='out/v04-final-mix-4k.mp4';
+const output='out/v04-final-master-4k.mp4';
+const target='I=-14:TP=-1.5:LRA=11';
+const run=(bin,args)=>{
+  const r=spawnSync(bin,args,{encoding:'utf8',maxBuffer:32*1024*1024});
+  if(r.error)throw r.error;
+  if(r.status!==0)throw new Error(`${bin} failed: ${r.stderr}`);
+  return r;
+};
+const probe=JSON.parse(run('ffprobe',['-v','error','-show_streams','-show_format','-of','json',input]).stdout);
+if(!probe.streams.some(s=>s.codec_type==='audio'))throw new Error('Master input has no audio stream.');
+const first=run('ffmpeg',['-hide_banner','-i',input,'-af',`loudnorm=${target}:print_format=json`,'-f','null','-']);
+const match=first.stderr.match(/\{\s*"input_i"[\s\S]*?\}/);
+if(!match)throw new Error('Loudness measurement not found.');
+const m=JSON.parse(match[0]);
+for(const k of ['input_i','input_tp','input_lra','input_thresh','target_offset'])if(!Number.isFinite(Number(m[k])))throw new Error(`Invalid loudness measurement: ${k}`);
+const filter=`loudnorm=${target}:measured_I=${m.input_i}:measured_TP=${m.input_tp}:measured_LRA=${m.input_lra}:measured_thresh=${m.input_thresh}:offset=${m.target_offset}:linear=true:print_format=json`;
+run('ffmpeg',['-y','-i',input,'-af',filter,'-ar','48000','-ac','2','-c:v','copy','-c:a','aac','-b:a','320k',output]);
+const qa=run('ffmpeg',['-hide_banner','-i',output,'-af',`loudnorm=${target}:print_format=json`,'-f','null','-']);
+fs.writeFileSync('out/v04-loudness-qa.txt',qa.stderr);
+const after=JSON.parse(qa.stderr.match(/\{\s*"input_i"[\s\S]*?\}/)?.[0]??'{}');
+if(!Number.isFinite(Number(after.input_i))||Math.abs(Number(after.input_i)+14)>1)throw new Error('Master loudness is outside the -14 LUFS ±1 range.');
+if(!Number.isFinite(Number(after.input_tp))||Number(after.input_tp)>-1.3)throw new Error('Master true peak exceeds the -1.5 dBTP target tolerance.');
+const media=JSON.parse(run('ffprobe',['-v','error','-show_streams','-show_format','-of','json',output]).stdout);
+const video=media.streams.find(s=>s.codec_type==='video');
+const audio=media.streams.find(s=>s.codec_type==='audio');
+if(video?.width!==2160||video?.height!==3840||video?.r_frame_rate!=='30/1'||video?.codec_name!=='h264')throw new Error('Master video does not match vertical 4K / 30 fps / H.264.');
+if(audio?.channels!==2||audio?.codec_name!=='aac'||audio?.sample_rate!=='48000')throw new Error('Master audio does not match 48 kHz stereo AAC.');
+fs.writeFileSync('out/v04-media-qa.json',JSON.stringify({media,loudness:after},null,2));
+console.log(`Verified master: ${output}`);
+

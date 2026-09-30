@@ -1,0 +1,109 @@
+name: Render V04 and deliver to Drive
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: Preview or final with an existing verified narration ZIP
+        type: choice
+        options: [preview, final]
+        default: preview
+      voice_package_id:
+        description: Drive file ID of an existing narration ZIP (required for final)
+        type: string
+        default: ''
+  push:
+    branches: [main]
+    paths: ['render-requests/v04.json']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: creator-os-v04-production
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    env:
+      MODE: ${{ inputs.mode || 'preview' }}
+      VOICE_PACKAGE_ID: ${{ inputs.voice_package_id }}
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Preflight request and reused narration
+        run: |
+          python scripts/test-calendar-worker.py
+          python scripts/test-deliver-render.py
+          python - <<'PY'
+          import json, os
+          request = json.load(open('render-requests/v04.json'))
+          assert request['episode'] == 'v04' and request['requestId'].startswith('v04-')
+          assert request['status'] in ('preview-ready', 'ready')
+          assert os.environ['MODE'] in ('preview', 'final')
+          if os.environ['MODE'] == 'final' and not os.environ['VOICE_PACKAGE_ID']:
+              raise SystemExit('Final rendering needs a verified existing narration ZIP. Fresh paid generation is disabled.')
+          import importlib.util
+          spec = importlib.util.spec_from_file_location('worker', 'scripts/calendar-worker.py')
+          worker = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(worker)
+          selection = worker.select_episode(worker.Google().calendar())
+          if selection.get('state') != 'selected' or selection.get('episode') != 'V04':
+              raise SystemExit('V04 is not the next queued episode; refusing to render another copy.')
+          PY
+      - name: Install rendering dependencies
+        run: npm install
+      - name: Verify TypeScript
+        run: npm run typecheck
+      - name: Verify mastering tools
+        run: ffmpeg -version && ffprobe -version
+      - name: Reuse existing narration
+        if: env.MODE == 'final'
+        run: python scripts/hydrate-v04-audio.py --file-id "$VOICE_PACKAGE_ID"
+      - name: Render motion preview
+        if: env.MODE == 'preview'
+        run: npx remotion render src/index.ts V04-MCP-Preview out/v04-motion-preview-1080p.mp4 --codec=h264 --crf=19 --concurrency=2
+      - name: Render narrated 4K and verify mastering
+        if: env.MODE == 'final'
+        run: |
+          npm run typecheck
+          npx remotion render src/index.ts V04-MCP-Final-4K out/v04-final-mix-4k.mp4 --codec=h264 --crf=15 --concurrency=2
+          node scripts/master-v04.mjs
+      - name: Preserve media before delivery
+        uses: actions/upload-artifact@v4
+        with:
+          name: v04-${{ env.MODE }}-review-media
+          path: |
+            out/v04-motion-preview-1080p.mp4
+            out/v04-final-master-4k.mp4
+            out/v04-media-qa.json
+            out/v04-loudness-qa.txt
+          if-no-files-found: error
+          retention-days: 14
+      - name: Verify Drive upload and update calendar
+        run: |
+          python - <<'PY'
+          import json, os, subprocess
+          mode = os.environ['MODE']
+          request = json.load(open('render-requests/v04.json'))
+          file = 'out/v04-final-master-4k.mp4' if mode == 'final' else 'out/v04-motion-preview-1080p.mp4'
+          request_id = request['requestId'] + ('-final' if mode == 'final' else '')
+          subprocess.run(['python', 'scripts/deliver-render.py', '--file', file, '--mode', mode, '--request-id', request_id], check=True)
+          PY
+      - name: Preserve delivery receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v04-${{ env.MODE }}-delivery-receipt
+          path: out/v04-delivery.json
+          if-no-files-found: ignore
+          retention-days: 14
