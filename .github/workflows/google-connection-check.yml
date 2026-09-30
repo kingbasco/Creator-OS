@@ -1,0 +1,99 @@
+name: Google connection check
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/google-connection-check.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: google-connection-check
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Verify OAuth, calendar and render folder access
+        env:
+          GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+          GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+          GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+        shell: python
+        run: |
+          import json, os, sys, urllib.parse, urllib.request, urllib.error
+          from pathlib import Path
+          
+          CALENDAR = "1xAELwjFzWvvUYo_H0NcTujVqLJm9VxSiAF2M1z7BPDo"
+          RENDERS = "1Zu-JCivNtPf877-WwEonF4ybWihT1dgx"
+          
+          def request(url, label, body=None, token=None):
+              headers = {"Content-Type": "application/x-www-form-urlencoded"} if body else {}
+              if token:
+                  headers["Authorization"] = "Bearer " + token
+              req = urllib.request.Request(url, data=body, headers=headers)
+              try:
+                  with urllib.request.urlopen(req, timeout=30) as response:
+                      return json.load(response)
+              except urllib.error.HTTPError as error:
+                  # Never print response bodies, request headers, credentials or cell contents.
+                  raise RuntimeError(label + " failed (HTTP " + str(error.code) + "). Check API enablement, account permissions and OAuth credentials.") from None
+              except (urllib.error.URLError, TimeoutError):
+                  raise RuntimeError(label + " could not reach Google. Retry the connection check.") from None
+          
+          def main():
+              names = ("GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET", "GOOGLE_REFRESH_TOKEN")
+              missing = [name for name in names if not os.environ.get(name, "").strip()]
+              if missing:
+                  raise RuntimeError("Missing GitHub Actions secrets: " + ", ".join(missing))
+              body = urllib.parse.urlencode({
+                  "client_id": os.environ[names[0]].strip(),
+                  "client_secret": os.environ[names[1]].strip(),
+                  "refresh_token": os.environ[names[2]].strip(),
+                  "grant_type": "refresh_token"
+              }).encode()
+              auth = request("https://oauth2.googleapis.com/token", "OAuth refresh", body=body)
+              token = auth.get("access_token")
+              if not token:
+                  raise RuntimeError("OAuth refresh returned no access token.")
+              print("::add-mask::" + token)
+              scopes = set(auth.get("scope", "").split())
+              required = {"https://www.googleapis.com/auth/drive", "https://www.googleapis.com/auth/spreadsheets"}
+              if scopes and not required.issubset(scopes):
+                  raise RuntimeError("Reauthorize both the Drive and Sheets scopes in OAuth Playground.")
+              print("PASS: OAuth refresh.")
+              range_path = urllib.parse.quote("'Content Calendar'!A7:Q30", safe="")
+              values = request("https://sheets.googleapis.com/v4/spreadsheets/" + CALENDAR + "/values/" + range_path, "Calendar read", token=token).get("values", [])
+              if not values or values[0][0] != "Video ID":
+                  # Header comparison tolerates the existing VideoID spelling.
+                  if not values or "".join(values[0][0].lower().split()) != "videoid":
+                      raise RuntimeError("Calendar header does not match the configured production calendar.")
+              calendar_file = request("https://www.googleapis.com/drive/v3/files/" + CALENDAR + "?fields=id,trashed,capabilities(canEdit)", "Calendar permissions", token=token)
+              if calendar_file.get("trashed") or not calendar_file.get("capabilities", {}).get("canEdit"):
+                  raise RuntimeError("The authorized account cannot edit the production calendar.")
+              print("PASS: Calendar read and edit capability.")
+              folder = request("https://www.googleapis.com/drive/v3/files/" + RENDERS + "?fields=id,mimeType,trashed,capabilities(canAddChildren,canListChildren)", "Render folder permissions", token=token)
+              if folder.get("trashed") or folder.get("mimeType") != "application/vnd.google-apps.folder":
+                  raise RuntimeError("Configured render destination is not an active folder.")
+              if not folder.get("capabilities", {}).get("canAddChildren"):
+                  raise RuntimeError("The authorized account cannot upload into the render folder.")
+              query = urllib.parse.urlencode({"q": "'" + RENDERS + "' in parents and trashed = false", "pageSize": 1, "fields": "files(id)"})
+              request("https://www.googleapis.com/drive/v3/files?" + query, "Render folder listing", token=token)
+              print("PASS: Render folder read and upload capability.")
+              queued = sum(1 for row in values[1:] if len(row) > 15 and row[15].strip().lower() == "queued")
+              summary = "## Google connection check\n\n- OAuth refresh: passed\n- Calendar read and edit capability: passed\n- Render folder listing and upload capability: passed\n- Queued episodes in checked range: " + str(queued) + "\n\nRead-only check: no cells or files were changed. Actual writes and the production worker still need verification.\n"
+              if os.environ.get("GITHUB_STEP_SUMMARY"):
+                  Path(os.environ["GITHUB_STEP_SUMMARY"]).write_text(summary)
+              print("Connection check passed. No production data changed.")
+          
+          try:
+              main()
+          except RuntimeError as error:
+              print("ERROR: " + str(error), file=sys.stderr)
+              sys.exit(1)
+          
