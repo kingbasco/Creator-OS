@@ -1,0 +1,58 @@
+name: Verify V04 delivery reuse
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: [.github/workflows/verify-v04-delivery.yml]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: creator-os-v04-production
+  cancel-in-progress: false
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Install media verification tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+      - name: Read the existing preview and verify its original checksum
+        run: |
+          python - <<'PY'
+          import hashlib, importlib.util, urllib.request
+          from pathlib import Path
+          spec = importlib.util.spec_from_file_location('worker', 'scripts/calendar-worker.py')
+          worker = importlib.util.module_from_spec(spec)
+          spec.loader.exec_module(worker)
+          google = worker.Google()
+          request = urllib.request.Request('https://www.googleapis.com/drive/v3/files/1SUq-SXkn9MWmTWnSKZWliqL0UViMJR_g?alt=media', headers={'Authorization': 'Bearer ' + google.token})
+          with urllib.request.urlopen(request, timeout=55) as response:
+              data = response.read(16 * 1024 * 1024 + 1)
+          assert hashlib.sha256(data).hexdigest() == '787173db6e55177d1c00554a5764e1fa88f48862d309e772a04ab204d202b27b'
+          Path('out').mkdir(exist_ok=True)
+          Path('out/v04-motion-preview-1080p.mp4').write_bytes(data)
+          PY
+      - name: Verify repeat delivery reuses the reserved file
+        run: |
+          python scripts/deliver-render.py --file out/v04-motion-preview-1080p.mp4 --mode preview --request-id v04-motion-preview-2026-09-30-01
+          python - <<'PY'
+          import json, os
+          report = json.load(open('out/v04-delivery.json'))
+          assert report['fileId'] == '1SUq-SXkn9MWmTWnSKZWliqL0UViMJR_g'
+          with open(os.environ['GITHUB_STEP_SUMMARY'], 'a') as out:
+              out.write('\nRepeat delivery reused the original Drive file ID. No second video was uploaded.\n')
+          print('PASS: Repeat delivery reused the original Drive file ID.')
+          PY

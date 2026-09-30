@@ -34,7 +34,10 @@ def verify_media(path, final=False):
         audio = next((s for s in media['streams'] if s['codec_type'] == 'audio'), {})
         if audio.get('codec_name') != 'aac' or audio.get('sample_rate') != '48000' or audio.get('channels') != 2:
             raise RuntimeError('Final master must have 48 kHz stereo AAC narration.')
-        qa = json.loads(path.with_name('v04-media-qa.json').read_text())['loudness']
+        report = json.loads(path.with_name('v04-media-qa.json').read_text())
+        if report.get('sha256') != hashlib.sha256(path.read_bytes()).hexdigest():
+            raise RuntimeError('Final QA report is not bound to the supplied media file.')
+        qa = report['loudness']
         if abs(float(qa['input_i']) + 14) > 1 or float(qa['input_tp']) > -1.3:
             raise RuntimeError('Final loudness QA failed.')
     subprocess.run(['ffmpeg', '-v', 'error', '-xerror', '-i', str(path), '-f', 'null', '-'], check=True, capture_output=True)
@@ -193,6 +196,9 @@ def main():
 if __name__ == '__main__':
     try:
         main()
-    except (RuntimeError, ValueError, KeyError, subprocess.CalledProcessError, OSError):
+    except RuntimeError as error:
+        print('Delivery failed: ' + str(error), file=sys.stderr)
+        sys.exit(1)
+    except (ValueError, KeyError, subprocess.CalledProcessError, OSError):
         print('Delivery failed. No successful completion claimed. Retry the same request ID; reserved files are preserved.', file=sys.stderr)
         sys.exit(1)

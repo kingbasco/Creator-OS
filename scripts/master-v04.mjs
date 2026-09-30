@@ -1,5 +1,6 @@
 import {spawnSync} from 'node:child_process';
 import fs from 'node:fs';
+import {createHash} from 'node:crypto';
 
 const input='out/v04-final-mix-4k.mp4';
 const output='out/v04-final-master-4k.mp4';
@@ -29,6 +30,6 @@ const video=media.streams.find(s=>s.codec_type==='video');
 const audio=media.streams.find(s=>s.codec_type==='audio');
 if(video?.width!==2160||video?.height!==3840||video?.r_frame_rate!=='30/1'||video?.codec_name!=='h264')throw new Error('Master video does not match vertical 4K / 30 fps / H.264.');
 if(audio?.channels!==2||audio?.codec_name!=='aac'||audio?.sample_rate!=='48000')throw new Error('Master audio does not match 48 kHz stereo AAC.');
-fs.writeFileSync('out/v04-media-qa.json',JSON.stringify({media,loudness:after},null,2));
+const sha256=createHash('sha256').update(fs.readFileSync(output)).digest('hex');
+fs.writeFileSync('out/v04-media-qa.json',JSON.stringify({media,loudness:after,sha256},null,2));
 console.log(`Verified master: ${output}`);
-
