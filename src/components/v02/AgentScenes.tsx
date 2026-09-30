@@ -6,7 +6,7 @@ import {COLORS, FLOAT_SHADOW, RADIUS, TYPE} from '../../tokens';
 import {clamp, drawProgress, fadeInUp, physicalSpring} from '../../utils';
 import {useScaledSceneFrame} from '../../sceneTiming';
 
-type SceneProps={durationInFrames?:number};
+export type V02SceneProps={durationInFrames?:number;frameOffset?:number};
 
 const panel=(dark=false):React.CSSProperties=>({
   borderRadius:RADIUS.lg,
@@ -22,8 +22,8 @@ const Mono:React.FC<React.PropsWithChildren<{muted?:boolean;success?:boolean;dan
   }}>{children}</span>
 );
 
-export const AgentHook:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,6);
+export const AgentHook:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,6,frameOffset);
   const codeIn=physicalSpring(frame,fps,4,14);
   const pullback=physicalSpring(frame,fps,45,20);
   const agent=physicalSpring(frame,fps,74,16);
@@ -73,8 +73,8 @@ export const AgentHook:React.FC<SceneProps>=({durationInFrames})=>{
   </Frame>;
 };
 
-export const GoalScene:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,10);
+export const GoalScene:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,10,frameOffset);
   const goal=physicalSpring(frame,fps,10,14);
   const scan=drawProgress(frame,55,42);
   const repo=physicalSpring(frame,fps,38,16);
@@ -115,8 +115,8 @@ export const GoalScene:React.FC<SceneProps>=({durationInFrames})=>{
   </Frame>;
 };
 
-export const InspectScene:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,11);
+export const InspectScene:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,11,frameOffset);
   const items=[
     ['routes/reset.tsx','Route','reset action'],
     ['components/ResetForm.tsx','UI','form states'],
@@ -161,8 +161,8 @@ export const InspectScene:React.FC<SceneProps>=({durationInFrames})=>{
   </Frame>;
 };
 
-export const PlanScene:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,10);
+export const PlanScene:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,10,frameOffset);
   const steps=['Update route','Validate email','Send reset email','Add success state'];
   return <Frame>
     <MotionBackdrop/>
@@ -197,8 +197,8 @@ export const PlanScene:React.FC<SceneProps>=({durationInFrames})=>{
   </Frame>;
 };
 
-export const ChangeScene:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,12);
+export const ChangeScene:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,12,frameOffset);
   const reveal=interpolate(frame,[40,165],[0,1],clamp);
   const lines=[
     ['+','import {ValidEmail} from \'@/lib/validation\''],
@@ -252,8 +252,8 @@ export const ChangeScene:React.FC<SceneProps>=({durationInFrames})=>{
   </Frame>;
 };
 
-export const EvaluateScene:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,12);
+export const EvaluateScene:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,12,frameOffset);
   const failure=physicalSpring(frame,fps,115,14);
   const loop=drawProgress(frame,142,28);
   return <Frame dark>
@@ -286,8 +286,8 @@ export const EvaluateScene:React.FC<SceneProps>=({durationInFrames})=>{
   </Frame>;
 };
 
-export const ReviewScene:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,12);
+export const ReviewScene:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,12,frameOffset);
   const gate=physicalSpring(frame,fps,105,18);
   return <Frame>
     <MotionBackdrop/>
@@ -324,8 +324,8 @@ export const ReviewScene:React.FC<SceneProps>=({durationInFrames})=>{
   </Frame>;
 };
 
-export const MentalModelScene:React.FC<SceneProps>=({durationInFrames})=>{
-  const {frame,fps}=useScaledSceneFrame(durationInFrames,9);
+export const MentalModelScene:React.FC<V02SceneProps>=({durationInFrames,frameOffset=0})=>{
+  const {frame,fps}=useScaledSceneFrame(durationInFrames,9,frameOffset);
   const labels=['GOAL','INSPECT','PLAN','CHANGE','TEST','EVALUATE','REVIEW'];
   const settle=physicalSpring(frame,fps,28,18);
   const teaser=physicalSpring(frame,fps,126,16);

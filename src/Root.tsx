@@ -35,12 +35,28 @@ export const RemotionRoot: React.FC = () => <>
       height={VIDEO.height}
     />
     <Composition
+      id="V02-What-An-AI-Coding-Agent-Actually-Does-4K"
+      component={V02}
+      durationInFrames={82*VIDEO.fps}
+      fps={VIDEO.fps}
+      width={2160}
+      height={3840}
+    />
+    <Composition
       id="V02-What-An-AI-Coding-Agent-Actually-Does-Voiced"
       component={V02Voiced}
       durationInFrames={V02_VOICED_TOTAL_FRAMES}
       fps={VIDEO.fps}
       width={VIDEO.width}
       height={VIDEO.height}
+    />
+    <Composition
+      id="V02-What-An-AI-Coding-Agent-Actually-Does-Voiced-4K"
+      component={V02Voiced}
+      durationInFrames={V02_VOICED_TOTAL_FRAMES}
+      fps={VIDEO.fps}
+      width={2160}
+      height={3840}
     />
   </Folder>
 </>;

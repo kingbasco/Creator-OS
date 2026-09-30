@@ -1,6 +1,6 @@
 {
   "name": "creator-os-video-engine",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "private": true,
   "scripts": {
     "dev": "remotion studio src/index.ts",
@@ -14,7 +14,9 @@
     "voice:validate": "node scripts/generate-voice-auditions.mjs --dry-run && node scripts/generate-v01-voice.mjs --dry-run && node scripts/generate-v02-voice.mjs --dry-run",
     "typecheck": "tsc --noEmit",
     "render:v02:voiced": "remotion render src/index.ts V02-What-An-AI-Coding-Agent-Actually-Does-Voiced out/v02-voiced.mp4",
-    "voice:v02": "node scripts/generate-v02-voice.mjs"
+    "voice:v02": "node scripts/generate-v02-voice.mjs",
+    "render:v02:4k": "remotion render src/index.ts V02-What-An-AI-Coding-Agent-Actually-Does-4K out/v02-4k.mp4 --codec=h264 --crf=15 --concurrency=2",
+    "render:v02:voiced:4k": "remotion render src/index.ts V02-What-An-AI-Coding-Agent-Actually-Does-Voiced-4K out/v02-voiced-4k.mp4 --codec=h264 --crf=15 --concurrency=2"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",

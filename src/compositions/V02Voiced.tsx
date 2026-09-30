@@ -1,10 +1,10 @@
 import React from 'react';
 import {Audio} from '@remotion/media';
-import {AbsoluteFill,Sequence,staticFile} from 'remotion';
-import {Caption} from '../components/Caption';
-import {SceneMotion} from '../components/SceneMotion';
+import {AbsoluteFill,staticFile} from 'remotion';
+import {DesignCanvas} from '../components/DesignCanvas';
 import {v02Audio} from '../generated/v02-audio';
 import {v02VoicedTimeline} from '../content/v02-timeline';
+import {V02Flow} from './V02Flow';
 import {
   AgentHook,
   GoalScene,
@@ -28,16 +28,18 @@ const scenes=[
 ];
 
 export const V02Voiced:React.FC=()=>(
-  <AbsoluteFill>
-    {v02VoicedTimeline.map((scene,i)=>{
-      const Component=scenes[i];
-      return <Sequence key={scene.id} from={scene.from} durationInFrames={scene.durationInFrames} name={`V02-${scene.id}-voiced`}>
-        <SceneMotion durationInFrames={scene.durationInFrames}>
-          <Component durationInFrames={scene.durationInFrames}/>
-        </SceneMotion>
-        {v02Audio.enabled&&scene.audioPath?<Audio src={staticFile(scene.audioPath)}/>:null}
-        <Caption text={scene.captionText??scene.narration} emphasis={scene.captionEmphasis}/>
-      </Sequence>;
-    })}
-  </AbsoluteFill>
+  <DesignCanvas>
+    <AbsoluteFill>
+      <V02Flow
+        timeline={v02VoicedTimeline}
+        scenes={scenes}
+        nameSuffix="-voiced"
+        renderAudio={(scene)=>
+          v02Audio.enabled&&scene.audioPath
+            ? <Audio src={staticFile(scene.audioPath)}/>
+            : null
+        }
+      />
+    </AbsoluteFill>
+  </DesignCanvas>
 );
