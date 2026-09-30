@@ -2,10 +2,6 @@ name: Render V02 Final 4K
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/render-v02-final.yml'
 
 permissions:
   contents: read
@@ -57,12 +53,20 @@ jobs:
       - name: Loudness master
         run: npm run master:v02
 
+      - name: Verify final media
+        run: |
+          ffprobe -v error -select_streams v:0 -show_entries stream=codec_name,width,height,r_frame_rate -of default=nw=1 out/v02-final-master-4k.mp4
+          ffprobe -v error -select_streams a:0 -show_entries stream=codec_name,sample_rate,channels -of default=nw=1 out/v02-final-master-4k.mp4
+          ffmpeg -hide_banner -i out/v02-final-master-4k.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11:print_format=summary -f null - 2> out/v02-loudness-qa.txt
+          cat out/v02-loudness-qa.txt | tail -n 20
+
       - name: Upload final master
         uses: actions/upload-artifact@v4
         with:
           name: v02-final-4k-master
           path: |
             out/v02-final-master-4k.mp4
+            out/v02-loudness-qa.txt
             public/audio/v02-sfx/manifest.json
           if-no-files-found: error
           retention-days: 14
