@@ -17,7 +17,7 @@ The silent prototype uses provisional 84-second timing. The voiced timeline uses
 - `npm run voice:v03`: generate narration using the existing Gemini secret and Sulafat voice.
 - `npm run render:v03:voiced:4k`: render using measured narration timing.
 
-The Render V03 Motion Preview and V03 Gemini Voice workflows are manual. No automatic publishing or final-master generation is enabled.
+The Render V03 Motion Preview and V03 Gemini Voice workflows are manual. Automatic final rendering is enabled through the V03 readiness request; publishing remains separate.
 
 Narration makes two precision edits to the source draft: failure after a demo is a possibility rather than an inevitable outcome, and security matters from the start. The environment comparison is explicitly narrated in its own scene. Both keep the original thesis and V04 teaser.
 
@@ -31,6 +31,12 @@ Generate and listen to narration; check scene boundaries and pronunciation; adju
 
 `npm run render:v03:final:4k` requires generated narration. `npm run master:v03` performs two-pass normalization, measures the encoded result and checks vertical 4K H.264 at 30 fps plus 48 kHz stereo AAC. Target: -14 LUFS and -1.5 dBTP, with a 1 LUFS and 0.2 dB encoded tolerance. QA reports are saved alongside the master.
 
-The manual **Render V03 Final 4K** workflow generates narration using the existing GitHub Gemini secret, derives scene timing, mixes sound, renders, masters and uploads a review package. It does not publish or upload files to Drive automatically. A successful render still requires narration listening and visual review before the file becomes the publish master. On rerun it regenerates narration; preserve and reuse the review audio package when further edits only affect motion or mixing.
+The **Render V03 Final 4K** workflow generates narration using the existing GitHub Gemini secret, derives scene timing, mixes sound, renders, masters and uploads a review package. It does not publish or upload files to Drive automatically. A successful render still requires narration listening and visual review before the file becomes the publish master. On rerun it regenerates narration; preserve and reuse the review audio package when further edits only affect motion or mixing.
 
 Verified silent preview: 84 seconds, 540×960, 30 fps. All eight scene keyframes were inspected, with no black intervals detected. The implementation passed local type-check, voice dry runs and GitHub Motion CI (36682118513). These checks do not verify generated speech or the final mix.
+
+## Automatic render trigger
+
+User authorized automatic rendering on September 30, 2026. A push to main changing `render-requests/v03.json` starts the final pipeline when `status` is `ready`. Update `requestId` for each intentional render request. Ordinary code changes do not trigger generation. Requests with a status other than ready skip rendering. Manual dispatch remains available. Concurrent V03 render runs are serialized rather than canceled mid-generation.
+
+Output is a verified GitHub Actions review artifact retained for 14 days. Automatic Drive upload is not configured. Narration listening and visual review follow rendering; the workflow does not publish content.
