@@ -13,7 +13,7 @@ AI-assisted content operating system for producing coding and vibe-coding motion
 ## Current milestone
 V01 — **Vibe Coding Isn't Magic**
 
-Status: motion system setup and visual-prototype phase.
+Status: V02 final master rendered; V03 motion implementation and narration handoff are ready.
 
 ## Video Engine
 The video engine lives in the repository root and is designed around reusable scene components, design tokens, scene data, and voice-timing handoff.
@@ -33,3 +33,7 @@ npm run render:v01
 
 ## Cost rule
 Creator OS should use existing subscriptions first. Extra paid AI services are optional accelerators, not required infrastructure.
+
+## Episode 3
+
+V03 — Why Your AI-Built App Breaks After the Demo. See [production handoff](docs/V03-MOTION-BRIEF.md) for preview, narration, 4K commands, verification status and remaining gates.

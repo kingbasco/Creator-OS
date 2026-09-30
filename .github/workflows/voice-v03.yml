@@ -1,0 +1,65 @@
+name: V03 Gemini Voice
+
+on:
+  workflow_dispatch:
+    inputs:
+      voice:
+        description: Voice for the V03 render
+        required: false
+        type: choice
+        options:
+          - Sulafat
+          - Sadaltager
+          - Iapetus
+        default: Sulafat
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_TTS_MODEL: gemini-3.8-flash-lite-tts
+      GEMINI_TTS_FALLBACK_MODEL: gemini-3.8-flash-tts
+      GEMINI_TTS_VOICE: ${{ inputs.voice || 'Sulafat' }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify Gemini secret
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "GEMINI_API_KEY is not configured in GitHub Actions secrets."
+            exit 1
+          fi
+
+      - name: Validate voice pipeline
+        run: npm run voice:v03 -- --dry-run
+
+      - name: Generate V03 voice
+        run: npm run voice:v03
+
+      - name: Type-check voiced timeline
+        run: npm run typecheck
+
+      - name: Render voiced V03
+        run: npm run render:v03:voiced:4k
+
+      - name: Upload voiced V03 package
+        uses: actions/upload-artifact@v4
+        with:
+          name: v03-gemini-voiced-render
+          path: |
+            out/v03-voiced-4k.mp4
+            public/audio/v03
+          if-no-files-found: error
+          retention-days: 14

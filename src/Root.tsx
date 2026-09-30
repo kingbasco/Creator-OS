@@ -7,6 +7,8 @@ import {V02Voiced} from './compositions/V02Voiced';
 import {V02Final} from './compositions/V02Final';
 import {V01_VOICED_TOTAL_FRAMES} from './content/v01-timeline';
 import {V02_VOICED_TOTAL_FRAMES} from './content/v02-timeline';
+import {V03, V03Voiced} from './compositions/V03';
+import {V03_VOICED_TOTAL_FRAMES} from './content/v03-timeline';
 import {VIDEO} from './tokens';
 
 export const RemotionRoot: React.FC = () => <>
@@ -67,5 +69,8 @@ export const RemotionRoot: React.FC = () => <>
       width={2160}
       height={3840}
     />
+    <Composition id="V03-Demo-To-Product" component={V03} durationInFrames={84*VIDEO.fps} fps={VIDEO.fps} width={1080} height={1920}/>
+    <Composition id="V03-Demo-To-Product-4K" component={V03} durationInFrames={84*VIDEO.fps} fps={VIDEO.fps} width={2160} height={3840}/>
+    <Composition id="V03-Demo-To-Product-Voiced-4K" component={V03Voiced} durationInFrames={V03_VOICED_TOTAL_FRAMES} fps={VIDEO.fps} width={2160} height={3840}/>
   </Folder>
 </>;

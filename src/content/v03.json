@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 7,
+    "narration": "Your AI-built app works perfectly in the demo. Then real users touch it — and suddenly things can start breaking.",
+    "onScreenText": "The demo works.",
+    "captionText": "A working demo is a starting point.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  },
+  {
+    "id": "S02",
+    "startSec": 7,
+    "endSec": 17,
+    "narration": "Usually, the problem is not that the AI failed to build the screen. The problem is that a demo only proves the happy path. You clicked the right buttons, used one account, entered clean data, and everything was already configured.",
+    "onScreenText": "You tested one path.",
+    "captionText": "A demo proves the happy path.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  },
+  {
+    "id": "S03",
+    "startSec": 17,
+    "endSec": 31,
+    "narration": "Production adds the things the demo hides: bad inputs, expired sessions, slow networks, duplicate requests, missing environment variables, different permissions, and real user data.",
+    "onScreenText": "Real users. Real edge cases.",
+    "captionText": "Failure states are part of the product.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  },
+  {
+    "id": "S04",
+    "startSec": 31,
+    "endSec": 42,
+    "narration": "Security matters from the start. A database table can look completely normal in the UI and still be too open underneath if its access rules are wrong.",
+    "onScreenText": "Looks fine. Who can access it?",
+    "captionText": "Verify access beneath the UI.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  },
+  {
+    "id": "S05",
+    "startSec": 42,
+    "endSec": 53,
+    "narration": "The same code can also behave differently between preview and production when required configuration is missing. So check the environment, not just the screen.",
+    "onScreenText": "Same code. Different setup.",
+    "captionText": "Verify production configuration.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  },
+  {
+    "id": "S06",
+    "startSec": 53,
+    "endSec": 64,
+    "narration": "And if you never added tests, logging or monitoring, you might not even know what failed. Ask: what happens when this fails, and how will I know something broke?",
+    "onScreenText": "Make failure visible.",
+    "captionText": "Tests, logs and monitoring expose problems.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  },
+  {
+    "id": "S07",
+    "startSec": 64,
+    "endSec": 76,
+    "narration": "Ask who can access this data and what changes between preview and production. AI can help build those protections too. But you still need to ask for them, test them, and verify the result.",
+    "onScreenText": "Demo working ≠ product ready.",
+    "captionText": "Ask. Test. Verify.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  },
+  {
+    "id": "S08",
+    "startSec": 76,
+    "endSec": 84,
+    "narration": "A demo proves the idea. Reliability proves the product. Next, I’ll show you how MCP lets AI tools connect to the systems around your app.",
+    "onScreenText": "A demo proves the idea.",
+    "captionText": "Reliability proves the product.",
+    "voiceDirection": "Warm, calm and conversational. Emphasize the core idea without sounding alarmist."
+  }
+]

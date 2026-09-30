@@ -11,7 +11,7 @@
     "still:v02": "remotion still src/index.ts V02-What-An-AI-Coding-Agent-Actually-Does out/v02-poster.png --frame=0",
     "voice:audition": "node scripts/generate-voice-auditions.mjs",
     "voice:v01": "node scripts/generate-v01-voice.mjs",
-    "voice:validate": "node scripts/generate-voice-auditions.mjs --dry-run && node scripts/generate-v01-voice.mjs --dry-run && node scripts/generate-v02-voice.mjs --dry-run",
+    "voice:validate": "node scripts/generate-voice-auditions.mjs --dry-run && node scripts/generate-v01-voice.mjs --dry-run && node scripts/generate-v02-voice.mjs --dry-run && node scripts/generate-v03-voice.mjs --dry-run",
     "typecheck": "tsc --noEmit",
     "render:v02:voiced": "remotion render src/index.ts V02-What-An-AI-Coding-Agent-Actually-Does-Voiced out/v02-voiced.mp4",
     "voice:v02": "node scripts/generate-v02-voice.mjs",
@@ -19,7 +19,11 @@
     "render:v02:voiced:4k": "remotion render src/index.ts V02-What-An-AI-Coding-Agent-Actually-Does-Voiced-4K out/v02-voiced-4k.mp4 --codec=h264 --crf=15 --concurrency=2",
     "sound:v02": "node scripts/generate-v02-sfx.mjs",
     "render:v02:final:4k": "remotion render src/index.ts V02-What-An-AI-Coding-Agent-Actually-Does-Final-4K out/v02-final-mix-4k.mp4 --codec=h264 --crf=15 --concurrency=2",
-    "master:v02": "ffmpeg -y -i out/v02-final-mix-4k.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11 -c:v copy -c:a aac -b:a 320k out/v02-final-master-4k.mp4"
+    "master:v02": "ffmpeg -y -i out/v02-final-mix-4k.mp4 -af loudnorm=I=-14:TP=-1.5:LRA=11 -c:v copy -c:a aac -b:a 320k out/v02-final-master-4k.mp4",
+    "voice:v03": "node scripts/generate-v03-voice.mjs",
+    "render:v03": "remotion render src/index.ts V03-Demo-To-Product out/v03-preview.mp4",
+    "render:v03:4k": "remotion render src/index.ts V03-Demo-To-Product-4K out/v03-4k.mp4 --codec=h264 --crf=15 --concurrency=2",
+    "render:v03:voiced:4k": "remotion render src/index.ts V03-Demo-To-Product-Voiced-4K out/v03-voiced-4k.mp4 --codec=h264 --crf=15 --concurrency=2"
   },
   "dependencies": {
     "@google/genai": "^2.24.0",
