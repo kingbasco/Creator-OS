@@ -5,7 +5,7 @@ import {TransitionScene,type TransitionKind} from '../components/TransitionScene
 import type {SceneSpec} from '../types';
 import type {V02SceneProps} from '../components/v02/AgentScenes';
 
-export const V02_TRANSITION_FRAMES=14;
+export const V02_TRANSITION_FRAMES=18;
 
 export const V02_TRANSITIONS:TransitionKind[]=[
   'camera-push',
@@ -37,7 +37,7 @@ export const V02Flow:React.FC<Props>=({timeline,scenes,renderAudio,nameSuffix=''
     const exitFrames=i===timeline.length-1?0:V02_TRANSITION_FRAMES;
     const visualFrom=Math.max(0,scene.from-enterFrames);
     const visualDuration=scene.durationInFrames+enterFrames+exitFrames;
-    const frameOffset=i===0?0:enterFrames;
+    const visualSceneDuration=scene.durationInFrames+enterFrames;
 
     return <React.Fragment key={scene.id}>
       <Sequence
@@ -53,7 +53,7 @@ export const V02Flow:React.FC<Props>=({timeline,scenes,renderAudio,nameSuffix=''
           exitKind={i===timeline.length-1?'none':V02_TRANSITIONS[i]}
           zIndex={i+1}
         >
-          <Component durationInFrames={scene.durationInFrames} frameOffset={frameOffset}/>
+          <Component durationInFrames={visualSceneDuration} frameOffset={0}/>
         </TransitionScene>
       </Sequence>
 
