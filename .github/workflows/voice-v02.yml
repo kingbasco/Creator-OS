@@ -1,5 +1,6 @@
 name: V02 Gemini Voice
 # quota-aware Flash fallback
+# direct PCM split pass
 
 on:
   workflow_dispatch:

@@ -130,8 +130,9 @@ for(let i=0;i<scenes.length;i+=2){
   ].join(' ');
 
   console.log(`Generating ${first.id} + ${second.id} with ${voice} on ${activeModel}...`);
+  let synthesis;
   try{
-    await synthesizeSpeech({
+    synthesis=await synthesizeSpeech({
       text:pairText,
       voice,
       outputPath:pairPath,
@@ -142,7 +143,7 @@ for(let i=0;i<scenes.length;i+=2){
     if(activeModel!==fallbackModel&&isRateLimit(error)){
       console.log(`Primary TTS quota reached. Switching remaining V02 generation to ${fallbackModel}.`);
       activeModel=fallbackModel;
-      await synthesizeSpeech({
+      synthesis=await synthesizeSpeech({
         text:pairText,
         voice,
         outputPath:pairPath,
@@ -155,8 +156,10 @@ for(let i=0;i<scenes.length;i+=2){
   }
   modelsUsed.add(activeModel);
 
-  const wavBuffer=await fs.promises.readFile(pairPath);
-  const pcm=extractPcmFromWav(wavBuffer);
+  const pcm=synthesis.pcmData;
+  if(!pcm || !Buffer.isBuffer(pcm)){
+    throw new Error(`No PCM buffer returned for ${first.id} + ${second.id}.`);
+  }
   const splitSample=findSplitSample(pcm,first.narration,second.narration);
   const splitByte=splitSample*SAMPLE_WIDTH_BYTES;
   const firstPcm=pcm.subarray(0,splitByte);

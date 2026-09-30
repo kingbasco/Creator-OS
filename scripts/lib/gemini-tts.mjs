@@ -94,6 +94,7 @@ export const synthesizeSpeech = async ({
   return {
     durationSec: pcm.byteLength / (SAMPLE_RATE * CHANNELS * SAMPLE_WIDTH_BYTES),
     bytes: pcm.byteLength,
+    pcmData: pcm,
     model,
     voice,
   };
