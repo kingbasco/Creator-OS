@@ -1,6 +1,4 @@
 name: V02 Gemini Voice
-# quota-aware Flash fallback
-# direct PCM split pass
 
 on:
   workflow_dispatch:
@@ -14,10 +12,6 @@ on:
           - Sadaltager
           - Iapetus
         default: Sulafat
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/voice-v02.yml'
 
 jobs:
   voice:
@@ -27,7 +21,7 @@ jobs:
       GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
       GEMINI_TTS_MODEL: gemini-3.8-flash-lite-tts
       GEMINI_TTS_FALLBACK_MODEL: gemini-3.8-flash-tts
-      GEMINI_TTS_VOICE: Sulafat
+      GEMINI_TTS_VOICE: ${{ inputs.voice || 'Sulafat' }}
 
     steps:
       - name: Checkout
