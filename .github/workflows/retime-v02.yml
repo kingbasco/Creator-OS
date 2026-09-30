@@ -2,10 +2,6 @@ name: V02 Voice Alignment QA
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/retime-v02.yml'
 
 jobs:
   align-and-render:
