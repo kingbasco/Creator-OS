@@ -1,13 +1,7 @@
 name: Render V02
-# paired handoff QA
-# final mask QA
 
 on:
   workflow_dispatch:
-  push:
-    branches: [main]
-    paths:
-      - '.github/workflows/render-v02.yml'
 
 jobs:
   render:
