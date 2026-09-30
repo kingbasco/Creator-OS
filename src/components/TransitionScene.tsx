@@ -32,11 +32,13 @@ const enterStyle=(kind:TransitionKind,p:number):React.CSSProperties=>{
         transform:`scale(${interpolate(p,[0,1],[.93,1],clamp)}) translateY(${interpolate(p,[0,1],[80,0],clamp)}px)`,
         clipPath:`inset(${interpolate(p,[0,1],[38,0],clamp)}% ${interpolate(p,[0,1],[6,0],clamp)}% ${interpolate(p,[0,1],[18,0],clamp)}% ${interpolate(p,[0,1],[6,0],clamp)}% round ${interpolate(p,[0,1],[52,0],clamp)}px)`,
       };
-    case 'repo-handoff':
+    case 'repo-handoff': {
+      const headlineDelay=Math.pow(p,1.7);
       return {
         transform:`translateX(${interpolate(p,[0,1],[150,0],clamp)}px) scale(${interpolate(p,[0,1],[.985,1],clamp)})`,
-        clipPath:`inset(0 0 0 ${interpolate(p,[0,1],[28,0],clamp)}% round 28px)`,
+        clipPath:`inset(${interpolate(headlineDelay,[0,1],[28,0],clamp)}% 0 0 ${interpolate(p,[0,1],[28,0],clamp)}% round 28px)`,
       };
+    }
     case 'plan-compress':
       return {
         transform:`scale(${interpolate(p,[0,1],[1.06,1],clamp)}) translateY(${interpolate(p,[0,1],[-38,0],clamp)}px)`,
@@ -59,11 +61,13 @@ const enterStyle=(kind:TransitionKind,p:number):React.CSSProperties=>{
         clipPath:`circle(${interpolate(delayed,[0,1],[12,88],clamp)}% at 72% 58%)`,
       };
     }
-    case 'system-sweep':
+    case 'system-sweep': {
+      const headlineDelay=Math.pow(p,1.8);
       return {
         transform:`translateX(${interpolate(p,[0,1],[190,0],clamp)}px)`,
-        clipPath:`inset(0 0 0 ${interpolate(p,[0,1],[44,0],clamp)}% round 24px)`,
+        clipPath:`inset(${interpolate(headlineDelay,[0,1],[30,0],clamp)}% 0 0 ${interpolate(p,[0,1],[44,0],clamp)}% round 24px)`,
       };
+    }
     default:return {};
   }
 };
