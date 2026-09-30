@@ -8,6 +8,7 @@ const here=path.dirname(fileURLToPath(import.meta.url));
 const root=path.resolve(here,'..');
 const dryRun=process.argv.includes('--dry-run');
 const voice=process.env.GEMINI_TTS_VOICE || 'Sulafat';
+const fallbackModel=process.env.GEMINI_TTS_FALLBACK_MODEL || 'gemini-3.8-flash-tts';
 
 const sourcePath=path.join(root,'src','content','v02.json');
 const scenes=JSON.parse(await fs.promises.readFile(sourcePath,'utf8'));
@@ -109,6 +110,10 @@ await fs.promises.mkdir(publicDir,{recursive:true});
 await fs.promises.mkdir(tempDir,{recursive:true});
 
 const generated=[];
+const modelsUsed=new Set();
+let activeModel=DEFAULT_MODEL;
+
+const isRateLimit=(error)=>error?.status===429||error?.statusCode===429||String(error?.message||'').includes('429');
 
 for(let i=0;i<scenes.length;i+=2){
   const first=scenes[i];
@@ -124,13 +129,31 @@ for(let i=0;i<scenes.length;i+=2){
     'Do not speak scene numbers, labels, stage directions, or pause tags.',
   ].join(' ');
 
-  console.log(`Generating ${first.id} + ${second.id} with ${voice}...`);
-  await synthesizeSpeech({
-    text:pairText,
-    voice,
-    outputPath:pairPath,
-    sceneDirection:pairDirection,
-  });
+  console.log(`Generating ${first.id} + ${second.id} with ${voice} on ${activeModel}...`);
+  try{
+    await synthesizeSpeech({
+      text:pairText,
+      voice,
+      outputPath:pairPath,
+      sceneDirection:pairDirection,
+      model:activeModel,
+    });
+  }catch(error){
+    if(activeModel!==fallbackModel&&isRateLimit(error)){
+      console.log(`Primary TTS quota reached. Switching remaining V02 generation to ${fallbackModel}.`);
+      activeModel=fallbackModel;
+      await synthesizeSpeech({
+        text:pairText,
+        voice,
+        outputPath:pairPath,
+        sceneDirection:pairDirection,
+        model:activeModel,
+      });
+    }else{
+      throw error;
+    }
+  }
+  modelsUsed.add(activeModel);
 
   const wavBuffer=await fs.promises.readFile(pairPath);
   const pcm=extractPcmFromWav(wavBuffer);
@@ -169,7 +192,7 @@ export type GeneratedSceneAudio = {
 export const v02Audio = ${JSON.stringify({
   enabled:true,
   provider:'gemini',
-  model:DEFAULT_MODEL,
+  model:Array.from(modelsUsed).join(' + ')||DEFAULT_MODEL,
   voice,
   generatedAt:new Date().toISOString(),
   scenes:generated,
@@ -186,7 +209,8 @@ await fs.promises.writeFile(
   JSON.stringify({
     generatedAt:new Date().toISOString(),
     provider:'gemini',
-    model:DEFAULT_MODEL,
+    model:Array.from(modelsUsed).join(' + ')||DEFAULT_MODEL,
+    modelsUsed:Array.from(modelsUsed),
     voice,
     requestsUsed:4,
     splitStrategy:'paired scenes with inline pause + silence-aware PCM split',
