@@ -32,3 +32,17 @@ Commands:
 - `npm run sound:v02`
 - `npm run render:v02:final:4k`
 - `npm run master:v02`
+
+## Final QA
+
+Verified final master:
+
+- resolution: 2160×3840
+- frame rate: 30fps
+- duration: 78.8s
+- video codec: H.264
+- audio codec: AAC stereo, ~320kbps
+- measured integrated loudness: approximately -13.8 LUFS
+- measured true peak: approximately -1.37 dBTP
+
+Status: ready for publish review.
