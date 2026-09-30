@@ -1,0 +1,68 @@
+name: V02 Gemini Voice
+
+on:
+  workflow_dispatch:
+    inputs:
+      voice:
+        description: Voice for the V02 render
+        required: false
+        type: choice
+        options:
+          - Sulafat
+          - Sadaltager
+          - Iapetus
+        default: Sulafat
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/voice-v02.yml'
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_TTS_MODEL: gemini-3.8-flash-lite-tts
+      GEMINI_TTS_VOICE: Sulafat
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Verify Gemini secret
+        run: |
+          if [ -z "$GEMINI_API_KEY" ]; then
+            echo "GEMINI_API_KEY is not configured in GitHub Actions secrets."
+            exit 1
+          fi
+
+      - name: Validate voice pipeline
+        run: npm run voice:v02 -- --dry-run
+
+      - name: Generate V02 voice
+        run: npm run voice:v02
+
+      - name: Type-check voiced timeline
+        run: npm run typecheck
+
+      - name: Render voiced V02
+        run: npm run render:v02:voiced
+
+      - name: Upload voiced V02 package
+        uses: actions/upload-artifact@v4
+        with:
+          name: v02-gemini-voiced-render
+          path: |
+            out/v02-voiced.mp4
+            public/audio/v02
+          if-no-files-found: error
+          retention-days: 14
