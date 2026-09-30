@@ -2,6 +2,10 @@ name: Render V02
 
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/render-v02.yml'
 
 jobs:
   render:
@@ -29,7 +33,7 @@ jobs:
       - name: Upload rendered video
         uses: actions/upload-artifact@v4
         with:
-          name: v02-agent-workflow-motion-prototype
+          name: v02-transition-preview
           path: out/v02-silent.mp4
           if-no-files-found: error
           retention-days: 14
