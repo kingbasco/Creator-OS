@@ -1,0 +1,54 @@
+name: V02 Voice Alignment QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/retime-v02.yml'
+
+jobs:
+  align-and-render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GH_TOKEN: ${{ github.token }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Download approved V02 voice source
+        run: |
+          mkdir -p /tmp/v02-source
+          gh run download 36651020153 -n v02-gemini-voiced-render -D /tmp/v02-source
+          rm -rf public/audio/v02
+          mkdir -p public/audio
+          cp -R /tmp/v02-source/public/audio/v02 public/audio/v02
+
+      - name: Re-align scene audio boundaries
+        run: node scripts/resplit-v02-voice.mjs
+
+      - name: Type-check retimed composition
+        run: npm run typecheck
+
+      - name: Render aligned voiced V02
+        run: npm run render:v02:voiced
+
+      - name: Upload aligned V02
+        uses: actions/upload-artifact@v4
+        with:
+          name: v02-voice-aligned-render
+          path: |
+            out/v02-voiced.mp4
+            public/audio/v02
+          if-no-files-found: error
+          retention-days: 14

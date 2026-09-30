@@ -3,6 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import wav from 'wav';
 import {DEFAULT_MODEL, SAMPLE_RATE, CHANNELS, SAMPLE_WIDTH_BYTES, synthesizeSpeech} from './lib/gemini-tts.mjs';
+import {findSceneBoundary} from './lib/audio-split.mjs';
 
 const here=path.dirname(fileURLToPath(import.meta.url));
 const root=path.resolve(here,'..');
@@ -160,7 +161,9 @@ for(let i=0;i<scenes.length;i+=2){
   if(!pcm || !Buffer.isBuffer(pcm)){
     throw new Error(`No PCM buffer returned for ${first.id} + ${second.id}.`);
   }
-  const splitSample=findSplitSample(pcm,first.narration,second.narration);
+  const alignment=findSceneBoundary(pcm,first.narration,second.narration);
+  const splitSample=alignment.splitSample;
+  console.log(`Aligned ${first.id}/${second.id} at ${(splitSample/SAMPLE_RATE).toFixed(3)}s (expected ${alignment.expectedSec.toFixed(3)}s).`);
   const splitByte=splitSample*SAMPLE_WIDTH_BYTES;
   const firstPcm=pcm.subarray(0,splitByte);
   const secondPcm=pcm.subarray(splitByte);
