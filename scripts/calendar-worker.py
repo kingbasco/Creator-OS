@@ -18,7 +18,11 @@ ROOT = Path(__file__).resolve().parents[1]
 def publish_date(value):
     if isinstance(value, (int, float)):
         return (dt.datetime(1899, 12, 30) + dt.timedelta(days=value)).date()
-    return dt.date.fromisoformat(str(value).strip()[:10])
+    text = str(value).strip()
+    try:
+        return dt.date.fromisoformat(text)
+    except ValueError:
+        return dt.datetime.strptime(text, '%b %d, %Y').date()
 
 
 def select_episode(values):

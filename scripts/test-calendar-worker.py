@@ -25,6 +25,10 @@ class SelectionTests(unittest.TestCase):
     def test_sheets_serial_dates(self):
         self.assertEqual(worker.publish_date(46207).isoformat(), '2026-07-04')
 
+    def test_calendar_text_dates(self):
+        values = [['Video ID', 'Publish Date', 'Status'], ['V05', 'Oct 14, 2026', 'Queued'], ['V04', 'Oct 12, 2026', 'Queued']]
+        self.assertEqual(worker.select_episode(values)['episode'], 'V04')
+
     def test_existing_mp4_blocks_and_is_not_confused_with_other_episode(self):
         selected = {'state': 'selected', 'episode': 'V04'}
         with tempfile.TemporaryDirectory() as folder:
