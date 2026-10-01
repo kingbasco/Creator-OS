@@ -1,0 +1,7 @@
+{
+  "episode": "v04",
+  "requestId": "v04-voice-2026-10-01-01",
+  "status": "ready",
+  "maxTtsRequests": 4,
+  "note": "Generate one reusable narration package using the configured Flash Lite TTS model. No automatic model fallback."
+}
