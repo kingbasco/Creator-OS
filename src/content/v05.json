@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "A beautiful screen is only the top layer of an app. Underneath it are four more layers deciding what actually happens.",
+    "onScreenText": "The screen is only layer one.",
+    "captionText": "Five layers behind the interface.",
+    "voiceDirection": "Warm, clear and visual. Read calmly, with emphasis on 'top layer' and 'four more layers'."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "Layer one is the interface: buttons, forms, screens and feedback. It is what the user sees and touches.",
+    "onScreenText": "1. Interface",
+    "captionText": "What the user sees and touches.",
+    "voiceDirection": "Keep it simple and concrete. Slight emphasis on 'sees and touches'."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "Layer two is application logic. It decides what a click means, which rules run, and what should happen next.",
+    "onScreenText": "2. Application logic",
+    "captionText": "What should happen next?",
+    "voiceDirection": "Conversational, slightly rhythmic on the three actions."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "Layer three is the API or backend. It receives requests, validates them, and coordinates work between the app and other systems.",
+    "onScreenText": "3. API / Backend",
+    "captionText": "Requests, validation, coordination.",
+    "voiceDirection": "Clear and practical. Stress 'receives', 'validates', and 'coordinates'."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "Layer four is data and identity: your database, authentication and permissions. This is where information and access rules live.",
+    "onScreenText": "4. Data + Identity",
+    "captionText": "Database, auth and permissions.",
+    "voiceDirection": "Steady and reassuring. Do not make the security point sound alarming."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "Layer five is infrastructure and deployment: the environment that keeps the app running, configured, reachable and observable.",
+    "onScreenText": "5. Infrastructure",
+    "captionText": "Where the app actually runs.",
+    "voiceDirection": "Keep this accessible. Pronounce 'observable' naturally, without sounding overly technical."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "Now watch a login travel down the stack: interface, logic, backend, identity and data. The result then travels back up to the user.",
+    "onScreenText": "One action. Five layers.",
+    "captionText": "Login request ↓  Response ↑",
+    "voiceDirection": "Slightly faster and more animated to match the travelling request."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 76,
+    "narration": "When something breaks, ask which layer owns the problem. That one question makes AI-built apps much easier to debug.",
+    "onScreenText": "Debug the right layer.",
+    "captionText": "Find the layer that owns the problem.",
+    "voiceDirection": "Finish confidently and cleanly. Emphasize 'which layer owns the problem'."
+  }
+]
