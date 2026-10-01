@@ -47,8 +47,8 @@ def card(n,x,y,w,h,c='#FFFFFF',r=26):
 # Environment
 layers.append(rect('Canvas',0,0,1080,1920,BG))
 for y in [440,1210,1730]:layers.append(rect('Editorial rule',80,y,920,2,'#E5E8EE'))
-layers.append(text('Brand','creator os',80,82,28,INK,bold=True))
-layers.append(text('Topic','MCP / A VISUAL EXPLAINER',570,88,22,MUT,w=450))
+text('Brand','creator os',80,82,28,INK,bold=True) # Reserved ID; header removed
+text('Topic','MCP / A VISUAL EXPLAINER',570,88,22,MUT,w=450) # Reserved ID; header removed
 for start,end,a,b in [(0,4.4,'Your AI needs','more than a prompt.'),(4.4,9.8,'A shared way','to reach your tools.'),(9.8,15,'The right context.','Back in the answer.')]:
  h=group('Editorial headline',[text('Headline',a,80,190,70,INK,bold=True),text('Emphasis',b,80,274,66,BLUE,bold=True)],start=start,end=end)
  enter(h);layers.append(h)
