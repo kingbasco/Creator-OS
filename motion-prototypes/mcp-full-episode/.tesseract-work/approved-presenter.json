@@ -1,0 +1,2697 @@
+{
+  "$schema": "https://jerboa.dev/schemas/fx-composition/editable/v1/document.schema.json",
+  "composition": {
+    "dynamics": {
+      "entries": [
+        {
+          "animator": {
+            "layerTimeJsCode": "return (input.time.seconds%3.7>3.58)?0:100;",
+            "type": "jsScript"
+          },
+          "target": {
+            "kind": "layer",
+            "layerId": 72,
+            "propertyType": "opacity"
+          }
+        },
+        {
+          "animator": {
+            "layerTimeJsCode": "return (input.time.seconds%3.7>3.58)?0:100;",
+            "type": "jsScript"
+          },
+          "target": {
+            "kind": "layer",
+            "layerId": 74,
+            "propertyType": "opacity"
+          }
+        },
+        {
+          "animator": {
+            "layerTimeJsCode": "return -3+Math.sin(input.time.seconds*1.2)*2;",
+            "type": "jsScript"
+          },
+          "target": {
+            "kind": "layer",
+            "layerId": 78,
+            "propertyType": "rotation"
+          }
+        },
+        {
+          "animator": {
+            "enabled": true,
+            "keyframes": [
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-0",
+                "layerTime": 0,
+                "value": {
+                  "type": "float",
+                  "value": 23.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-1",
+                "layerTime": 900,
+                "value": {
+                  "type": "float",
+                  "value": -8.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-2",
+                "layerTime": 3000,
+                "value": {
+                  "type": "float",
+                  "value": 0.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-3",
+                "layerTime": 4600,
+                "value": {
+                  "type": "float",
+                  "value": -22.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-4",
+                "layerTime": 7000,
+                "value": {
+                  "type": "float",
+                  "value": 2.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-5",
+                "layerTime": 10000,
+                "value": {
+                  "type": "float",
+                  "value": -16.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-6",
+                "layerTime": 12000,
+                "value": {
+                  "type": "float",
+                  "value": -5.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "85-rotation-7",
+                "layerTime": 14500,
+                "value": {
+                  "type": "float",
+                  "value": -5.0
+                }
+              }
+            ],
+            "type": "keyframes"
+          },
+          "target": {
+            "kind": "layer",
+            "layerId": 85,
+            "propertyType": "rotation"
+          }
+        },
+        {
+          "animator": {
+            "enabled": true,
+            "keyframes": [
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionX-0",
+                "layerTime": 0,
+                "value": {
+                  "type": "float",
+                  "value": 56.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionX-1",
+                "layerTime": 700,
+                "value": {
+                  "type": "float",
+                  "value": 56.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionX-2",
+                "layerTime": 4000,
+                "value": {
+                  "type": "float",
+                  "value": 56.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionX-3",
+                "layerTime": 4800,
+                "value": {
+                  "type": "float",
+                  "value": 56.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionX-4",
+                "layerTime": 10000,
+                "value": {
+                  "type": "float",
+                  "value": 56.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionX-5",
+                "layerTime": 10700,
+                "value": {
+                  "type": "float",
+                  "value": 56.0
+                }
+              }
+            ],
+            "type": "keyframes"
+          },
+          "target": {
+            "kind": "layer",
+            "layerId": 86,
+            "propertyType": "positionX"
+          }
+        },
+        {
+          "animator": {
+            "enabled": true,
+            "keyframes": [
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionY-0",
+                "layerTime": 0,
+                "value": {
+                  "type": "float",
+                  "value": 1610.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionY-1",
+                "layerTime": 700,
+                "value": {
+                  "type": "float",
+                  "value": 1240.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionY-2",
+                "layerTime": 4000,
+                "value": {
+                  "type": "float",
+                  "value": 1240.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionY-3",
+                "layerTime": 4800,
+                "value": {
+                  "type": "float",
+                  "value": 1280.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionY-4",
+                "layerTime": 10000,
+                "value": {
+                  "type": "float",
+                  "value": 1280.0
+                }
+              },
+              {
+                "easing": {
+                  "type": "cubicBezier",
+                  "x1": 0.22,
+                  "x2": 0.36,
+                  "y1": 1.0,
+                  "y2": 1.0
+                },
+                "id": "86-positionY-5",
+                "layerTime": 10700,
+                "value": {
+                  "type": "float",
+                  "value": 1240.0
+                }
+              }
+            ],
+            "type": "keyframes"
+          },
+          "target": {
+            "kind": "layer",
+            "layerId": 86,
+            "propertyType": "positionY"
+          }
+        }
+      ]
+    },
+    "id": "main",
+    "layers": [
+      {
+        "activeRange": {
+          "duration": 15000,
+          "start": 0
+        },
+        "blendMode": "normal",
+        "id": 86,
+        "layers": [
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 85,
+            "layers": [
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 84,
+                "name": "Finger detail",
+                "shape": {
+                  "fills": [],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 516.0,
+                        "y": 211.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 524.0,
+                        "y": 232.0
+                      }
+                    ]
+                  },
+                  "strokes": [
+                    {
+                      "blendMode": "normal",
+                      "cap": "round",
+                      "dashOffset": 0.0,
+                      "join": "round",
+                      "miterLimit": 4.0,
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.6627450980392157,
+                          0.396078431372549,
+                          0.2627450980392157,
+                          1.0
+                        ],
+                        "type": "solid"
+                      },
+                      "width": 4.0
+                    }
+                  ]
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 83,
+                "name": "Pointing hand",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.7843137254901961,
+                          0.5176470588235295,
+                          0.3607843137254902,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 490.0,
+                        "y": 250.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 494.0,
+                        "y": 214.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 484.0,
+                        "y": 183.0
+                      },
+                      {
+                        "c1x": 482.0,
+                        "c1y": 169.0,
+                        "c2x": 496.0,
+                        "c2y": 165.0,
+                        "type": "cubicTo",
+                        "x": 502.0,
+                        "y": 178.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 516.0,
+                        "y": 211.0
+                      },
+                      {
+                        "c1x": 546.0,
+                        "c1y": 195.0,
+                        "c2x": 558.0,
+                        "c2y": 214.0,
+                        "type": "cubicTo",
+                        "x": 548.0,
+                        "y": 235.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 522.0,
+                        "y": 260.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 82,
+                "name": "Forearm",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.7843137254901961,
+                          0.5176470588235295,
+                          0.3607843137254902,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 465.0,
+                        "y": 284.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 492.0,
+                        "y": 242.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 520.0,
+                        "y": 256.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 497.0,
+                        "y": 321.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 81,
+                "name": "Raised sleeve",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.25098039215686274,
+                          0.3411764705882353,
+                          0.4745098039215686,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 345.0,
+                        "y": 274.0
+                      },
+                      {
+                        "c1x": 364.0,
+                        "c1y": 280.0,
+                        "c2x": 392.0,
+                        "c2y": 307.0,
+                        "type": "cubicTo",
+                        "x": 405.0,
+                        "y": 321.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 466.0,
+                        "y": 282.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 495.0,
+                        "y": 321.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 414.0,
+                        "y": 379.0
+                      },
+                      {
+                        "c1x": 391.0,
+                        "c1y": 390.0,
+                        "c2x": 367.0,
+                        "c2y": 372.0,
+                        "type": "cubicTo",
+                        "x": 344.0,
+                        "y": 350.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              }
+            ],
+            "name": "Pointing arm",
+            "transform": {
+              "anchorPoint": [
+                348.0,
+                291.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                348.0,
+                291.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Group"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 80,
+            "name": "Resting hand",
+            "shape": {
+              "fills": [
+                {
+                  "blendMode": "normal",
+                  "fillRule": "nonZeroWinding",
+                  "opacity": 100.0,
+                  "paint": {
+                    "color": [
+                      0.7843137254901961,
+                      0.5176470588235295,
+                      0.3607843137254902,
+                      1.0
+                    ],
+                    "type": "solid"
+                  }
+                }
+              ],
+              "path": {
+                "commands": [
+                  {
+                    "type": "moveTo",
+                    "x": 99.0,
+                    "y": 428.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 145.0,
+                    "y": 433.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 168.0,
+                    "y": 476.0
+                  },
+                  {
+                    "c1x": 167.0,
+                    "c1y": 495.0,
+                    "c2x": 137.0,
+                    "c2y": 503.0,
+                    "type": "cubicTo",
+                    "x": 120.0,
+                    "y": 479.0
+                  },
+                  {
+                    "type": "close"
+                  }
+                ]
+              },
+              "strokes": []
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                0.0,
+                0.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Shape"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 79,
+            "name": "Resting sleeve",
+            "shape": {
+              "fills": [
+                {
+                  "blendMode": "normal",
+                  "fillRule": "nonZeroWinding",
+                  "opacity": 100.0,
+                  "paint": {
+                    "color": [
+                      0.25098039215686274,
+                      0.3411764705882353,
+                      0.4745098039215686,
+                      1.0
+                    ],
+                    "type": "solid"
+                  }
+                }
+              ],
+              "path": {
+                "commands": [
+                  {
+                    "type": "moveTo",
+                    "x": 125.0,
+                    "y": 280.0
+                  },
+                  {
+                    "c1x": 88.0,
+                    "c1y": 308.0,
+                    "c2x": 91.0,
+                    "c2y": 391.0,
+                    "type": "cubicTo",
+                    "x": 98.0,
+                    "y": 441.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 142.0,
+                    "y": 446.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 173.0,
+                    "y": 313.0
+                  },
+                  {
+                    "type": "close"
+                  }
+                ]
+              },
+              "strokes": []
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                0.0,
+                0.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Shape"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 78,
+            "layers": [
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 77,
+                "name": "Jaw detail",
+                "shape": {
+                  "fills": [],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 203.0,
+                        "y": 204.0
+                      },
+                      {
+                        "c1x": 224.0,
+                        "c1y": 228.0,
+                        "c2x": 271.0,
+                        "c2y": 233.0,
+                        "type": "cubicTo",
+                        "x": 296.0,
+                        "y": 204.0
+                      }
+                    ]
+                  },
+                  "strokes": [
+                    {
+                      "blendMode": "normal",
+                      "cap": "round",
+                      "dashOffset": 0.0,
+                      "join": "round",
+                      "miterLimit": 4.0,
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.38823529411764707,
+                          0.2431372549019608,
+                          0.19607843137254904,
+                          1.0
+                        ],
+                        "type": "solid"
+                      },
+                      "width": 5.0
+                    }
+                  ]
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 76,
+                "name": "Smile",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          1.0,
+                          1.0,
+                          1.0,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 221.0,
+                        "y": 187.0
+                      },
+                      {
+                        "c1x": 235.0,
+                        "c1y": 200.0,
+                        "c2x": 260.0,
+                        "c2y": 203.0,
+                        "type": "cubicTo",
+                        "x": 277.0,
+                        "y": 182.0
+                      },
+                      {
+                        "c1x": 252.0,
+                        "c1y": 189.0,
+                        "c2x": 239.0,
+                        "c2y": 189.0,
+                        "type": "cubicTo",
+                        "x": 221.0,
+                        "y": 187.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 75,
+                "name": "Nose",
+                "shape": {
+                  "fills": [],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 245.0,
+                        "y": 134.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 239.0,
+                        "y": 163.0
+                      },
+                      {
+                        "c1x": 242.0,
+                        "c1y": 168.0,
+                        "c2x": 251.0,
+                        "c2y": 167.0,
+                        "type": "cubicTo",
+                        "x": 256.0,
+                        "y": 163.0
+                      }
+                    ]
+                  },
+                  "strokes": [
+                    {
+                      "blendMode": "normal",
+                      "cap": "round",
+                      "dashOffset": 0.0,
+                      "join": "round",
+                      "miterLimit": 4.0,
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.5607843137254902,
+                          0.3137254901960784,
+                          0.2196078431372549,
+                          1.0
+                        ],
+                        "type": "solid"
+                      },
+                      "width": 4.0
+                    }
+                  ]
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 74,
+                "name": "Eye",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.09803921568627452,
+                          0.13725490196078433,
+                          0.18823529411764703,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 287.0,
+                        "y": 139.0
+                      },
+                      {
+                        "c1x": 287.0,
+                        "c1y": 144.5228475,
+                        "c2x": 283.86599325,
+                        "c2y": 149.0,
+                        "type": "cubicTo",
+                        "x": 280.0,
+                        "y": 149.0
+                      },
+                      {
+                        "c1x": 276.13400675,
+                        "c1y": 149.0,
+                        "c2x": 273.0,
+                        "c2y": 144.5228475,
+                        "type": "cubicTo",
+                        "x": 273.0,
+                        "y": 139.0
+                      },
+                      {
+                        "c1x": 273.0,
+                        "c1y": 133.4771525,
+                        "c2x": 276.13400675,
+                        "c2y": 129.0,
+                        "type": "cubicTo",
+                        "x": 280.0,
+                        "y": 129.0
+                      },
+                      {
+                        "c1x": 283.86599325,
+                        "c1y": 129.0,
+                        "c2x": 287.0,
+                        "c2y": 133.4771525,
+                        "type": "cubicTo",
+                        "x": 287.0,
+                        "y": 139.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 73,
+                "name": "Eyebrow",
+                "shape": {
+                  "fills": [],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 267.0,
+                        "y": 117.0
+                      },
+                      {
+                        "c1x": 277.0,
+                        "c1y": 111.0,
+                        "c2x": 288.0,
+                        "c2y": 111.0,
+                        "type": "cubicTo",
+                        "x": 296.0,
+                        "y": 116.0
+                      }
+                    ]
+                  },
+                  "strokes": [
+                    {
+                      "blendMode": "normal",
+                      "cap": "round",
+                      "dashOffset": 0.0,
+                      "join": "round",
+                      "miterLimit": 4.0,
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.09803921568627452,
+                          0.13725490196078433,
+                          0.18823529411764703,
+                          1.0
+                        ],
+                        "type": "solid"
+                      },
+                      "width": 7.0
+                    }
+                  ]
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 72,
+                "name": "Eye",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.09803921568627452,
+                          0.13725490196078433,
+                          0.18823529411764703,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 215.0,
+                        "y": 139.0
+                      },
+                      {
+                        "c1x": 215.0,
+                        "c1y": 144.5228475,
+                        "c2x": 211.86599325,
+                        "c2y": 149.0,
+                        "type": "cubicTo",
+                        "x": 208.0,
+                        "y": 149.0
+                      },
+                      {
+                        "c1x": 204.13400675,
+                        "c1y": 149.0,
+                        "c2x": 201.0,
+                        "c2y": 144.5228475,
+                        "type": "cubicTo",
+                        "x": 201.0,
+                        "y": 139.0
+                      },
+                      {
+                        "c1x": 201.0,
+                        "c1y": 133.4771525,
+                        "c2x": 204.13400675,
+                        "c2y": 129.0,
+                        "type": "cubicTo",
+                        "x": 208.0,
+                        "y": 129.0
+                      },
+                      {
+                        "c1x": 211.86599325,
+                        "c1y": 129.0,
+                        "c2x": 215.0,
+                        "c2y": 133.4771525,
+                        "type": "cubicTo",
+                        "x": 215.0,
+                        "y": 139.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 71,
+                "name": "Eyebrow",
+                "shape": {
+                  "fills": [],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 195.0,
+                        "y": 117.0
+                      },
+                      {
+                        "c1x": 205.0,
+                        "c1y": 111.0,
+                        "c2x": 216.0,
+                        "c2y": 111.0,
+                        "type": "cubicTo",
+                        "x": 224.0,
+                        "y": 116.0
+                      }
+                    ]
+                  },
+                  "strokes": [
+                    {
+                      "blendMode": "normal",
+                      "cap": "round",
+                      "dashOffset": 0.0,
+                      "join": "round",
+                      "miterLimit": 4.0,
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.09803921568627452,
+                          0.13725490196078433,
+                          0.18823529411764703,
+                          1.0
+                        ],
+                        "type": "solid"
+                      },
+                      "width": 7.0
+                    }
+                  ]
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 70,
+                "name": "Hair light",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.1725490196078431,
+                          0.2196078431372549,
+                          0.2901960784313726,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 180.0,
+                        "y": 48.0
+                      },
+                      {
+                        "c1x": 203.0,
+                        "c1y": 15.0,
+                        "c2x": 267.0,
+                        "c2y": 13.0,
+                        "type": "cubicTo",
+                        "x": 304.0,
+                        "y": 44.0
+                      },
+                      {
+                        "c1x": 262.0,
+                        "c1y": 34.0,
+                        "c2x": 221.0,
+                        "c2y": 40.0,
+                        "type": "cubicTo",
+                        "x": 180.0,
+                        "y": 48.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 69,
+                "name": "Hair",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.09803921568627452,
+                          0.13725490196078433,
+                          0.18823529411764703,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 169.0,
+                        "y": 121.0
+                      },
+                      {
+                        "c1x": 135.0,
+                        "c1y": 28.0,
+                        "c2x": 174.0,
+                        "c2y": 12.0,
+                        "type": "cubicTo",
+                        "x": 213.0,
+                        "y": 18.0
+                      },
+                      {
+                        "c1x": 247.0,
+                        "c1y": -3.0,
+                        "c2x": 320.0,
+                        "c2y": 17.0,
+                        "type": "cubicTo",
+                        "x": 330.0,
+                        "y": 55.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 323.0,
+                        "y": 132.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 305.0,
+                        "y": 113.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 301.0,
+                        "y": 73.0
+                      },
+                      {
+                        "c1x": 253.0,
+                        "c1y": 88.0,
+                        "c2x": 216.0,
+                        "c2y": 79.0,
+                        "type": "cubicTo",
+                        "x": 194.0,
+                        "y": 65.0
+                      },
+                      {
+                        "type": "lineTo",
+                        "x": 188.0,
+                        "y": 119.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 68,
+                "name": "Face side shade",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.6627450980392157,
+                          0.396078431372549,
+                          0.2627450980392157,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 292.0,
+                        "y": 78.0
+                      },
+                      {
+                        "c1x": 333.0,
+                        "c1y": 120.0,
+                        "c2x": 326.0,
+                        "c2y": 194.0,
+                        "type": "cubicTo",
+                        "x": 285.0,
+                        "y": 218.0
+                      },
+                      {
+                        "c1x": 312.0,
+                        "c1y": 178.0,
+                        "c2x": 309.0,
+                        "c2y": 106.0,
+                        "type": "cubicTo",
+                        "x": 292.0,
+                        "y": 78.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 67,
+                "name": "Face silhouette",
+                "rect": {
+                  "fillColor": [
+                    0.7843137254901961,
+                    0.5176470588235295,
+                    0.3607843137254902,
+                    1.0
+                  ],
+                  "fillEnabled": true,
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "roundness": 60.0,
+                  "size": [
+                    151.0,
+                    180.0
+                  ],
+                  "strokeEnabled": false,
+                  "strokeWidth": 0.0
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    172.0,
+                    53.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Rect"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 66,
+                "name": "Right ear",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.6627450980392157,
+                          0.396078431372549,
+                          0.2627450980392157,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 350.0,
+                        "y": 137.0
+                      },
+                      {
+                        "c1x": 350.0,
+                        "c1y": 154.673112,
+                        "c2x": 340.59797975,
+                        "c2y": 169.0,
+                        "type": "cubicTo",
+                        "x": 329.0,
+                        "y": 169.0
+                      },
+                      {
+                        "c1x": 317.40202025,
+                        "c1y": 169.0,
+                        "c2x": 308.0,
+                        "c2y": 154.673112,
+                        "type": "cubicTo",
+                        "x": 308.0,
+                        "y": 137.0
+                      },
+                      {
+                        "c1x": 308.0,
+                        "c1y": 119.326888,
+                        "c2x": 317.40202025,
+                        "c2y": 105.0,
+                        "type": "cubicTo",
+                        "x": 329.0,
+                        "y": 105.0
+                      },
+                      {
+                        "c1x": 340.59797975,
+                        "c1y": 105.0,
+                        "c2x": 350.0,
+                        "c2y": 119.326888,
+                        "type": "cubicTo",
+                        "x": 350.0,
+                        "y": 137.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              },
+              {
+                "activeRange": {
+                  "duration": 15000,
+                  "start": 0
+                },
+                "blendMode": "normal",
+                "id": 65,
+                "name": "Left ear",
+                "shape": {
+                  "fills": [
+                    {
+                      "blendMode": "normal",
+                      "fillRule": "nonZeroWinding",
+                      "opacity": 100.0,
+                      "paint": {
+                        "color": [
+                          0.6627450980392157,
+                          0.396078431372549,
+                          0.2627450980392157,
+                          1.0
+                        ],
+                        "type": "solid"
+                      }
+                    }
+                  ],
+                  "path": {
+                    "commands": [
+                      {
+                        "type": "moveTo",
+                        "x": 186.0,
+                        "y": 137.0
+                      },
+                      {
+                        "c1x": 186.0,
+                        "c1y": 154.673112,
+                        "c2x": 176.59797975,
+                        "c2y": 169.0,
+                        "type": "cubicTo",
+                        "x": 165.0,
+                        "y": 169.0
+                      },
+                      {
+                        "c1x": 153.40202025,
+                        "c1y": 169.0,
+                        "c2x": 144.0,
+                        "c2y": 154.673112,
+                        "type": "cubicTo",
+                        "x": 144.0,
+                        "y": 137.0
+                      },
+                      {
+                        "c1x": 144.0,
+                        "c1y": 119.326888,
+                        "c2x": 153.40202025,
+                        "c2y": 105.0,
+                        "type": "cubicTo",
+                        "x": 165.0,
+                        "y": 105.0
+                      },
+                      {
+                        "c1x": 176.59797975,
+                        "c1y": 105.0,
+                        "c2x": 186.0,
+                        "c2y": 119.326888,
+                        "type": "cubicTo",
+                        "x": 186.0,
+                        "y": 137.0
+                      },
+                      {
+                        "type": "close"
+                      }
+                    ]
+                  },
+                  "strokes": []
+                },
+                "transform": {
+                  "anchorPoint": [
+                    0.0,
+                    0.0
+                  ],
+                  "opacity": 100.0,
+                  "orientation": [
+                    0.0,
+                    0.0,
+                    0.0
+                  ],
+                  "position": [
+                    0.0,
+                    0.0
+                  ],
+                  "rotation": 0.0,
+                  "rotationX": 0.0,
+                  "rotationY": 0.0,
+                  "scale": [
+                    100.0,
+                    100.0
+                  ],
+                  "skew": 0.0,
+                  "skewAxis": 0.0
+                },
+                "type": "Shape"
+              }
+            ],
+            "name": "Head / tilt and expression",
+            "transform": {
+              "anchorPoint": [
+                249.0,
+                228.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                249.0,
+                228.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Group"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 64,
+            "name": "Neck shade",
+            "shape": {
+              "fills": [
+                {
+                  "blendMode": "normal",
+                  "fillRule": "nonZeroWinding",
+                  "opacity": 100.0,
+                  "paint": {
+                    "color": [
+                      0.5215686274509804,
+                      0.2980392156862745,
+                      0.20784313725490197,
+                      1.0
+                    ],
+                    "type": "solid"
+                  }
+                }
+              ],
+              "path": {
+                "commands": [
+                  {
+                    "type": "moveTo",
+                    "x": 219.0,
+                    "y": 203.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 281.0,
+                    "y": 203.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 281.0,
+                    "y": 233.0
+                  },
+                  {
+                    "c1x": 250.0,
+                    "c1y": 251.0,
+                    "c2x": 228.0,
+                    "c2y": 240.0,
+                    "type": "cubicTo",
+                    "x": 219.0,
+                    "y": 230.0
+                  },
+                  {
+                    "type": "close"
+                  }
+                ]
+              },
+              "strokes": []
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                0.0,
+                0.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Shape"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 63,
+            "name": "Neck",
+            "rect": {
+              "fillColor": [
+                0.6627450980392157,
+                0.396078431372549,
+                0.2627450980392157,
+                1.0
+              ],
+              "fillEnabled": true,
+              "position": [
+                0.0,
+                0.0
+              ],
+              "roundness": 20.0,
+              "size": [
+                61.0,
+                91.0
+              ],
+              "strokeEnabled": false,
+              "strokeWidth": 0.0
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                220.0,
+                183.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Rect"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 62,
+            "name": "Pocket",
+            "rect": {
+              "fillColor": [
+                0.14901960784313725,
+                0.23137254901960785,
+                0.3647058823529411,
+                1.0
+              ],
+              "fillEnabled": true,
+              "position": [
+                0.0,
+                0.0
+              ],
+              "roundness": 5.0,
+              "size": [
+                43.0,
+                40.0
+              ],
+              "strokeEnabled": false,
+              "strokeWidth": 0.0
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                330.0,
+                344.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Rect"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 61,
+            "name": "Shirt seam",
+            "rect": {
+              "fillColor": [
+                0.3215686274509804,
+                0.4,
+                0.5254901960784314,
+                1.0
+              ],
+              "fillEnabled": true,
+              "position": [
+                0.0,
+                0.0
+              ],
+              "roundness": 1.0,
+              "size": [
+                3.0,
+                160.0
+              ],
+              "strokeEnabled": false,
+              "strokeWidth": 0.0
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                321.0,
+                330.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Rect"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 60,
+            "name": "T shirt",
+            "shape": {
+              "fills": [
+                {
+                  "blendMode": "normal",
+                  "fillRule": "nonZeroWinding",
+                  "opacity": 100.0,
+                  "paint": {
+                    "color": [
+                      0.9686274509803922,
+                      0.9490196078431372,
+                      0.9137254901960784,
+                      1.0
+                    ],
+                    "type": "solid"
+                  }
+                }
+              ],
+              "path": {
+                "commands": [
+                  {
+                    "type": "moveTo",
+                    "x": 217.0,
+                    "y": 243.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 281.0,
+                    "y": 243.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 310.0,
+                    "y": 493.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 190.0,
+                    "y": 493.0
+                  },
+                  {
+                    "type": "close"
+                  }
+                ]
+              },
+              "strokes": []
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                0.0,
+                0.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Shape"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 59,
+            "name": "Overshirt",
+            "shape": {
+              "fills": [
+                {
+                  "blendMode": "normal",
+                  "fillRule": "nonZeroWinding",
+                  "opacity": 100.0,
+                  "paint": {
+                    "color": [
+                      0.2,
+                      0.2784313725490196,
+                      0.4117647058823529,
+                      1.0
+                    ],
+                    "type": "solid"
+                  }
+                }
+              ],
+              "path": {
+                "commands": [
+                  {
+                    "type": "moveTo",
+                    "x": 105.0,
+                    "y": 494.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 119.0,
+                    "y": 300.0
+                  },
+                  {
+                    "c1x": 125.0,
+                    "c1y": 245.0,
+                    "c2x": 177.0,
+                    "c2y": 225.0,
+                    "type": "cubicTo",
+                    "x": 231.0,
+                    "y": 225.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 287.0,
+                    "y": 225.0
+                  },
+                  {
+                    "c1x": 350.0,
+                    "c1y": 234.0,
+                    "c2x": 380.0,
+                    "c2y": 260.0,
+                    "type": "cubicTo",
+                    "x": 391.0,
+                    "y": 319.0
+                  },
+                  {
+                    "type": "lineTo",
+                    "x": 410.0,
+                    "y": 494.0
+                  },
+                  {
+                    "type": "close"
+                  }
+                ]
+              },
+              "strokes": []
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                0.0,
+                0.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Shape"
+          },
+          {
+            "activeRange": {
+              "duration": 15000,
+              "start": 0
+            },
+            "blendMode": "normal",
+            "id": 58,
+            "name": "Ground shadow",
+            "shape": {
+              "fills": [
+                {
+                  "blendMode": "normal",
+                  "fillRule": "nonZeroWinding",
+                  "opacity": 100.0,
+                  "paint": {
+                    "color": [
+                      0.8823529411764706,
+                      0.8980392156862745,
+                      0.9333333333333332,
+                      1.0
+                    ],
+                    "type": "solid"
+                  }
+                }
+              ],
+              "path": {
+                "commands": [
+                  {
+                    "type": "moveTo",
+                    "x": 457.0,
+                    "y": 491.0
+                  },
+                  {
+                    "c1x": 457.0,
+                    "c1y": 503.1502645,
+                    "c2x": 364.32294325,
+                    "c2y": 513.0,
+                    "type": "cubicTo",
+                    "x": 250.0,
+                    "y": 513.0
+                  },
+                  {
+                    "c1x": 135.67705675000002,
+                    "c1y": 513.0,
+                    "c2x": 43.0,
+                    "c2y": 503.1502645,
+                    "type": "cubicTo",
+                    "x": 43.0,
+                    "y": 491.0
+                  },
+                  {
+                    "c1x": 43.0,
+                    "c1y": 478.8497355,
+                    "c2x": 135.67705675000002,
+                    "c2y": 469.0,
+                    "type": "cubicTo",
+                    "x": 250.0,
+                    "y": 469.0
+                  },
+                  {
+                    "c1x": 364.32294325,
+                    "c1y": 469.0,
+                    "c2x": 457.0,
+                    "c2y": 478.8497355,
+                    "type": "cubicTo",
+                    "x": 457.0,
+                    "y": 491.0
+                  },
+                  {
+                    "type": "close"
+                  }
+                ]
+              },
+              "strokes": []
+            },
+            "transform": {
+              "anchorPoint": [
+                0.0,
+                0.0
+              ],
+              "opacity": 100.0,
+              "orientation": [
+                0.0,
+                0.0,
+                0.0
+              ],
+              "position": [
+                0.0,
+                0.0
+              ],
+              "rotation": 0.0,
+              "rotationX": 0.0,
+              "rotationY": 0.0,
+              "scale": [
+                100.0,
+                100.0
+              ],
+              "skew": 0.0,
+              "skewAxis": 0.0
+            },
+            "type": "Shape"
+          }
+        ],
+        "name": "Original Creator OS presenter",
+        "transform": {
+          "anchorPoint": [
+            0.0,
+            0.0
+          ],
+          "opacity": 100.0,
+          "orientation": [
+            0.0,
+            0.0,
+            0.0
+          ],
+          "position": [
+            56.0,
+            1240.0
+          ],
+          "rotation": 0.0,
+          "rotationX": 0.0,
+          "rotationY": 0.0,
+          "scale": [
+            100.0,
+            100.0
+          ],
+          "skew": 0.0,
+          "skewAxis": 0.0
+        },
+        "type": "Group"
+      }
+    ],
+    "name": "MCP \u2014 ask, connect, return"
+  },
+  "dimensions": {
+    "height": 1920,
+    "width": 1080
+  },
+  "duration": 15.0,
+  "formatVersion": 1
+}
