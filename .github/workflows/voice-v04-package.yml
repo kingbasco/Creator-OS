@@ -1,0 +1,58 @@
+name: V04 narration package
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['render-requests/v04-narration.json']
+permissions:
+  contents: read
+concurrency:
+  group: creator-os-v04-narration
+  cancel-in-progress: false
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/cache@v4
+        id: narration
+        with:
+          path: public/audio/v04
+          key: v04-sulafat-lite-${{ hashFiles('src/content/v04.json') }}
+      - name: Generate once with four requests, no model fallback
+        if: steps.narration.outputs.cache-hit != 'true' && github.run_attempt == 1
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          GEMINI_TTS_MODEL: gemini-3.8-flash-lite-tts
+          GEMINI_TTS_VOICE: Sulafat
+          CREATOR_OS_ALLOW_FRESH_TTS: 'true'
+        run: |
+          npm install
+          node scripts/generate-v04-voice.mjs
+      - name: Validate complete package
+        run: |
+          python - <<'PY'
+          import json, pathlib, wave
+          p=pathlib.Path('public/audio/v04')
+          m=json.loads((p/'manifest.json').read_text())
+          assert len(m['scenes'])==8
+          for s in m['scenes']:
+              with wave.open(str(p/(s['id']+'.wav'))) as w:
+                  assert w.getnchannels()==1 and w.getframerate()==24000
+                  assert 1 < w.getnframes()/24000 < 30
+          PY
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v04-narration-package
+          path: |
+            public/audio/v04
+            out/voice-temp-v04
+          if-no-files-found: error
+          retention-days: 30

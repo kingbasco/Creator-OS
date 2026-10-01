@@ -1,0 +1,8 @@
+{
+  "episode": "v04",
+  "requestId": "v04-narration-2026-10-01-01",
+  "maxRequests": 4,
+  "model": "gemini-3.8-flash-lite-tts",
+  "voice": "Sulafat",
+  "fallback": false
+}
