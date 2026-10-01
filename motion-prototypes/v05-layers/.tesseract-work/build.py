@@ -100,11 +100,13 @@ ui.append(text('Password value','••••••••••',67,487,28,INK,w
 ui.append(rect('Login button',46,560,648,76,BLUE,16))
 ui.append(text('Button text','Log in',310,577,29,'#FFFFFF',w=150,bold=True))
 app=group('Polished app interface',ui,170,505,start=0,end=8)
-keys(app,'position',[(0,[170,545]),(.7,[170,505]),(3.8,[170,505]),(5.6,[170,455]),(7.8,[170,455])])
-keys(app,'scale',[(0,[100,100]),(4,[100,100]),(5.6,[91,91]),(7.8,[91,91])])
+keys(app,'position',[(0,[170,545]),(.7,[170,505]),(3.8,[170,505]),(5.15,[72,548])])
+keys(app,'scale',[(0,[100,100]),(3.8,[100,100]),(5.15,[54,54])])
+keys(app,'opacity',[(0,100),(3.8,100),(5.15,76),(7.8,76)])
 layers.append(app)
 
-# Five hidden layers fan out from under the screen.
+# Five hidden layers reveal beside the source UI. This avoids the compressed pile
+# and keeps every label fully readable throughout the animation.
 labels=[
  ('1','INTERFACE','#FFFFFF',INK),
  ('2','APPLICATION LOGIC','#EEF0FF',BLUE),
@@ -114,14 +116,15 @@ labels=[
 ]
 stack=[]
 for i,(num,label,c,tc) in enumerate(labels):
-    y=i*104
     layer=group('Layer '+label,[
-        card('Layer card',0,0,790,86,c,18),
-        group('Index badge',[rect('Badge',0,0,52,52,BLUE if i==0 else '#FFFFFF',12),
-             text('Number',num,16,8,24,'#FFFFFF' if i==0 else BLUE,w=40,bold=True)],22,17),
-        text('Layer label',label,96,19,29,tc,w=640,bold=True)
-    ],145,645+y,start=4.5,end=18)
-    keys(layer,'position',[(0,[145,650]),(.8+i*.18,[145,645+y])]); enter(layer,.15+i*.12)
+        card('Layer card',0,0,465,76,c,16),
+        group('Index badge',[
+            rect('Badge',0,0,46,46,BLUE if i==0 else '#FFFFFF',11),
+            text('Number',num,14,7,22,'#FFFFFF' if i==0 else BLUE,w=30,bold=True)
+        ],18,15),
+        text('Layer label',label,82,18,24,tc,w=355,bold=True)
+    ],535,505+i*102,start=4.25,end=18)
+    enter(layer,.12+i*.10)
     stack.append(layer); layers.append(layer)
 
 # Interface isolates in scene 2.
