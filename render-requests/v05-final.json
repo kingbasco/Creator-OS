@@ -1,0 +1,7 @@
+{
+  "episode": "v05",
+  "requestId": "v05-final-2026-10-02-01",
+  "status": "ready",
+  "voicePackageId": "1dWn9i6hdqI5T08JYZtQEJToXlSARViWS",
+  "note": "Final V05 render uses the corrected overlap-free Tesseract visual and saved narration package. No fresh TTS generation."
+}
