@@ -1,6 +1,7 @@
 {
   "episode": "v04",
   "requestId": "v04-motion-preview-2026-09-30-01",
-  "status": "preview-ready",
-  "note": "Silent motion preview with verified media delivery only. Narration and final publishing remain pending."
+  "status": "ready",
+  "note": "Final V04 render uses the saved narration package and approved Tesseract visual source. No fresh TTS generation.",
+  "voicePackageId": "1wbyR1HJXMkTnJK1YJKRro3cnR_CDf777"
 }
