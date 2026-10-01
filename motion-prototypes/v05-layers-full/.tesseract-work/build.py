@@ -100,13 +100,32 @@ ui.append(text('Password value','••••••••••',67,487,28,INK,w
 ui.append(rect('Login button',46,560,648,76,BLUE,16))
 ui.append(text('Button text','Log in',310,577,29,'#FFFFFF',w=150,bold=True))
 app=group('Polished app interface',ui,170,505,start=0,end=8)
-keys(app,'position',[(0,[170,545]),(.7,[170,505]),(3.8,[170,505]),(5.6,[170,455])])
-keys(app,'scale',[(0,[100,100]),(4,[100,100]),(5.6,[91,91])])
+keys(app,'position',[(0,[170,545]),(.7,[170,505]),(3.8,[170,505]),(5.15,[72,548])])
+keys(app,'scale',[(0,[100,100]),(3.8,[100,100]),(5.15,[54,54])])
+keys(app,'opacity',[(0,100),(3.8,100),(5.15,76),(7.8,76)])
 layers.append(app)
+
+# Clean side-by-side reveal: the source UI steps back while all five layers become
+# independently readable. No layer card sits over form copy or another label.
 labels=[('1','INTERFACE','#FFFFFF',INK),('2','APPLICATION LOGIC','#EEF0FF',BLUE),('3','API / BACKEND','#E7EBF6',INK),('4','DATA + IDENTITY','#DDE2FF',INK),('5','INFRASTRUCTURE','#D4DAEA',INK)]
 for i,(num,label,c,tc) in enumerate(labels):
-    layer=group('Layer '+label,[card('Layer card',0,0,790,86,c,18),group('Index badge',[rect('Badge',0,0,52,52,BLUE if i==0 else '#FFFFFF',12),text('Number',num,16,8,24,'#FFFFFF' if i==0 else BLUE,w=40,bold=True)],22,17),text('Layer label',label,96,19,29,tc,w=640,bold=True)],145,645+i*104,start=4.4,end=8)
-    keys(layer,'position',[(0,[145,650]),(.75+i*.16,[145,645+i*104])]); enter(layer,.1+i*.1); layers.append(layer)
+    layer=group('Layer '+label,[
+        card('Layer card',0,0,465,76,c,16),
+        group('Index badge',[
+            rect('Badge',0,0,46,46,BLUE if i==0 else '#FFFFFF',11),
+            text('Number',num,14,7,22,'#FFFFFF' if i==0 else BLUE,w=30,bold=True)
+        ],18,15),
+        text('Layer label',label,82,18,24,tc,w=355,bold=True)
+    ],535,505+i*102,start=4.25,end=8)
+    enter(layer,.12+i*.10)
+    layers.append(layer)
+
+# A subtle bridge keeps the "screen becomes the stack" idea without collisions.
+layers.append(connector(455,730,535,730,BLUE,4,start=4.25,end=8))
+bridge=packet(488,730,'UI',BLUE,start=4.25,end=8)
+keys(bridge,'position',[(0,[455,730]),(.7,[455,730]),(1.45,[530,730])])
+keys(bridge,'scale',[(0,[78,78]),(1.45,[78,78])])
+layers.append(bridge)
 
 # S02 — isolate interface and show real feedback.
 title('Layer one is','the interface.',8,18)
