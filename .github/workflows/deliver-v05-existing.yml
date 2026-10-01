@@ -37,6 +37,10 @@ jobs:
           path: out
           github-token: ${{ secrets.GITHUB_TOKEN }}
           run-id: ${{ env.SOURCE_RUN_ID }}
+      - name: Install FFmpeg for verification
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
       - name: Verify completed master exists
         run: |
           test -f out/v05-final-master-4k.mp4
