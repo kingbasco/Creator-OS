@@ -1,0 +1,1291 @@
+[
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 9,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 12,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 15,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 22,
+      "propertyType": "textContent"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "const s='Find the latest project brief.';return s.slice(0,Math.floor(Math.max(0,input.time.seconds-.65)*22));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 28,
+      "propertyType": "scaleX"
+    },
+    "keyframes": [
+      {
+        "id": "28-scaleX-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleX-1",
+        "layerTime": 4000,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleX-2",
+        "layerTime": 4800,
+        "value": {
+          "type": "float",
+          "value": 53
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleX-3",
+        "layerTime": 9200,
+        "value": {
+          "type": "float",
+          "value": 53
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleX-4",
+        "layerTime": 10000,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 28,
+      "propertyType": "scaleY"
+    },
+    "keyframes": [
+      {
+        "id": "28-scaleY-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleY-1",
+        "layerTime": 4000,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleY-2",
+        "layerTime": 4800,
+        "value": {
+          "type": "float",
+          "value": 53
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleY-3",
+        "layerTime": 9200,
+        "value": {
+          "type": "float",
+          "value": 53
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-scaleY-4",
+        "layerTime": 10000,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 28,
+      "propertyType": "positionX"
+    },
+    "keyframes": [
+      {
+        "id": "28-positionX-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionX-1",
+        "layerTime": 550,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionX-2",
+        "layerTime": 4000,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionX-3",
+        "layerTime": 4800,
+        "value": {
+          "type": "float",
+          "value": 80
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionX-4",
+        "layerTime": 9200,
+        "value": {
+          "type": "float",
+          "value": 80
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionX-5",
+        "layerTime": 10000,
+        "value": {
+          "type": "float",
+          "value": 100
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 28,
+      "propertyType": "positionY"
+    },
+    "keyframes": [
+      {
+        "id": "28-positionY-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 555
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionY-1",
+        "layerTime": 550,
+        "value": {
+          "type": "float",
+          "value": 510
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionY-2",
+        "layerTime": 4000,
+        "value": {
+          "type": "float",
+          "value": 510
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionY-3",
+        "layerTime": 4800,
+        "value": {
+          "type": "float",
+          "value": 520
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionY-4",
+        "layerTime": 9200,
+        "value": {
+          "type": "float",
+          "value": 520
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "28-positionY-5",
+        "layerTime": 10000,
+        "value": {
+          "type": "float",
+          "value": 510
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 39,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 39,
+      "propertyType": "positionX"
+    },
+    "keyframes": [
+      {
+        "id": "39-positionX-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 1120
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "39-positionX-1",
+        "layerTime": 550,
+        "value": {
+          "type": "float",
+          "value": 650
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "39-positionX-2",
+        "layerTime": 4600,
+        "value": {
+          "type": "float",
+          "value": 650
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "39-positionX-3",
+        "layerTime": 5400,
+        "value": {
+          "type": "float",
+          "value": 1120
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 39,
+      "propertyType": "positionY"
+    },
+    "keyframes": [
+      {
+        "id": "39-positionY-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 520
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "39-positionY-1",
+        "layerTime": 550,
+        "value": {
+          "type": "float",
+          "value": 520
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "39-positionY-2",
+        "layerTime": 4600,
+        "value": {
+          "type": "float",
+          "value": 520
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "39-positionY-3",
+        "layerTime": 5400,
+        "value": {
+          "type": "float",
+          "value": 520
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 41,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 44,
+      "propertyType": "positionX"
+    },
+    "keyframes": [
+      {
+        "id": "44-positionX-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 315
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "44-positionX-1",
+        "layerTime": 350,
+        "value": {
+          "type": "float",
+          "value": 315
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "44-positionX-2",
+        "layerTime": 1050,
+        "value": {
+          "type": "float",
+          "value": 825
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "44-positionX-3",
+        "layerTime": 1500,
+        "value": {
+          "type": "float",
+          "value": 825
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 44,
+      "propertyType": "positionY"
+    },
+    "keyframes": [
+      {
+        "id": "44-positionY-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 850
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "44-positionY-1",
+        "layerTime": 350,
+        "value": {
+          "type": "float",
+          "value": 1050
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "44-positionY-2",
+        "layerTime": 1050,
+        "value": {
+          "type": "float",
+          "value": 1050
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "44-positionY-3",
+        "layerTime": 1500,
+        "value": {
+          "type": "float",
+          "value": 840
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 50,
+      "propertyType": "positionX"
+    },
+    "keyframes": [
+      {
+        "id": "50-positionX-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 825
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "50-positionX-1",
+        "layerTime": 450,
+        "value": {
+          "type": "float",
+          "value": 825
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "50-positionX-2",
+        "layerTime": 1450,
+        "value": {
+          "type": "float",
+          "value": 315
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "50-positionX-3",
+        "layerTime": 2300,
+        "value": {
+          "type": "float",
+          "value": 315
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 50,
+      "propertyType": "positionY"
+    },
+    "keyframes": [
+      {
+        "id": "50-positionY-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 790
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "50-positionY-1",
+        "layerTime": 450,
+        "value": {
+          "type": "float",
+          "value": 1050
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "50-positionY-2",
+        "layerTime": 1450,
+        "value": {
+          "type": "float",
+          "value": 1050
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "50-positionY-3",
+        "layerTime": 2300,
+        "value": {
+          "type": "float",
+          "value": 735
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 57,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 72,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return (input.time.seconds%3.7>3.58)?0:100;"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 74,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return (input.time.seconds%3.7>3.58)?0:100;"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 78,
+      "propertyType": "rotation"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return -3+Math.sin(input.time.seconds*1.2)*2;"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 85,
+      "propertyType": "rotation"
+    },
+    "keyframes": [
+      {
+        "id": "85-rotation-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 23
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "85-rotation-1",
+        "layerTime": 900,
+        "value": {
+          "type": "float",
+          "value": -8
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "85-rotation-2",
+        "layerTime": 3000,
+        "value": {
+          "type": "float",
+          "value": 0
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "85-rotation-3",
+        "layerTime": 4600,
+        "value": {
+          "type": "float",
+          "value": -22
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "85-rotation-4",
+        "layerTime": 7000,
+        "value": {
+          "type": "float",
+          "value": 2
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "85-rotation-5",
+        "layerTime": 10000,
+        "value": {
+          "type": "float",
+          "value": -16
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "85-rotation-6",
+        "layerTime": 12000,
+        "value": {
+          "type": "float",
+          "value": -5
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "85-rotation-7",
+        "layerTime": 14500,
+        "value": {
+          "type": "float",
+          "value": -5
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 86,
+      "propertyType": "positionX"
+    },
+    "keyframes": [
+      {
+        "id": "86-positionX-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 56
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionX-1",
+        "layerTime": 700,
+        "value": {
+          "type": "float",
+          "value": 56
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionX-2",
+        "layerTime": 4000,
+        "value": {
+          "type": "float",
+          "value": 56
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionX-3",
+        "layerTime": 4800,
+        "value": {
+          "type": "float",
+          "value": 56
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionX-4",
+        "layerTime": 10000,
+        "value": {
+          "type": "float",
+          "value": 56
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionX-5",
+        "layerTime": 10700,
+        "value": {
+          "type": "float",
+          "value": 56
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyKeyframes",
+    "compositionId": "main",
+    "property": {
+      "layerId": 86,
+      "propertyType": "positionY"
+    },
+    "keyframes": [
+      {
+        "id": "86-positionY-0",
+        "layerTime": 0,
+        "value": {
+          "type": "float",
+          "value": 1610
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionY-1",
+        "layerTime": 700,
+        "value": {
+          "type": "float",
+          "value": 1240
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionY-2",
+        "layerTime": 4000,
+        "value": {
+          "type": "float",
+          "value": 1240
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionY-3",
+        "layerTime": 4800,
+        "value": {
+          "type": "float",
+          "value": 1280
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionY-4",
+        "layerTime": 10000,
+        "value": {
+          "type": "float",
+          "value": 1280
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      },
+      {
+        "id": "86-positionY-5",
+        "layerTime": 10700,
+        "value": {
+          "type": "float",
+          "value": 1240
+        },
+        "easing": {
+          "type": "cubicBezier",
+          "x1": 0.22,
+          "y1": 1,
+          "x2": 0.36,
+          "y2": 1
+        }
+      }
+    ]
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 89,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 92,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  },
+  {
+    "type": "setFxPropertyAnimator",
+    "compositionId": "main",
+    "property": {
+      "layerId": 95,
+      "propertyType": "opacity"
+    },
+    "animator": {
+      "type": "jsScript",
+      "layerTimeJsCode": "return Math.min(100,Math.max(0,(input.time.seconds-0)*400));"
+    },
+    "dependencies": []
+  }
+]
