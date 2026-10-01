@@ -1,0 +1,54 @@
+name: Deliver completed V05 master
+
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/v05-delivery.json']
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  deliver:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Read delivery request
+        run: |
+          python - <<'PY'
+          import json, os
+          r=json.load(open('render-requests/v05-delivery.json'))
+          assert r['episode']=='v05' and r['status']=='ready'
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write('SOURCE_RUN_ID='+str(r['sourceRunId'])+'\n')
+              f.write('REQUEST_ID='+r['requestId']+'\n')
+          PY
+      - uses: actions/download-artifact@v4
+        with:
+          name: v05-final-review-media
+          path: out
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ env.SOURCE_RUN_ID }}
+      - name: Verify completed master exists
+        run: |
+          test -f out/v05-final-master-4k.mp4
+          test -f out/v05-media-qa.json
+          test -f out/v05-loudness-qa.txt
+          ffprobe -v error -show_entries format=duration:stream=codec_name,width,height,r_frame_rate,sample_rate,channels -of json out/v05-final-master-4k.mp4
+      - name: Deliver existing verified master
+        run: python scripts/deliver-v05-render.py --file out/v05-final-master-4k.mp4 --mode final --request-id "$REQUEST_ID"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: v05-delivery-receipt
+          path: out/v05-delivery.json
+          if-no-files-found: ignore
+          retention-days: 14
