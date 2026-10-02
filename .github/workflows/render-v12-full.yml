@@ -1,0 +1,51 @@
+name: Render V12 full visual draft
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/v12-full.json']
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - name: Validate
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('render-requests/v12-full.json'))
+          assert r['episode']=='v12' and r['status']=='ready'
+          PY
+      - name: Install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg mesa-vulkan-drivers unzip
+          curl -fL --retry 3 https://github.com/mirage-hq/tesseract/releases/download/v0.3.0/tesseract-0.3.0-linux-x86_64.zip -o /tmp/t.zip
+          unzip -q /tmp/t.zip -d /tmp/t
+          bash /tmp/t/tesseract-0.3.0-linux-x86_64/install.sh
+      - name: Build
+        run: |
+          mkdir -p motion-prototypes/v12-full/Previews
+          cp motion-prototypes/mcp-full-episode/V04-MCP.tsrct motion-prototypes/v12-full/V12-Full.tsrct
+          python motion-prototypes/v12-full/.tesseract-work/build.py
+          TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
+          "$TSRCT" project commit --project motion-prototypes/v12-full/V12-Full.tsrct --file motion-prototypes/v12-full/.tesseract-work/document.json
+          "$TSRCT" project apply --project motion-prototypes/v12-full/V12-Full.tsrct --actions motion-prototypes/v12-full/.tesseract-work/animation.json
+      - name: Render
+        run: |
+          TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
+          ICD=$(find /usr/share/vulkan/icd.d -name '*lvp*.json' | head -1 || true)
+          if [ -n "$ICD" ]; then export VK_ICD_FILENAMES="$ICD"; fi
+          "$TSRCT" export --project motion-prototypes/v12-full/V12-Full.tsrct --resolution 1080p --fps 30 --encoder-backend external-ffmpeg-command --ffmpeg-path /usr/bin/ffmpeg --output motion-prototypes/v12-full/V12-Full-Draft.mp4
+          "$TSRCT" filmstrip --project motion-prototypes/v12-full/V12-Full.tsrct --timestamps-ms 4000,13000,23000,33000,43000,53000,63000,76000 --tile-width 270 --tile-height 480 --items-per-row 4 --output motion-prototypes/v12-full/Previews/Full-Filmstrip.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v12-full-visual-draft
+          path: |
+            motion-prototypes/v12-full/V12-Full-Draft.mp4
+            motion-prototypes/v12-full/V12-Full.tsrct
+            motion-prototypes/v12-full/Previews/Full-Filmstrip.png
+          retention-days: 14
