@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "Sometimes one coding agent handles the whole task. Sometimes a main agent delegates parts of the work to other agents.",
+    "onScreenText": "One goal. Multiple workers.",
+    "captionText": "Orchestrator + subagents",
+    "voiceDirection": "Clear and neutral. Do not imply more agents are always better."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "The main agent is the orchestrator. It keeps the overall goal, decides what can be split, and tracks how the pieces fit together.",
+    "onScreenText": "Orchestrator → keeps the goal",
+    "captionText": "Owns scope, delegation and integration.",
+    "voiceDirection": "Emphasize coordination and responsibility."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "It can delegate research, frontend work, backend changes, and testing as separate subtasks, each with a smaller context.",
+    "onScreenText": "Delegate focused subtasks",
+    "captionText": "Research · Frontend · Backend · Tests",
+    "voiceDirection": "Give each subtask a clean beat."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "Those subtasks can run in parallel when they are independent. That can reduce waiting and keep each agent focused on less context.",
+    "onScreenText": "Independent work can run in parallel.",
+    "captionText": "Less waiting. Smaller context.",
+    "voiceDirection": "Slightly more animated."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "But parallel work creates a coordination problem. Two agents can make assumptions that conflict, touch the same file, or solve different versions of the task.",
+    "onScreenText": "Parallelism creates coordination risk.",
+    "captionText": "Conflicts · assumptions · overlap",
+    "voiceDirection": "Balanced and practical, not alarmist."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "That is why outputs should return to an integration step. The orchestrator compares results, resolves conflicts, and keeps the final implementation consistent.",
+    "onScreenText": "Merge → compare → resolve",
+    "captionText": "Integration is part of the job.",
+    "voiceDirection": "Stress integration."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "Some tasks are still better with one agent, especially when the work is tightly connected or small enough to fit in one clear context.",
+    "onScreenText": "Not every task needs multiple agents.",
+    "captionText": "Split only when the work actually separates.",
+    "voiceDirection": "Calm corrective note."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 80,
+    "narration": "The useful question is not one agent or many. It is whether the task can be divided cleanly, coordinated well, and reviewed as one result.",
+    "onScreenText": "Split cleanly. Coordinate. Review together.",
+    "captionText": "Architecture follows the task.",
+    "voiceDirection": "Confident conclusion."
+  }
+]
