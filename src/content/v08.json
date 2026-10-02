@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 9,
+    "narration": "If AI builds your frontend, something still has to handle users, data, uploads, and login behind the screen.",
+    "onScreenText": "Frontend ≠ backend",
+    "captionText": "Users. Data. Uploads. Login.",
+    "voiceDirection": "Clear opening. Emphasize the contrast between frontend and backend."
+  },
+  {
+    "id": "S02",
+    "startSec": 9,
+    "endSec": 19,
+    "narration": "Supabase gives you several backend responsibilities in one platform: a Postgres database, authentication, storage, functions and APIs, plus realtime updates.",
+    "onScreenText": "One backend platform. Several jobs.",
+    "captionText": "Database · Auth · Storage · Functions/API · Realtime",
+    "voiceDirection": "Steady and visual. Give each backend block a clean beat."
+  },
+  {
+    "id": "S03",
+    "startSec": 19,
+    "endSec": 29,
+    "narration": "Authentication answers one question first: who is this user? It handles sign up, sign in, sessions, and identity.",
+    "onScreenText": "Auth → Who is this user?",
+    "captionText": "Signup, login, sessions, identity.",
+    "voiceDirection": "Simple and concrete."
+  },
+  {
+    "id": "S04",
+    "startSec": 29,
+    "endSec": 39,
+    "narration": "The database stores your structured application data: profiles, projects, orders, settings, and the relationships between them.",
+    "onScreenText": "Postgres → Structured app data",
+    "captionText": "Rows, tables and relationships.",
+    "voiceDirection": "Explain without database jargon."
+  },
+  {
+    "id": "S05",
+    "startSec": 39,
+    "endSec": 49,
+    "narration": "Storage handles files that do not belong inside a database row, like profile photos, documents, videos, and other uploads.",
+    "onScreenText": "Storage → Files and uploads",
+    "captionText": "Images, documents, media.",
+    "voiceDirection": "Practical and brief."
+  },
+  {
+    "id": "S06",
+    "startSec": 49,
+    "endSec": 59,
+    "narration": "Functions and APIs let your app run backend logic, call protected services, and coordinate work that should not live only in the browser.",
+    "onScreenText": "Functions/API → Backend logic",
+    "captionText": "Protected work outside the browser.",
+    "voiceDirection": "Emphasize protected services and backend logic."
+  },
+  {
+    "id": "S07",
+    "startSec": 59,
+    "endSec": 70,
+    "narration": "Realtime lets connected clients react when data changes. Update a record once, and subscribed screens can respond without a manual refresh.",
+    "onScreenText": "Realtime → Respond to changes",
+    "captionText": "One change, multiple live clients.",
+    "voiceDirection": "Slightly more animated to match the data pulse."
+  },
+  {
+    "id": "S08",
+    "startSec": 70,
+    "endSec": 82,
+    "narration": "Put the pieces together: a user signs up, uploads a profile image, saves a profile record, and the app receives the result. The frontend is what they touch. The backend is what makes the flow real.",
+    "onScreenText": "Frontend + backend = working product",
+    "captionText": "Signup → Upload → Save → Return",
+    "voiceDirection": "Confident recap. End on 'makes the flow real'."
+  }
+]
