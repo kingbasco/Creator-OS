@@ -1,6 +1,7 @@
 {
   "episode": "v07",
-  "requestId": "v07-motion-prototype-2026-10-02-01",
+  "requestId": "v07-motion-prototype-2026-10-02-02",
   "status": "queued",
-  "note": "Build silent autonomy-scale prototype first. No narration or paid generation until the visual direction is reviewed."
+  "note": "Render the 18-second autonomy-scale prototype. Silent; no TTS or paid generation.",
+  "revision": 2
 }
