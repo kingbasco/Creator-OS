@@ -1,7 +1,6 @@
 {
   "episode": "v10",
-  "requestId": "v10-motion-prototype-2026-10-02-03",
+  "requestId": "v10-motion-prototype-2026-10-02-01",
   "status": "queued",
-  "note": "Re-render V10 after fixing scene-boundary overlap. Silent; no TTS.",
-  "revision": 3
+  "note": "Build silent multi-agent orchestration prototype first. No TTS while narration quota is unavailable."
 }
