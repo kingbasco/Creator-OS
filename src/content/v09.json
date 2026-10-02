@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "Your app can have login and still expose the wrong user’s data. Authentication and data access are not the same thing.",
+    "onScreenText": "Logged in ≠ allowed to see everything.",
+    "captionText": "Authentication is not authorization.",
+    "voiceDirection": "Clear and direct. Emphasize the contrast."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "Imagine two users, Alice and Bob, and one profiles table containing one row for each of them.",
+    "onScreenText": "Two users. One table.",
+    "captionText": "Alice row · Bob row",
+    "voiceDirection": "Simple setup."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "Without a row-level policy, a request can return rows the current user should never see if your access rules are missing or incorrect.",
+    "onScreenText": "No row policy → too much data.",
+    "captionText": "The database returns more than intended.",
+    "voiceDirection": "Firm but not alarmist."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "Row Level Security moves that access rule into the database. The database checks the current identity before allowing a row to be read or changed.",
+    "onScreenText": "RLS checks every row.",
+    "captionText": "Identity + policy → allowed rows",
+    "voiceDirection": "Slow slightly through the rule."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "Alice asks for profiles. The policy compares the row owner with Alice’s user ID, so Alice’s row passes and Bob’s row is filtered out.",
+    "onScreenText": "Alice → only Alice’s row",
+    "captionText": "owner_id = auth user ID",
+    "voiceDirection": "Very visual and easy to follow."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "Bob makes the same request and gets the opposite result. The query can look identical, while the database returns different rows for each identity.",
+    "onScreenText": "Same query. Different allowed rows.",
+    "captionText": "Bob → only Bob’s row",
+    "voiceDirection": "Emphasize same query and different result."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "Authentication proves who the user is. Authorization decides what that user is allowed to access. Row Level Security is one place those data rules can be enforced.",
+    "onScreenText": "Auth ≠ Authorization",
+    "captionText": "Identity first. Access rules second.",
+    "voiceDirection": "Precise and memorable."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 80,
+    "narration": "Before shipping a Supabase app, review the policies on every table your client can reach. Login protects identity. Policies protect which data each identity can actually use.",
+    "onScreenText": "Review policies before you ship.",
+    "captionText": "Login protects identity. Policies protect data access.",
+    "voiceDirection": "Confident finish."
+  }
+]
