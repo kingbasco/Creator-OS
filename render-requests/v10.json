@@ -1,6 +1,7 @@
 {
   "episode": "v10",
-  "requestId": "v10-motion-prototype-2026-10-02-01",
+  "requestId": "v10-motion-prototype-2026-10-02-02",
   "status": "queued",
-  "note": "Build silent multi-agent orchestration prototype first. No TTS while narration quota is unavailable."
+  "note": "Render the 18-second multi-agent orchestration prototype. Silent; no TTS while quota is unavailable.",
+  "revision": 2
 }
