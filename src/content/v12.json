@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "The biggest change in AI coding is not better autocomplete. It is software that can take a goal and carry out a sequence of actions.",
+    "onScreenText": "From autocomplete → agentic execution",
+    "captionText": "Suggestion is becoming workflow.",
+    "voiceDirection": "Strong thesis opening, calm and clear."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "Autocomplete stays inside the editor. You type, it predicts the next line, and you decide what to keep.",
+    "onScreenText": "Autocomplete: suggest the next line",
+    "captionText": "Human drives every step.",
+    "voiceDirection": "Simple contrast."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "An agent can work at a wider level. It can inspect the repository, understand files, and decide which part of the codebase it needs to touch.",
+    "onScreenText": "Agent: inspect the system",
+    "captionText": "Repo context before edits.",
+    "voiceDirection": "Expand the scope visually."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "It can edit files, run commands, use connected tools, and check the result instead of stopping at a code suggestion.",
+    "onScreenText": "Edit · Run · Use tools · Check",
+    "captionText": "Actions, not just suggestions.",
+    "voiceDirection": "Rhythmic list."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "It can also run tests and iterate when something fails. That turns coding assistance into a loop instead of a single completion.",
+    "onScreenText": "Run tests → fix → run again",
+    "captionText": "Iteration becomes part of the workflow.",
+    "voiceDirection": "Slightly more energetic."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "That changes the developer’s job. You spend less time producing every keystroke and more time specifying the goal, constraints, and architecture.",
+    "onScreenText": "Typing → Directing",
+    "captionText": "Goal · constraints · architecture",
+    "voiceDirection": "Emphasize the role shift."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "Then you review what the agent actually changed: the diff, the tests, the permissions it used, and whether the result matches the intent.",
+    "onScreenText": "Directing → Reviewing",
+    "captionText": "Diff · tests · permissions · intent",
+    "voiceDirection": "Measured and responsible."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 82,
+    "narration": "The new software-building workflow is not just faster typing. It is giving an agent a well-scoped goal, letting it execute inside clear boundaries, and keeping human judgment around the result. That is the shift from autocomplete to agents.",
+    "onScreenText": "Specify → Execute → Review",
+    "captionText": "Agents expand execution. Humans keep judgment.",
+    "voiceDirection": "Month-end thesis close. Confident, not hype-driven."
+  }
+]
