@@ -36,26 +36,26 @@ jobs:
           bash /tmp/tesseract/tesseract-0.3.0-linux-x86_64/install.sh
       - name: Build editable full draft
         run: |
-          mkdir -p motion-prototypes/v06-giant-prompt-full/Previews
-          cp motion-prototypes/mcp-full-episode/V04-MCP.tsrct motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full.tsrct
-          python motion-prototypes/v06-giant-prompt-full/.tesseract-work/build.py
+          mkdir -p motion-prototypes/v06-full/Previews
+          cp motion-prototypes/mcp-full-episode/V04-MCP.tsrct motion-prototypes/v06-full/V06-Full.tsrct
+          python motion-prototypes/v06-full/.tesseract-work/build.py
           TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
-          "$TSRCT" project commit --project motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full.tsrct --file motion-prototypes/v06-giant-prompt-full/.tesseract-work/document.json
-          "$TSRCT" project apply --project motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full.tsrct --actions motion-prototypes/v06-giant-prompt-full/.tesseract-work/animation.json
-      - name: Render full visual draft
+          "$TSRCT" project commit --project motion-prototypes/v06-full/V06-Full.tsrct --file motion-prototypes/v06-full/.tesseract-work/document.json
+          "$TSRCT" project apply --project motion-prototypes/v06-full/V06-Full.tsrct --actions motion-prototypes/v06-full/.tesseract-work/animation.json
+      - name: Render full draft
         run: |
           TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
           ICD=$(find /usr/share/vulkan/icd.d -name '*lvp*.json' | head -1 || true)
           if [ -n "$ICD" ]; then export VK_ICD_FILENAMES="$ICD"; fi
-          "$TSRCT" export --project motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full.tsrct --resolution 1080p --fps 30 --encoder-backend external-ffmpeg-command --ffmpeg-path /usr/bin/ffmpeg --output motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full-Draft.mp4
-          "$TSRCT" filmstrip --project motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full.tsrct --timestamps-ms 4000,13000,23000,33000,43000,53000,63000,74000 --tile-width 270 --tile-height 480 --items-per-row 4 --output motion-prototypes/v06-giant-prompt-full/Previews/Full-Filmstrip.png
-          ffprobe -v error -show_entries format=duration:stream=width,height,r_frame_rate -of json motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full-Draft.mp4
+          "$TSRCT" export --project motion-prototypes/v06-full/V06-Full.tsrct --resolution 1080p --fps 30 --encoder-backend external-ffmpeg-command --ffmpeg-path /usr/bin/ffmpeg --output motion-prototypes/v06-full/V06-Full-Draft.mp4
+          "$TSRCT" filmstrip --project motion-prototypes/v06-full/V06-Full.tsrct --timestamps-ms 4000,13000,23000,33000,43000,53000,63000,73000 --tile-width 270 --tile-height 480 --items-per-row 4 --output motion-prototypes/v06-full/Previews/Full-Filmstrip.png
+          ffprobe -v error -show_entries format=duration:stream=width,height,r_frame_rate -of json motion-prototypes/v06-full/V06-Full-Draft.mp4
       - uses: actions/upload-artifact@v4
         with:
           name: v06-full-visual-draft
           path: |
-            motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full-Draft.mp4
-            motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Full.tsrct
-            motion-prototypes/v06-giant-prompt-full/Previews/Full-Filmstrip.png
+            motion-prototypes/v06-full/V06-Full-Draft.mp4
+            motion-prototypes/v06-full/V06-Full.tsrct
+            motion-prototypes/v06-full/Previews/Full-Filmstrip.png
           if-no-files-found: error
           retention-days: 14
