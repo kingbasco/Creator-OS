@@ -39,7 +39,7 @@ proto=copy.deepcopy(doc)
 L=[rect('Canvas',0,0,1080,1920,BG),rect('Rule',80,430,920,2,BORDER),rect('Rule',80,1225,920,2,BORDER),rect('Rule',80,1730,920,2,BORDER)]
 
 h1=grp('H1',[txt('l','One goal can become',80,182,64,INK,900,0,8,True),txt('e','four focused subtasks.',80,265,59,BLUE,900,0,8,True)],s=0,e=8); enter(h1); L.append(h1)
-orch=grp('Orchestrator',[card('c',0,0,420,220,DARK),txt('lab','ORCHESTRATOR',28,24,20,'#AAB6CE',250,bold=True),txt('title','Build the feature',28,70,37,'#FFFFFF',330,bold=True),txt('sub','Keeps the goal + scope',28,132,25,'#DCE3F3',330)],330,520); reveal(orch,.1); L.append(orch)
+orch=grp('Orchestrator',[card('c',0,0,420,220,DARK,22,0,8),txt('lab','ORCHESTRATOR',28,24,20,'#AAB6CE',250,0,8,True),txt('title','Build the feature',28,70,37,'#FFFFFF',330,0,8,True),txt('sub','Keeps the goal + scope',28,132,25,'#DCE3F3',330,0,8)],330,520,0,8); reveal(orch,.1); L.append(orch)
 
 agents=[
  ('RESEARCH','Find current behavior',75,865,GREEN,GI),
@@ -49,8 +49,8 @@ agents=[
 ]
 for i,(name,sub,x,y,bg,tc) in enumerate(agents):
  w=200
- a=grp(name,[card('c',0,0,w,165,bg),txt('n',name,20,23,23,tc,w-40,bold=True),txt('s',sub,20,68,21,INK,w-40)],x,y); reveal(a,.25+i*.16); L.append(a); L.append(conn(540,740,x+w/2,y,BLUE,3))
-note=grp('Note',[card('c',0,0,760,120,'#FFFFFF'),txt('t','Same project · smaller contexts · clear responsibilities',30,39,28,INK,700,bold=True)],160,1095); reveal(note,1); L.append(note)
+ a=grp(name,[card('c',0,0,w,165,bg,22,0,8),txt('n',name,20,23,23,tc,w-40,0,8,True),txt('s',sub,20,68,21,INK,w-40,0,8)],x,y,0,8); reveal(a,.25+i*.16); L.append(a); L.append(conn(540,740,x+w/2,y,BLUE,3,0,8))
+note=grp('Note',[card('c',0,0,760,120,'#FFFFFF',22,0,8),txt('t','Same project · smaller contexts · clear responsibilities',30,39,28,INK,700,0,8,True)],160,1095,0,8); reveal(note,1); L.append(note)
 
 h2=grp('H2',[txt('l','Independent work can',80,182,64,INK,900,8,18,True),txt('e','run in parallel.',80,265,59,BLUE,900,8,18,True)],s=8,e=18); enter(h2); L.append(h2)
 orch2=grp('Orch2',[card('c',0,0,330,170,DARK),txt('lab','ORCHESTRATOR',24,22,19,'#AAB6CE',220,bold=True),txt('t','Track + integrate',24,67,33,'#FFFFFF',260,bold=True)],375,505,s=8,e=18); reveal(orch2,.1); L.append(orch2)
