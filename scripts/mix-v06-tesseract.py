@@ -52,16 +52,16 @@ run(['ffmpeg','-y','-f','concat','-safe','0','-i',str(concat),'-c','copy',str(vo
 
 sfx=ROOT/'public/audio/v06-sfx'
 cues=[
-    ('whoosh-rise.wav',timed[0]['finalStart']+4.3,0.06),
-    ('scan-tick.wav',timed[1]['finalStart']+2.0,0.05),
-    ('whoosh-forward.wav',timed[2]['finalStart']+2.8,0.06),
-    ('scan-tick.wav',timed[3]['finalStart']+4.0,0.05),
-    ('ui-click.wav',timed[4]['finalStart']+3.2,0.055),
-    ('approve.wav',timed[5]['finalStart']+4.1,0.055),
-    ('terminal-run.wav',timed[6]['finalStart']+2.5,0.05),
-    ('success.wav',timed[6]['finalStart']+7.0,0.06),
-    ('whoosh-mask.wav',timed[7]['finalStart']+1.0,0.055),
-    ('success.wav',timed[7]['finalStart']+6.2,0.05),
+    ('whoosh-rise.wav',timed[0]['finalStart']+4.2,0.055),
+    ('scan-tick.wav',timed[1]['finalStart']+2.8,0.045),
+    ('whoosh-forward.wav',timed[2]['finalStart']+2.5,0.055),
+    ('ui-click.wav',timed[3]['finalStart']+4.2,0.05),
+    ('whoosh-mask.wav',timed[4]['finalStart']+2.5,0.05),
+    ('approve.wav',timed[5]['finalStart']+4.0,0.05),
+    ('terminal-run.wav',timed[6]['finalStart']+2.8,0.055),
+    ('success.wav',timed[6]['finalStart']+7.1,0.055),
+    ('whoosh-rise.wav',timed[7]['finalStart']+1.0,0.05),
+    ('success.wav',timed[7]['finalStart']+7.0,0.05),
 ]
 
 args=['ffmpeg','-y','-i',str(voice_timed),'-stream_loop','-1','-i',str(sfx/'ambient-bed.wav')]
