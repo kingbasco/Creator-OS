@@ -1,0 +1,7 @@
+{
+  "episode": "v06",
+  "requestId": "v06-voice-2026-10-02-01",
+  "status": "ready",
+  "maxTtsRequests": 4,
+  "note": "Generate one reusable V06 narration package with Flash Lite TTS / Sulafat. Exactly four paired requests; no automatic model fallback."
+}
