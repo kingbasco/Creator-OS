@@ -3,24 +3,26 @@
 80-second conceptual explainer.
 
 ## Core visual
-Start with one central **Orchestrator** card holding the full goal. It branches into four focused subagents:
+Use one **Orchestrator** card in the center. It receives the product goal, then branches into four focused subagents:
 
 - Research
 - Frontend
 - Backend
 - Tests
 
-Each subagent receives a compact task card and runs a visible progress bar. When independent, the progress bars advance in parallel.
+Each branch gets a narrow task card and its own progress state. Independent branches run in parallel, then their outputs travel back to the orchestrator.
 
-## Strong sequence
-After parallel progress, introduce a coordination problem:
-- Frontend and Backend both touch the same API contract.
-- A conflict marker appears.
-- Their outputs stop before the final node.
-- The orchestrator opens both diffs, resolves the mismatch, and then merges all four outputs into one **Integration / Review** node.
+## Key visual sequence
+1. One agent receives a large task.
+2. The task breaks into four smaller cards.
+3. Four subagent cards fan out with clean spacing.
+4. Parallel progress bars move independently.
+5. Two outputs briefly conflict at a shared-file warning.
+6. Orchestrator collects results and resolves the conflict.
+7. Combined output enters one test/review gate.
+8. Finish with the rule: split only when responsibilities are clear enough to coordinate.
 
-## Message
-Do not frame multi-agent systems as “AI teams replacing humans.” The focus is work decomposition, context management, parallelism, coordination and final review.
+## Tone
+Do not frame multi-agent work as “AI team replaces humans.” The point is coordination, context management, and task decomposition.
 
-## Style
-Reuse the approved Creator OS presenter. No top branding header. Keep branch lines behind cards, use wide spacing, and never stack task cards on top of progress labels.
+Continue the presenter-led Creator OS style, no top branding header, and keep every branch in its own zone so no task cards overlap.
