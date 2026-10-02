@@ -1,6 +1,7 @@
 {
   "episode": "v11",
-  "requestId": "v11-motion-prototype-2026-10-02-01",
+  "requestId": "v11-motion-prototype-2026-10-02-02",
   "status": "queued",
-  "note": "Build silent workflow-loop prototype. No narration or paid generation while TTS quota is exhausted."
+  "note": "Render the 18-second coding-loop prototype. Silent; no TTS while quota is exhausted.",
+  "revision": 2
 }
