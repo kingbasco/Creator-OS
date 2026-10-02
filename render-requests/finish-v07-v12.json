@@ -1,0 +1,15 @@
+{
+  "requestId": "finish-v07-v12-2026-10-02-01",
+  "status": "ready",
+  "episodes": [
+    "v07",
+    "v08",
+    "v09",
+    "v10",
+    "v11",
+    "v12"
+  ],
+  "overwriteExistingDriveFiles": true,
+  "narration": "local-piper-lessac",
+  "note": "Finish all remaining Creator OS drafts with narration, transition sound, 4K mastering, and overwrite the existing Drive files in place."
+}
