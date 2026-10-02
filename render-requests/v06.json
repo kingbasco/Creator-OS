@@ -1,7 +1,7 @@
 {
   "episode": "v06",
-  "requestId": "v06-motion-prototype-2026-10-02-01",
+  "requestId": "v06-motion-prototype-2026-10-02-02",
   "status": "queued",
-  "note": "Render the 18-second silent giant-prompt prototype. No TTS or paid generation.",
-  "revision": 1
+  "note": "Render the 18-second giant-prompt prototype. Silent; no TTS or paid generation.",
+  "revision": 2
 }
