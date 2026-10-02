@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "The quality jump in AI-assisted coding usually does not come from one smarter prompt. It comes from a better loop.",
+    "onScreenText": "Better loop > bigger prompt",
+    "captionText": "Plan → Code → Test → Review",
+    "voiceDirection": "Rhythmic, confident opening."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "Start by inspecting the system you already have. Read the relevant files, understand the current behavior, and find the smallest place the change belongs.",
+    "onScreenText": "1. Inspect the current system",
+    "captionText": "Repo scan · current behavior · smallest surface",
+    "voiceDirection": "Practical and steady."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "Then make a short plan. Define the goal, the files likely to change, what should stay intact, and how you will know the work is done.",
+    "onScreenText": "2. Plan the change",
+    "captionText": "Goal · files · constraints · done",
+    "voiceDirection": "Clear checklist rhythm."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "Implement one small slice instead of wandering across the codebase. A focused diff is easier to reason about, test, and undo.",
+    "onScreenText": "3. Code one small slice",
+    "captionText": "Focused diff. Smaller change surface.",
+    "voiceDirection": "Emphasize one small slice."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "Run checks immediately: type checks, tests, builds, or a focused manual flow. If something breaks, the failure is still close to the change.",
+    "onScreenText": "4. Test immediately",
+    "captionText": "Catch failures close to the change.",
+    "voiceDirection": "Faster delivery here."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "Now review the diff and the actual result. Did the change match the plan? Did anything else move that should not have?",
+    "onScreenText": "5. Review the diff + result",
+    "captionText": "Compare plan, code and behavior.",
+    "voiceDirection": "Measured review tone."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "If the result is good, continue with the next small slice. If not, fix the last step before adding more work. Then run the loop again.",
+    "onScreenText": "Continue or correct → repeat",
+    "captionText": "Small iterations keep failures local.",
+    "voiceDirection": "Rhythmic and energetic."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 78,
+    "narration": "Inspect, plan, code, test, review. Use the same loop for your next build. It gives the agent direction and gives you clear checkpoints to stay in control.",
+    "onScreenText": "Inspect → Plan → Code → Test → Review",
+    "captionText": "Screenshot this loop.",
+    "voiceDirection": "Confident and memorable close."
+  }
+]
