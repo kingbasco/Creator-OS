@@ -1,0 +1,61 @@
+name: Render V06 motion prototype
+
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/v06.json']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: creator-os-v06-prototype
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate request
+        run: |
+          python - <<'PY'
+          import json
+          r=json.load(open('render-requests/v06.json'))
+          assert r['episode']=='v06' and r['status']=='queued'
+          PY
+      - name: Install tools
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg mesa-vulkan-drivers unzip
+          curl -fL --retry 3 https://github.com/mirage-hq/tesseract/releases/download/v0.3.0/tesseract-0.3.0-linux-x86_64.zip -o /tmp/tesseract.zip
+          unzip -q /tmp/tesseract.zip -d /tmp/tesseract
+          bash /tmp/tesseract/tesseract-0.3.0-linux-x86_64/install.sh
+      - name: Build editable V06 prototype
+        run: |
+          mkdir -p motion-prototypes/v06-giant-prompt/Previews
+          cp motion-prototypes/mcp-full-episode/V04-MCP.tsrct motion-prototypes/v06-giant-prompt/V06-Giant-Prompt.tsrct
+          python motion-prototypes/v06-giant-prompt/.tesseract-work/build.py
+          TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
+          "$TSRCT" project commit --project motion-prototypes/v06-giant-prompt/V06-Giant-Prompt.tsrct --file motion-prototypes/v06-giant-prompt/.tesseract-work/document.json
+          "$TSRCT" project apply --project motion-prototypes/v06-giant-prompt/V06-Giant-Prompt.tsrct --actions motion-prototypes/v06-giant-prompt/.tesseract-work/animation.json
+      - name: Render prototype
+        run: |
+          TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
+          ICD=$(find /usr/share/vulkan/icd.d -name '*lvp*.json' | head -1 || true)
+          if [ -n "$ICD" ]; then export VK_ICD_FILENAMES="$ICD"; fi
+          "$TSRCT" export --project motion-prototypes/v06-giant-prompt/V06-Giant-Prompt.tsrct --resolution 1080p --fps 30 --encoder-backend external-ffmpeg-command --ffmpeg-path /usr/bin/ffmpeg --output motion-prototypes/v06-giant-prompt/V06-Giant-Prompt-Prototype.mp4
+          "$TSRCT" filmstrip --project motion-prototypes/v06-giant-prompt/V06-Giant-Prompt.tsrct --timestamps-ms 1200,3600,6200,8500,11000,14500,17200 --tile-width 270 --tile-height 480 --items-per-row 4 --output motion-prototypes/v06-giant-prompt/Previews/Filmstrip.png
+          ffprobe -v error -show_entries format=duration:stream=width,height,r_frame_rate -of json motion-prototypes/v06-giant-prompt/V06-Giant-Prompt-Prototype.mp4
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v06-giant-prompt-prototype
+          path: |
+            motion-prototypes/v06-giant-prompt/V06-Giant-Prompt-Prototype.mp4
+            motion-prototypes/v06-giant-prompt/V06-Giant-Prompt.tsrct
+            motion-prototypes/v06-giant-prompt/Previews/Filmstrip.png
+          if-no-files-found: error
+          retention-days: 14
