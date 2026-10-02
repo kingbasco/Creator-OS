@@ -116,42 +116,54 @@ h2=group('Flow headline',[
 ],start=8,end=18); reveal(h2,0,18); layers.append(h2)
 
 form=group('Signup form',[
-    card('Signup',0,0,315,360,'#FFFFFF',24),
-    text('Form title','Create account',25,27,35,INK,w=260,bold=True),
-    text('Email label','EMAIL',25,94,18,MUT,w=100,bold=True),
-    rect('Email field',25,126,265,58,'#F4F6F9',10),
-    text('Email','ada@example.com',40,139,22,INK,w=230),
-    text('Photo label','PROFILE IMAGE',25,205,18,MUT,w=170,bold=True),
-    rect('Photo field',25,237,265,58,PURPLE,10),
-    text('Photo','ada.png',40,250,22,PURPLEINK,w=220,bold=True),
-    chip('SIGN UP',25,312,160,BLUE,'#FFFFFF',start=8,end=18)
-],75,560,start=8,end=18); reveal(form,.1); layers.append(form)
+    card('Signup',0,0,300,360,'#FFFFFF',24),
+    text('Form title','Create account',24,27,33,INK,w=250,bold=True),
+    text('Email label','EMAIL',24,94,18,MUT,w=100,bold=True),
+    rect('Email field',24,126,252,58,'#F4F6F9',10),
+    text('Email','ada@example.com',39,139,21,INK,w=215),
+    text('Photo label','PROFILE IMAGE',24,205,18,MUT,w=170,bold=True),
+    rect('Photo field',24,237,252,58,PURPLE,10),
+    text('Photo','ada.png',39,250,21,PURPLEINK,w=210,bold=True),
+    chip('SIGN UP',24,312,150,BLUE,'#FFFFFF',start=8,end=18)
+],70,560,start=8,end=18); reveal(form,.1); layers.append(form)
 
+# The flow is intentionally arranged as a left-to-right pipeline so no result card
+# covers the signup form, central route, or database table.
 auth=group('Auth result',[
-    card('Auth card',0,0,260,150,GREEN,20),
-    text('Auth label','AUTH',22,22,21,GREENINK,w=110,bold=True),
-    text('Auth result','Identity created',22,65,29,INK,w=215,bold=True)
-],470,555,start=8,end=18); keys(auth,'opacity',[(0,0),(2.0,0),(2.4,100)]); layers.append(auth)
+    card('Auth card',0,0,250,145,GREEN,20),
+    text('Auth label','AUTH',22,20,20,GREENINK,w=105,bold=True),
+    text('Auth result','Identity created',22,60,27,INK,w=205,bold=True)
+],415,555,start=8,end=18); keys(auth,'opacity',[(0,0),(2.0,0),(2.4,100)]); layers.append(auth)
 
 storage=group('Storage result',[
-    card('Storage card',0,0,260,150,PURPLE,20),
-    text('Storage label','STORAGE',22,22,21,PURPLEINK,w=130,bold=True),
-    text('Storage result','ada.png uploaded',22,65,27,INK,w=215,bold=True)
-],470,765,start=8,end=18); keys(storage,'opacity',[(0,0),(3.8,0),(4.2,100)]); layers.append(storage)
+    card('Storage card',0,0,250,145,PURPLE,20),
+    text('Storage label','STORAGE',22,20,20,PURPLEINK,w=130,bold=True),
+    text('Storage result','ada.png uploaded',22,60,26,INK,w=205,bold=True)
+],415,755,start=8,end=18); keys(storage,'opacity',[(0,0),(3.8,0),(4.2,100)]); layers.append(storage)
 
 db=group('Database row',[
-    card('DB card',0,0,470,260,'#FFFFFF',22),
-    text('DB label','POSTGRES · profiles',24,22,20,BLUE,w=260,bold=True),
-    rect('Head',24,72,422,44,'#F1F3F6',8),
-    text('Header','id      name      avatar_url',38,82,20,MUT,w=380,bold=True),
-    rect('Row',24,126,422,56,SOFT,8),
-    text('Row text','42      Ada       /avatars/ada.png',38,141,21,INK,w=380),
-    chip('ROW SAVED',24,200,180,GREEN,GREENINK,start=8,end=18)
-],555,955,start=8,end=18); keys(db,'opacity',[(0,0),(5.8,0),(6.2,100)]); layers.append(db)
+    card('DB card',0,0,330,300,'#FFFFFF',22),
+    text('DB label','POSTGRES · profiles',22,22,19,BLUE,w=260,bold=True),
+    text('DB note','Profile record',22,62,28,INK,w=250,bold=True),
+    rect('Head',22,112,286,42,'#F1F3F6',8),
+    text('Header','id   name   avatar_url',34,121,18,MUT,w=260,bold=True),
+    rect('Row',22,164,286,65,SOFT,8),
+    text('Row text','42   Ada\n/avatars/ada.png',34,174,19,INK,w=255),
+    chip('ROW SAVED',22,242,165,GREEN,GREENINK,start=8,end=18)
+],700,630,start=8,end=18); keys(db,'opacity',[(0,0),(5.8,0),(6.2,100)]); layers.append(db)
 
-p1=packet(410,650,'SIGNUP',BLUE,start=8,end=18); keys(p1,'position',[(0,[410,650]),(1.3,[410,650]),(2.3,[465,630])]); layers.append(p1)
-p2=packet(410,825,'IMAGE',PURPLEINK,start=8,end=18); keys(p2,'position',[(0,[410,825]),(3.0,[410,825]),(4.1,[465,825])]); layers.append(p2)
-p3=packet(690,900,'PROFILE',BLUE,start=8,end=18); keys(p3,'position',[(0,[690,900]),(5.0,[690,900]),(6.2,[690,960])]); layers.append(p3)
+# Connectors reinforce the order without crossing through text.
+layers.append(connector(370,650,415,625,BLUE,4,start=8,end=18))
+layers.append(connector(370,825,415,825,PURPLEINK,4,start=8,end=18))
+layers.append(connector(665,625,700,690,BLUE,4,start=8,end=18))
+layers.append(connector(665,825,700,820,PURPLEINK,4,start=8,end=18))
+
+p1=packet(390,638,'SIGNUP',BLUE,start=8,end=18)
+keys(p1,'position',[(0,[390,638]),(1.3,[390,638]),(2.3,[420,625])]); layers.append(p1)
+p2=packet(390,825,'IMAGE',PURPLEINK,start=8,end=18)
+keys(p2,'position',[(0,[390,825]),(3.0,[390,825]),(4.1,[420,825])]); layers.append(p2)
+p3=packet(680,735,'PROFILE',BLUE,start=8,end=18)
+keys(p3,'position',[(0,[680,735]),(5.0,[680,735]),(6.2,[705,735])]); layers.append(p3)
 
 # Presenter.
 presenter=copy.deepcopy(next(l for l in proto['composition']['layers'] if l['name']=='Original Creator OS presenter'))
