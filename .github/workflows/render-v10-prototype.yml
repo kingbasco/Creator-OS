@@ -26,7 +26,7 @@ jobs:
           curl -fL --retry 3 https://github.com/mirage-hq/tesseract/releases/download/v0.3.0/tesseract-0.3.0-linux-x86_64.zip -o /tmp/tesseract.zip
           unzip -q /tmp/tesseract.zip -d /tmp/tesseract
           bash /tmp/tesseract/tesseract-0.3.0-linux-x86_64/install.sh
-      - name: Build prototype
+      - name: Build
         run: |
           mkdir -p motion-prototypes/v10-multi-agent/Previews
           cp motion-prototypes/mcp-full-episode/V04-MCP.tsrct motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct
@@ -34,13 +34,13 @@ jobs:
           TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
           "$TSRCT" project commit --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --file motion-prototypes/v10-multi-agent/.tesseract-work/document.json
           "$TSRCT" project apply --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --actions motion-prototypes/v10-multi-agent/.tesseract-work/animation.json
-      - name: Render prototype
+      - name: Render
         run: |
           TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
           ICD=$(find /usr/share/vulkan/icd.d -name '*lvp*.json' | head -1 || true)
           if [ -n "$ICD" ]; then export VK_ICD_FILENAMES="$ICD"; fi
           "$TSRCT" export --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --resolution 1080p --fps 30 --encoder-backend external-ffmpeg-command --ffmpeg-path /usr/bin/ffmpeg --output motion-prototypes/v10-multi-agent/V10-Multi-Agent-Prototype.mp4
-          "$TSRCT" filmstrip --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --timestamps-ms 1200,4200,7200,9500,12300,15000,17400 --tile-width 270 --tile-height 480 --items-per-row 4 --output motion-prototypes/v10-multi-agent/Previews/Filmstrip.png
+          "$TSRCT" filmstrip --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --timestamps-ms 1200,3900,6900,9000,11800,14800,17400 --tile-width 270 --tile-height 480 --items-per-row 4 --output motion-prototypes/v10-multi-agent/Previews/Filmstrip.png
       - uses: actions/upload-artifact@v4
         with:
           name: v10-multi-agent-prototype
