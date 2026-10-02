@@ -1,7 +1,7 @@
 {
   "episode": "v10",
-  "requestId": "v10-motion-prototype-2026-10-02-02",
+  "requestId": "v10-motion-prototype-2026-10-02-03",
   "status": "queued",
-  "note": "Render the 18-second multi-agent prototype. Silent; no TTS or paid generation while quota is exhausted.",
-  "revision": 2
+  "note": "Re-render V10 after fixing scene-boundary overlap. Silent; no TTS.",
+  "revision": 3
 }
