@@ -1,0 +1,54 @@
+name: Generate V09 narration once
+
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/v09-voice.json']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: creator-os-v09-voice
+  cancel-in-progress: false
+
+jobs:
+  voice:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+      GEMINI_TTS_MODEL: gemini-3.8-flash-lite-tts
+      GEMINI_TTS_FALLBACK_MODEL: gemini-3.8-flash-lite-tts
+      GEMINI_TTS_VOICE: Sulafat
+      CREATOR_OS_ALLOW_FRESH_TTS: 'true'
+      CREATOR_OS_MAX_TTS_REQUESTS: '4'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Validate request
+        run: |
+          node -e "const r=require('./render-requests/v09-voice.json'); if(r.episode!=='v09'||r.status!=='ready'||r.maxTtsRequests!==4) process.exit(1)"
+          if [ -z "$GEMINI_API_KEY" ]; then echo "Missing Gemini key"; exit 1; fi
+      - run: npm install
+      - name: Verify four-request plan
+        run: node scripts/generate-v09-voice.mjs --dry-run
+      - name: Generate narration
+        run: node scripts/generate-v09-voice.mjs
+      - name: Build reusable narration package
+        run: |
+          cd public/audio/v09
+          zip -9 ../../../out-v09-narration.zip manifest.json S01.wav S02.wav S03.wav S04.wav S05.wav S06.wav S07.wav S08.wav
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v09-narration-package
+          path: |
+            out-v09-narration.zip
+            public/audio/v09/manifest.json
+            src/generated/v09-audio.ts
+          if-no-files-found: error
+          retention-days: 14
