@@ -1,7 +1,6 @@
 {
   "episode": "v06",
-  "requestId": "v06-full-visual-2026-10-02-02",
+  "requestId": "v06-full-visual-2026-10-02-01",
   "status": "ready",
-  "note": "Re-render the full silent V06 draft after fixing scene-local timing for criteria, constraints, test badges and connectors. No TTS.",
-  "revision": 2
+  "note": "Render the full 78-second silent V06 visual draft. No TTS or paid generation."
 }
