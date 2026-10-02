@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "One giant prompt feels fast, but it forces your coding agent to guess too much at once.",
+    "onScreenText": "One giant prompt = too many guesses.",
+    "captionText": "Ambiguity compounds.",
+    "voiceDirection": "Clear and slightly cautionary, not dramatic."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "The problem is not length by itself. It is hidden assumptions: scope, constraints, existing code, edge cases, and what success even means.",
+    "onScreenText": "Hidden assumptions pile up.",
+    "captionText": "Scope. Constraints. Context. Success.",
+    "voiceDirection": "List the assumptions with deliberate rhythm."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "A better task starts with one clear goal. What are we changing, and what should be true when we are done?",
+    "onScreenText": "1. Goal",
+    "captionText": "Define the outcome.",
+    "voiceDirection": "Slow down on the question."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "Then add constraints and inspect the current state. Tell the agent what must stay intact, and let it read the code before changing anything.",
+    "onScreenText": "2. Constraints + current state",
+    "captionText": "Protect what already works.",
+    "voiceDirection": "Practical and calm."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "Next, give it one small task instead of the whole product. Small changes are easier to understand, test, and undo.",
+    "onScreenText": "3. Small task",
+    "captionText": "Shrink the change surface.",
+    "voiceDirection": "Emphasize 'one small task'."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "Add acceptance criteria. Describe the exact behavior you expect, including the important edge cases.",
+    "onScreenText": "4. Acceptance criteria",
+    "captionText": "What does done look like?",
+    "voiceDirection": "Crisp and instructional."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "Finally, make testing part of the task. The agent should verify the result instead of stopping when the code looks finished.",
+    "onScreenText": "5. Test the result",
+    "captionText": "Code finished ≠ task verified.",
+    "voiceDirection": "Stress 'verify the result'."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 78,
+    "narration": "So replace one giant instruction with a loop: goal, constraints, inspect, small task, acceptance criteria, test. You are giving the agent less room to guess.",
+    "onScreenText": "Give structure. Reduce guessing.",
+    "captionText": "Goal → Constraints → Inspect → Task → Criteria → Test",
+    "voiceDirection": "Confident finish with a steady cadence."
+  }
+]
