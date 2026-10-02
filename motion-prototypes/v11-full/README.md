@@ -1,0 +1,1 @@
+# V11 full visual draft\n\n78-second silent full visual for the Inspect → Plan → Code → Test → Review loop. No narration while TTS quota is unavailable.\n
