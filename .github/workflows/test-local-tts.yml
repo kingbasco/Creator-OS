@@ -1,0 +1,32 @@
+name: Test local narration fallback
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/local-tts-test.json']
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Install local TTS
+        run: |
+          python -m pip install --upgrade pip
+          pip install piper-tts
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          mkdir -p /tmp/piper
+          curl -fL --retry 3 https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx -o /tmp/piper/voice.onnx
+          curl -fL --retry 3 https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json -o /tmp/piper/voice.onnx.json
+      - name: Generate sample
+        run: |
+          echo "A coding agent can inspect the system, make a focused change, run tests, and return the result for review." | piper --model /tmp/piper/voice.onnx --config /tmp/piper/voice.onnx.json --output_file /tmp/sample.wav
+          ffprobe -v error -show_entries format=duration:stream=codec_name,sample_rate,channels -of json /tmp/sample.wav
+      - uses: actions/upload-artifact@v4
+        with:
+          name: local-tts-sample
+          path: /tmp/sample.wav
