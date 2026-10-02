@@ -2,7 +2,8 @@
   "episode": "v06",
   "requestId": "v06-final-2026-10-02-02",
   "status": "ready",
-  "voicePackageId": "1ndiyzyZ21R5zKcUrOlna6YLH0bETbzTa",
-  "note": "Final V06 render uses the approved visual and the verified inner narration package. No fresh TTS generation.",
-  "revision": 2
+  "voicePackageId": "1yMwsRPEJThDdNu9Lifo6WlyZbjCFHy4S",
+  "note": "Retry V06 final using the verified inner reusable narration ZIP. No fresh TTS.",
+  "revision": 2,
+  "retry": 1
 }
