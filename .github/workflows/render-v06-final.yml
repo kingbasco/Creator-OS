@@ -1,0 +1,91 @@
+name: Render V06 final and deliver to Drive
+
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/v06-final.json']
+
+permissions:
+  contents: read
+
+concurrency:
+  group: creator-os-v06-final
+  cancel-in-progress: false
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Resolve request
+        run: |
+          python - <<'PY'
+          import json, os
+          r=json.load(open('render-requests/v06-final.json'))
+          assert r['episode']=='v06' and r['status']=='ready' and r.get('voicePackageId')
+          with open(os.environ['GITHUB_ENV'],'a') as f:
+              f.write('VOICE_PACKAGE_ID='+r['voicePackageId']+'\n')
+              f.write('REQUEST_ID='+r['requestId']+'\n')
+          PY
+      - name: Install dependencies
+        run: |
+          npm install
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg mesa-vulkan-drivers unzip
+      - name: Verify TypeScript
+        run: npm run typecheck
+      - name: Reuse saved narration
+        run: python scripts/hydrate-v06-audio.py --file-id "$VOICE_PACKAGE_ID"
+      - name: Generate deterministic sound assets
+        run: node scripts/generate-v06-sfx.mjs
+      - name: Install Tesseract 0.3.0
+        run: |
+          curl -fL --retry 3 https://github.com/mirage-hq/tesseract/releases/download/v0.3.0/tesseract-0.3.0-linux-x86_64.zip -o /tmp/tesseract.zip
+          unzip -q /tmp/tesseract.zip -d /tmp/tesseract
+          bash /tmp/tesseract/tesseract-0.3.0-linux-x86_64/install.sh
+      - name: Build and export corrected V06 visual
+        run: |
+          mkdir -p out
+          cp motion-prototypes/mcp-full-episode/V04-MCP.tsrct motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Final.tsrct
+          python motion-prototypes/v06-giant-prompt-full/.tesseract-work/build.py
+          TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
+          "$TSRCT" project commit --project motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Final.tsrct --file motion-prototypes/v06-giant-prompt-full/.tesseract-work/document.json
+          "$TSRCT" project apply --project motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Final.tsrct --actions motion-prototypes/v06-giant-prompt-full/.tesseract-work/animation.json
+          ICD=$(find /usr/share/vulkan/icd.d -name '*lvp*.json' | head -1 || true)
+          if [ -n "$ICD" ]; then export VK_ICD_FILENAMES="$ICD"; fi
+          "$TSRCT" export --project motion-prototypes/v06-giant-prompt-full/V06-Giant-Prompt-Final.tsrct --resolution 1080p --fps 30 --encoder-backend external-ffmpeg-command --ffmpeg-path /usr/bin/ffmpeg --output out/v06-tesseract-visual-1080p.mp4
+      - name: Sync narration, mix sound and master 4K
+        run: |
+          python scripts/mix-v06-tesseract.py
+          node scripts/master-v06.mjs
+      - name: Preserve review media
+        uses: actions/upload-artifact@v4
+        with:
+          name: v06-final-review-media
+          path: |
+            out/v06-final-master-4k.mp4
+            out/v06-media-qa.json
+            out/v06-loudness-qa.txt
+            out/v06-timing.json
+          if-no-files-found: error
+          retention-days: 14
+      - name: Verify Drive delivery and calendar
+        run: python scripts/deliver-v06-render.py --file out/v06-final-master-4k.mp4 --mode final --request-id "$REQUEST_ID"
+      - name: Preserve delivery receipt
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: v06-final-delivery-receipt
+          path: out/v06-delivery.json
+          if-no-files-found: ignore
+          retention-days: 14
