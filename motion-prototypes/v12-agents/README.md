@@ -1,0 +1,1 @@
+# V12 opening prototype\n\n18-second silent prototype contrasting autocomplete with an agentic coding workspace. No narration while TTS quota is unavailable.\n
