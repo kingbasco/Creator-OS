@@ -2,73 +2,73 @@
   {
     "id": "S01",
     "startSec": 0,
-    "endSec": 9,
-    "narration": "A coding agent can do a whole task by itself. But for larger jobs, one agent can also split the work and delegate parts to specialized subagents.",
-    "onScreenText": "One agent can delegate.",
-    "captionText": "One goal → several focused tasks.",
-    "voiceDirection": "Clear and curious. Emphasize delegation, not replacement."
+    "endSec": 8,
+    "narration": "Sometimes one coding agent can handle the whole task. Sometimes the job is easier to split into independent pieces.",
+    "onScreenText": "One agent or several?",
+    "captionText": "It depends on how the work can be divided.",
+    "voiceDirection": "Neutral opening. Do not imply multi-agent is always better."
   },
   {
     "id": "S02",
-    "startSec": 9,
-    "endSec": 19,
-    "narration": "The main agent keeps the overall goal and breaks it into smaller responsibilities like research, frontend, backend, and testing.",
-    "onScreenText": "Orchestrator → focused subagents",
-    "captionText": "Research · Frontend · Backend · Tests",
-    "voiceDirection": "Steady and visual."
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "In a multi-agent workflow, one main agent keeps the goal, then delegates bounded work to subagents with their own focused context.",
+    "onScreenText": "Main agent → bounded subagents",
+    "captionText": "One goal. Separate focused contexts.",
+    "voiceDirection": "Clear and explanatory."
   },
   {
     "id": "S03",
-    "startSec": 19,
-    "endSec": 29,
-    "narration": "Each subagent gets a narrower context. Research looks for answers, frontend edits UI, backend handles data or APIs, and testing checks the result.",
-    "onScreenText": "Smaller context. Clearer responsibility.",
-    "captionText": "Each agent owns a focused slice.",
-    "voiceDirection": "Rhythmic list."
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "For a coding task, those subagents might independently research the codebase, build a frontend change, inspect backend logic, and prepare tests.",
+    "onScreenText": "Research · Frontend · Backend · Tests",
+    "captionText": "Independent workstreams.",
+    "voiceDirection": "Give each role a distinct beat."
   },
   {
     "id": "S04",
-    "startSec": 29,
-    "endSec": 39,
-    "narration": "Some of that work can happen in parallel. The benefit is speed and cleaner context, as long as the tasks do not depend on each other too tightly.",
-    "onScreenText": "Parallel where tasks are independent.",
-    "captionText": "Parallelism helps when dependencies are clear.",
-    "voiceDirection": "Balanced; stress the condition."
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "Because those workstreams are independent, they can progress in parallel instead of one agent completing every step sequentially.",
+    "onScreenText": "Parallel when work is independent",
+    "captionText": "Separate work can reduce wall-clock time.",
+    "voiceDirection": "Slightly more animated."
   },
   {
     "id": "S05",
-    "startSec": 39,
-    "endSec": 49,
-    "narration": "But more agents also create coordination work. Two agents can edit the same file, make conflicting assumptions, or return changes that do not fit together.",
-    "onScreenText": "More agents = more coordination.",
-    "captionText": "Conflicts, assumptions, merge work.",
-    "voiceDirection": "Matter-of-fact, not negative."
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "The important part is coordination. The main agent has to know what each subagent owns, what result it should return, and when to wait.",
+    "onScreenText": "Delegate clearly. Coordinate centrally.",
+    "captionText": "Owner · expected result · synchronization",
+    "voiceDirection": "Stress coordination."
   },
   {
     "id": "S06",
-    "startSec": 49,
-    "endSec": 59,
-    "narration": "That is why the orchestrator has to collect the outputs, compare them, resolve conflicts, and integrate the final change into one coherent result.",
-    "onScreenText": "Delegate → Collect → Integrate",
-    "captionText": "The main agent owns the merge.",
-    "voiceDirection": "Confident and structured."
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "If several agents edit the same files or depend on each other step by step, parallel work can create conflicts instead of speed.",
+    "onScreenText": "Shared mutable work needs coordination.",
+    "captionText": "Parallel is not automatically better.",
+    "voiceDirection": "Measured caution, not alarmist."
   },
   {
     "id": "S07",
-    "startSec": 59,
-    "endSec": 69,
-    "narration": "Then the combined result still needs verification. Tests, review, and a final check are what turn several partial answers into one trustworthy change.",
-    "onScreenText": "Many outputs still need one review.",
-    "captionText": "Test · Review · Final check",
-    "voiceDirection": "Emphasize verification."
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "Use subagents for independent, bounded tasks. Keep short tasks and tightly dependent steps with the main agent.",
+    "onScreenText": "Independent → subagents. Dependent → main agent.",
+    "captionText": "Split by independence, not by hype.",
+    "voiceDirection": "Memorable rule-of-thumb."
   },
   {
     "id": "S08",
-    "startSec": 69,
+    "startSec": 68,
     "endSec": 80,
-    "narration": "Use one agent when the task is small and tightly connected. Split the work when the pieces are clear enough to delegate. Multi-agent coding is not magic. It is task decomposition plus coordination.",
-    "onScreenText": "Split only when the work can be split.",
-    "captionText": "Decomposition + coordination.",
-    "voiceDirection": "Calm, decisive finish."
+    "narration": "So multi-agent coding is not an AI team replacing humans. It is an orchestration pattern: divide focused work, run useful parts in parallel, then bring the results back for integration and review.",
+    "onScreenText": "Delegate → Parallelize → Integrate → Review",
+    "captionText": "Coordination is the system.",
+    "voiceDirection": "Confident finish."
   }
 ]
