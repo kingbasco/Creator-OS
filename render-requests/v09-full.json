@@ -2,5 +2,5 @@
   "episode": "v09",
   "requestId": "v09-full-visual-2026-10-02-01",
   "status": "ready",
-  "note": "Render the full 80-second silent V09 visual draft. No TTS while quota is exhausted."
+  "note": "Render the full 80-second silent V09 visual draft. No TTS while quota is unavailable."
 }
