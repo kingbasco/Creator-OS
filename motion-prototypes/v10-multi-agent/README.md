@@ -1,5 +1,7 @@
 # V10 — Multi-agent opening prototype
 
-18-second silent prototype. The orchestrator keeps the overall goal, delegates Research / Frontend / Backend / Tests as focused subtasks, lets independent work progress in parallel, then converges outputs into one Integration / Review node.
+18-second silent prototype.
 
-The point is coordination and context management, not “more agents is always better.” No narration or paid generation is used while TTS quota is exhausted.
+Scene one shows a main orchestrator keeping the overall product goal and delegating four focused responsibilities: Research, Frontend, Backend and Tests. Scene two shows parallel progress, outputs converging into one merge/review node, and a brief shared-file conflict that must be resolved before final review.
+
+No narration or paid generation is used while the TTS quota is unavailable.
