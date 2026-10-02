@@ -1,6 +1,7 @@
 {
   "episode": "v09",
-  "requestId": "v09-motion-prototype-2026-10-02-01",
+  "requestId": "v09-motion-prototype-2026-10-02-02",
   "status": "queued",
-  "note": "Build silent RLS prototype first. No narration or paid generation while TTS quota is exhausted."
+  "note": "Render the 18-second RLS prototype. Silent; no TTS or paid generation while quota is exhausted.",
+  "revision": 2
 }
