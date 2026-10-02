@@ -112,26 +112,26 @@ assumptions=[
  ('Existing code',95,1025,SOFT,BLUE),('Edge cases',705,1025,RED,REDINK),
  ('Success',390,1135,GREEN,GREENINK)]
 for i,(label,x,y,bg,tc) in enumerate(assumptions):
-    a.append(connector(540,730,x+125,y,tc,4,start=8,end=18))
-    g=chip(label,x,y,250,bg,tc,start=8,end=18); reveal(g,.5+i*.25); a.append(g)
+    a.append(connector(540,730,x+125,y,tc,4))
+    g=chip(label,x,y,250,bg,tc); reveal(g,.5+i*.25); a.append(g)
 scene('S02 Assumptions',a,8,18)
 
 # S03 — clear goal.
 title('Start with','one clear goal.',18,28)
 a=[]
 before=group('Before prompt',[card('Before',0,0,770,165,'#FFFFFF',20),text('Before label','VAGUE',28,23,20,REDINK,w=180,bold=True),text('Before text','“Improve the dashboard.”',28,66,35,INK,w=680,bold=True)],155,555); reveal(before,.2); a.append(before)
-after=group('After goal',[card('After',0,0,770,240,SOFT,22),text('After label','GOAL',28,25,20,BLUE,w=180,bold=True),text('After text','Add monthly revenue to the dashboard.',28,68,35,INK,w=690,bold=True),chip('DONE = chart shows last 12 months',28,155,520,GREEN,GREENINK,start=18,end=28)],155,805); reveal(after,1.1); a.append(after)
-arrow=path('Transform arrow',[M(540,728),C(540,754,540,765,540,795)],stroke=BLUE,width=6,start=18,end=28); a.append(arrow)
+after=group('After goal',[card('After',0,0,770,240,SOFT,22),text('After label','GOAL',28,25,20,BLUE,w=180,bold=True),text('After text','Add monthly revenue to the dashboard.',28,68,35,INK,w=690,bold=True),chip('DONE = chart shows last 12 months',28,155,520,GREEN,GREENINK)],155,805); reveal(after,1.1); a.append(after)
+arrow=path('Transform arrow',[M(540,728),C(540,754,540,765,540,795)],stroke=BLUE,width=6); a.append(arrow)
 scene('S03 Goal',a,18,28)
 
 # S04 — constraints plus repository inspection.
 title('Protect what works,','then inspect first.',28,38)
 a=[]
 constraints=group('Constraints panel',[card('Panel',0,0,385,385,SOFT,22),text('Label','CONSTRAINTS',28,25,20,BLUE,w=260,bold=True),
-    chip('Keep existing auth',28,82,300,'#FFFFFF',INK,start=28,end=38),
-    chip('No schema changes',28,153,300,'#FFFFFF',INK,start=28,end=38),
-    chip('Mobile stays intact',28,224,300,'#FFFFFF',INK,start=28,end=38),
-    chip('Use current API',28,295,300,'#FFFFFF',INK,start=28,end=38)],90,575); reveal(constraints,.2); a.append(constraints)
+    chip('Keep existing auth',28,82,300,'#FFFFFF',INK),
+    chip('No schema changes',28,153,300,'#FFFFFF',INK),
+    chip('Mobile stays intact',28,224,300,'#FFFFFF',INK),
+    chip('Use current API',28,295,300,'#FFFFFF',INK)],90,575); reveal(constraints,.2); a.append(constraints)
 repo=[]
 repo.append(card('Repo',0,0,475,510,DARK,22))
 repo.append(text('Repo label','CURRENT REPO',28,24,20,'#AAB6CE',w=250,bold=True))
@@ -141,7 +141,7 @@ for i,(name,indent,tc) in enumerate([
  ('lib/',1,'#DDE4F1'),('auth.ts',2,'#FFFFFF'),('api.ts',2,'#FFFFFF'),('schema.sql',0,'#DDE4F1')]):
     repo.append(text('Tree '+name,name,31+indent*28,135+i*45,23,tc,w=360,bold=(indent==0)))
 inspect=group('Repository inspection',repo,520,535); reveal(inspect,.8); a.append(inspect)
-cursor=rect('Scan highlight',548,746,390,44,'#2B3850',8,start=28,end=38)
+cursor=rect('Scan highlight',548,746,390,44,'#2B3850',8)
 keys(cursor,'position',[(0,[548,746]),(2,[548,746]),(4,[548,836]),(6,[548,881])]); a.append(cursor)
 scene('S04 Constraints inspect',a,28,38)
 
@@ -151,9 +151,9 @@ a=[]
 backlog=group('Large backlog',[card('Backlog',0,0,820,140,'#FFFFFF',22),text('Backlog label','WHOLE PRODUCT',28,23,20,MUT,w=250,bold=True),
     text('Backlog body','Auth  •  Billing  •  Reports  •  Emails  •  Dashboard  •  Roles',28,67,27,INK,w=760,bold=True)],130,545); reveal(backlog,.2); a.append(backlog)
 focus=group('Focused task',[card('Focus',0,0,610,225,SOFT,22),text('Focus label','SMALL TASK',28,24,20,BLUE,w=220,bold=True),
-    text('Focus body','Add monthly revenue\nto the dashboard.',28,72,39,INK,w=520,bold=True),chip('1 file area · 1 behavior',28,160,325,GREEN,GREENINK,start=38,end=48)],235,795); reveal(focus,1.1); a.append(focus)
+    text('Focus body','Add monthly revenue\nto the dashboard.',28,72,39,INK,w=520,bold=True),chip('1 file area · 1 behavior',28,160,325,GREEN,GREENINK)],235,795); reveal(focus,1.1); a.append(focus)
 for i,label in enumerate(['Auth','Billing','Reports','Emails','Roles']):
-    ghost=chip(label,120+i*170,1090,145,'#F1F3F6',MUT,start=38,end=48); keys(ghost,'opacity',[(0,100),(3,100),(4.5,22)]); a.append(ghost)
+    ghost=chip(label,120+i*170,1090,145,'#F1F3F6',MUT); keys(ghost,'opacity',[(0,100),(3,100),(4.5,22)]); a.append(ghost)
 scene('S05 Small task',a,38,48)
 
 # S06 — acceptance criteria.
@@ -184,13 +184,13 @@ tests=[
 ]
 for i,(label,y) in enumerate(tests):
     a.append(text('Test name',label,170,y,28,'#FFFFFF',w=570,bold=True))
-    badge=chip('PENDING',730,y-7,190,AMBER,AMBERINK,start=58,end=68)
+    badge=chip('PENDING',730,y-7,190,AMBER,AMBERINK)
     keys(badge,'opacity',[(0,100),(3.0+i*.6,100),(3.25+i*.6,0)])
     a.append(badge)
-    passed=chip('PASSED',730,y-7,190,GREEN,GREENINK,start=58,end=68)
+    passed=chip('PASSED',730,y-7,190,GREEN,GREENINK)
     keys(passed,'opacity',[(0,0),(3.0+i*.6,0),(3.25+i*.6,100)])
     a.append(passed)
-summary=chip('4 / 4 VERIFIED',380,1085,320,GREEN,GREENINK,start=58,end=68)
+summary=chip('4 / 4 VERIFIED',380,1085,320,GREEN,GREENINK)
 keys(summary,'opacity',[(0,0),(6.2,0),(6.7,100)]); a.append(summary)
 scene('S07 Test',a,58,68)
 
@@ -206,7 +206,7 @@ for i,(label,x,y) in enumerate(loop_steps):
     reveal(g,.2+i*.2,15); a.append(g)
 # ring connectors
 pairs=[(540,643,765,690),(853,778,853,945),(765,1033,540,1080),(452,1080,315,1033),(227,945,227,778),(315,690,452,643)]
-for x1,y1,x2,y2 in pairs: a.append(connector(x1,y1,x2,y2,BLUE,5,start=68,end=78))
+for x1,y1,x2,y2 in pairs: a.append(connector(x1,y1,x2,y2,BLUE,5))
 center=group('Loop center',[card('Center',0,0,320,180,DARK,22),text('Center title','LESS ROOM\nTO GUESS',46,39,39,'#FFFFFF',w=250,bold=True)],380,790); reveal(center,2); a.append(center)
 scene('S08 Loop',a,68,78)
 
