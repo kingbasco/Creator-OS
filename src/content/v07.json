@@ -1,0 +1,74 @@
+[
+  {
+    "id": "S01",
+    "startSec": 0,
+    "endSec": 8,
+    "narration": "Giving a coding agent more autonomy can make you much faster. Giving it unlimited trust is a different thing.",
+    "onScreenText": "More autonomy ≠ unlimited trust.",
+    "captionText": "Use autonomy with guardrails.",
+    "voiceDirection": "Balanced and calm. Do not make autonomy sound dangerous by default."
+  },
+  {
+    "id": "S02",
+    "startSec": 8,
+    "endSec": 18,
+    "narration": "Low-risk work can move quickly: drafting components, refactoring small areas, writing tests, and investigating errors are usually easy to review and easy to undo.",
+    "onScreenText": "Low risk → more autonomy",
+    "captionText": "Draft. Refactor. Test. Investigate.",
+    "voiceDirection": "Confident and practical."
+  },
+  {
+    "id": "S03",
+    "startSec": 18,
+    "endSec": 28,
+    "narration": "As the blast radius grows, review should get stronger. Changes that touch shared APIs, data models, or several features deserve a closer look.",
+    "onScreenText": "Bigger blast radius → stronger review",
+    "captionText": "More impact, more review.",
+    "voiceDirection": "Emphasize 'blast radius' and 'stronger review'."
+  },
+  {
+    "id": "S04",
+    "startSec": 28,
+    "endSec": 38,
+    "narration": "Authentication and permissions need even more care because a small mistake can change who is allowed to do what.",
+    "onScreenText": "Auth + permissions",
+    "captionText": "Review access-control changes carefully.",
+    "voiceDirection": "Measured and precise."
+  },
+  {
+    "id": "S05",
+    "startSec": 38,
+    "endSec": 48,
+    "narration": "Then there are actions that can be expensive or irreversible: destructive database changes, secret access, billing changes, and production deployment.",
+    "onScreenText": "Sensitive actions need approval gates.",
+    "captionText": "Database. Secrets. Billing. Production.",
+    "voiceDirection": "Firm but not alarmist."
+  },
+  {
+    "id": "S06",
+    "startSec": 48,
+    "endSec": 58,
+    "narration": "For those actions, put a human approval gate in the workflow. Let the agent prepare the change, show the diff, explain the impact, and wait.",
+    "onScreenText": "Prepare → Show diff → Explain → Approve",
+    "captionText": "Human approval before execution.",
+    "voiceDirection": "Slow slightly through the four-step sequence."
+  },
+  {
+    "id": "S07",
+    "startSec": 58,
+    "endSec": 68,
+    "narration": "A simple rule is to ask three questions: can I undo this, how large is the blast radius, and does this action use privileged access?",
+    "onScreenText": "Reversible? Blast radius? Privileged?",
+    "captionText": "Three questions decide review strength.",
+    "voiceDirection": "Clear rhythmic delivery."
+  },
+  {
+    "id": "S08",
+    "startSec": 68,
+    "endSec": 80,
+    "narration": "Use high autonomy where work is reversible and easy to inspect. Add stronger review as actions become sensitive or irreversible. Build faster, but keep approval gates around the decisions that matter most.",
+    "onScreenText": "Fast where reversible. Gate what matters.",
+    "captionText": "Autonomy with guardrails.",
+    "voiceDirection": "Confident, reassuring finish."
+  }
+]
