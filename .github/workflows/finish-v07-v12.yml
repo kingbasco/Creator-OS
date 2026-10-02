@@ -1,0 +1,86 @@
+name: Finish V07-V12 with narration and overwrite Drive
+
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/finish-v07-v12.json']
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  finish:
+    strategy:
+      fail-fast: false
+      max-parallel: 6
+      matrix:
+        include:
+          - episode: v07
+            run_id: 36970093956
+            artifact: v07-full-visual-draft
+            visual: V07-Full-Draft.mp4
+            drive_id: 1YoVSZ6zLBK2JpXb_gnc4XrvZZ4YXwAg3
+          - episode: v08
+            run_id: 36974712139
+            artifact: v08-full-visual-draft
+            visual: V08-Full-Draft.mp4
+            drive_id: 1snoRZyFn3-UZmNuYGNkY7uNQ5EMZqNud
+          - episode: v09
+            run_id: 37040887815
+            artifact: v09-full-visual-draft
+            visual: V09-Full-Draft.mp4
+            drive_id: 1hWwb8fDa4jLIr1Q4MGWTAOpig3okaYv0
+          - episode: v10
+            run_id: 37048141268
+            artifact: v10-full-visual-draft
+            visual: V10-Full-Draft.mp4
+            drive_id: 1T6A_91KKPfbI4cpJneDGMJKRAopA48zs
+          - episode: v11
+            run_id: 37060109739
+            artifact: v11-full-visual-draft
+            visual: V11-Full-Draft.mp4
+            drive_id: 1ieQmcpt6SvxzrxDkRMy7K5fx-on6PiS-
+          - episode: v12
+            run_id: 37062551770
+            artifact: v12-full-visual-draft
+            visual: V12-Full-Draft.mp4
+            drive_id: 1rnD6l5UqZuOK3o01qL07EnZvHuaAHzvn
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with: {persist-credentials: false}
+      - uses: actions/setup-python@v5
+        with: {python-version: '3.11'}
+      - name: Download approved visual
+        uses: actions/download-artifact@v4
+        with:
+          name: ${{ matrix.artifact }}
+          path: visual
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: ${{ matrix.run_id }}
+      - name: Install narration and mastering tools
+        run: |
+          python -m pip install --upgrade pip
+          pip install piper-tts
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+          mkdir -p /tmp/piper
+          curl -fL --retry 3 https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx -o /tmp/piper/voice.onnx
+          curl -fL --retry 3 https://huggingface.co/rhasspy/piper-voices/resolve/main/en/en_US/lessac/medium/en_US-lessac-medium.onnx.json -o /tmp/piper/voice.onnx.json
+      - name: Add narration, master 4K and overwrite Drive draft
+        run: |
+          python scripts/finish-episode-local-tts.py             --episode "${{ matrix.episode }}"             --visual "visual/${{ matrix.visual }}"             --drive-id "${{ matrix.drive_id }}"
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.episode }}-finished-master
+          path: |
+            out/${{ matrix.episode }}-local-final/${{ matrix.episode }}-final-master-4k.mp4
+            out/${{ matrix.episode }}-local-final/${{ matrix.episode }}-final-receipt.json
+            out/${{ matrix.episode }}-local-final/${{ matrix.episode }}-loudness.txt
+          retention-days: 14
