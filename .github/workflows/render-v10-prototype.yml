@@ -1,0 +1,50 @@
+name: Render V10 visual prototype
+
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/v10.json']
+
+permissions:
+  contents: read
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - name: Validate
+        run: python -c "import json; r=json.load(open('render-requests/v10.json')); assert r['episode']=='v10' and r['status']=='queued'"
+      - name: Install
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg mesa-vulkan-drivers unzip
+          curl -fL --retry 3 https://github.com/mirage-hq/tesseract/releases/download/v0.3.0/tesseract-0.3.0-linux-x86_64.zip -o /tmp/tesseract.zip
+          unzip -q /tmp/tesseract.zip -d /tmp/tesseract
+          bash /tmp/tesseract/tesseract-0.3.0-linux-x86_64/install.sh
+      - name: Build
+        run: |
+          mkdir -p motion-prototypes/v10-multi-agent/Previews
+          cp motion-prototypes/mcp-full-episode/V04-MCP.tsrct motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct
+          python motion-prototypes/v10-multi-agent/.tesseract-work/build.py
+          TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
+          "$TSRCT" project commit --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --file motion-prototypes/v10-multi-agent/.tesseract-work/document.json
+          "$TSRCT" project apply --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --actions motion-prototypes/v10-multi-agent/.tesseract-work/animation.json
+      - name: Render
+        run: |
+          TSRCT="$HOME/.local/share/Tesseract/bin/tsrct"
+          ICD=$(find /usr/share/vulkan/icd.d -name '*lvp*.json' | head -1 || true)
+          if [ -n "$ICD" ]; then export VK_ICD_FILENAMES="$ICD"; fi
+          "$TSRCT" export --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --resolution 1080p --fps 30 --encoder-backend external-ffmpeg-command --ffmpeg-path /usr/bin/ffmpeg --output motion-prototypes/v10-multi-agent/V10-Multi-Agent-Prototype.mp4
+          "$TSRCT" filmstrip --project motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct --timestamps-ms 1200,4200,7000,9300,12500,15000,17400 --tile-width 270 --tile-height 480 --items-per-row 4 --output motion-prototypes/v10-multi-agent/Previews/Filmstrip.png
+      - uses: actions/upload-artifact@v4
+        with:
+          name: v10-multi-agent-prototype
+          path: |
+            motion-prototypes/v10-multi-agent/V10-Multi-Agent-Prototype.mp4
+            motion-prototypes/v10-multi-agent/V10-Multi-Agent.tsrct
+            motion-prototypes/v10-multi-agent/Previews/Filmstrip.png
+          retention-days: 14
