@@ -1,28 +1,32 @@
 # V10 — One Agent or Many? How Multi-Agent Coding Actually Works
 
-80-second conceptual explainer.
+80-second explainer based on current OpenAI multi-agent guidance.
 
 ## Core visual
-Use one **Orchestrator** card in the center. It receives the product goal, then branches into four focused subagents:
+One central **Main Agent / Orchestrator** owns the user goal. It delegates four independent workstreams:
 
 - Research
 - Frontend
 - Backend
 - Tests
 
-Each branch gets a narrow task card and its own progress state. Independent branches run in parallel, then their outputs travel back to the orchestrator.
+Each subagent receives a bounded card, keeps its own progress, and returns one concise result. The central orchestrator never disappears; it coordinates and integrates.
 
-## Key visual sequence
-1. One agent receives a large task.
-2. The task breaks into four smaller cards.
-3. Four subagent cards fan out with clean spacing.
-4. Parallel progress bars move independently.
-5. Two outputs briefly conflict at a shared-file warning.
-6. Orchestrator collects results and resolves the conflict.
-7. Combined output enters one test/review gate.
-8. Finish with the rule: split only when responsibilities are clear enough to coordinate.
+## Key motion sequence
+1. One task arrives at the main agent.
+2. Main agent decomposes it into four bounded assignments.
+3. Four subagent cards fan out with generous spacing.
+4. Independent progress bars run in parallel.
+5. Result packets return to the main agent.
+6. Integration/review node combines them into one final change.
 
-## Tone
-Do not frame multi-agent work as “AI team replaces humans.” The point is coordination, context management, and task decomposition.
+## Important contrast
+Show a second case where two subagents both try to edit the same shared file. Their paths collide and a conflict badge appears. Then collapse that work back into the main agent to show that tightly dependent/shared mutable work is better coordinated sequentially.
 
-Continue the presenter-led Creator OS style, no top branding header, and keep every branch in its own zone so no task cards overlap.
+## Accuracy notes
+Current OpenAI guidance says subagents are useful for independent tasks; each subagent keeps its own context and may work in parallel while the main agent coordinates and combines results. Short tasks and dependent steps should stay with the main agent, and agents editing the same files need coordination.
+
+## Style
+Continue the approved presenter-led Creator OS direction. No top branding header. Keep the main agent centered and the four specialists in separate quadrants; do not let progress bars or connector lines cross labels.
+
+No narration while the current TTS quota is unavailable.
