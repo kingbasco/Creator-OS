@@ -1,0 +1,80 @@
+name: Restore V07-V12 visual drafts to Drive
+
+on:
+  push:
+    branches: [main]
+    paths: ['render-requests/restore-v07-v12-drive.json']
+
+permissions:
+  contents: read
+  actions: read
+
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      GOOGLE_CLIENT_ID: ${{ secrets.GOOGLE_CLIENT_ID }}
+      GOOGLE_CLIENT_SECRET: ${{ secrets.GOOGLE_CLIENT_SECRET }}
+      GOOGLE_REFRESH_TOKEN: ${{ secrets.GOOGLE_REFRESH_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+
+      - name: Download V07
+        uses: actions/download-artifact@v4
+        with:
+          name: v07-full-visual-draft
+          path: restore/v07
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 36970093956
+
+      - name: Download V08
+        uses: actions/download-artifact@v4
+        with:
+          name: v08-full-visual-draft
+          path: restore/v08
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 36974712139
+
+      - name: Download V09
+        uses: actions/download-artifact@v4
+        with:
+          name: v09-full-visual-draft
+          path: restore/v09
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37040887815
+
+      - name: Download V10
+        uses: actions/download-artifact@v4
+        with:
+          name: v10-full-visual-draft
+          path: restore/v10
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37048141268
+
+      - name: Download V11
+        uses: actions/download-artifact@v4
+        with:
+          name: v11-full-visual-draft
+          path: restore/v11
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37060109739
+
+      - name: Download V12 current prototype
+        uses: actions/download-artifact@v4
+        with:
+          name: v12-agents-prototype
+          path: restore/v12
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          run-id: 37060804822
+
+      - name: Restore videos to Creator OS Renders
+        run: |
+          python scripts/restore-draft-to-drive.py restore/v07/V07-Full-Draft.mp4 V07-SILENT-VISUAL-DRAFT.mp4
+          python scripts/restore-draft-to-drive.py restore/v08/V08-Full-Draft.mp4 V08-SILENT-VISUAL-DRAFT.mp4
+          python scripts/restore-draft-to-drive.py restore/v09/V09-Full-Draft.mp4 V09-SILENT-VISUAL-DRAFT.mp4
+          python scripts/restore-draft-to-drive.py restore/v10/V10-Full-Draft.mp4 V10-SILENT-VISUAL-DRAFT.mp4
+          python scripts/restore-draft-to-drive.py restore/v11/V11-Full-Draft.mp4 V11-SILENT-VISUAL-DRAFT.mp4
+          python scripts/restore-draft-to-drive.py restore/v12/V12-Agents-Prototype.mp4 V12-CURRENT-PROTOTYPE-SILENT.mp4
