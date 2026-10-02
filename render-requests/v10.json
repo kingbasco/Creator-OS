@@ -1,6 +1,7 @@
 {
   "episode": "v10",
-  "requestId": "v10-motion-prototype-2026-10-02-01",
+  "requestId": "v10-motion-prototype-2026-10-02-02",
   "status": "queued",
-  "note": "Build silent orchestrator/subagent prototype. No narration or paid generation while TTS quota is exhausted."
+  "note": "Render the 18-second multi-agent prototype. Silent; no TTS or paid generation while quota is exhausted.",
+  "revision": 2
 }
