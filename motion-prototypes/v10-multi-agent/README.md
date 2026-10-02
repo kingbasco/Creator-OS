@@ -1,7 +1,7 @@
-# V10 — Multi-agent opening prototype
+# V10 — Multi-agent coding opening prototype
 
 18-second silent prototype.
 
-Scene one shows a main orchestrator keeping the overall product goal and delegating four focused responsibilities: Research, Frontend, Backend and Tests. Scene two shows parallel progress, outputs converging into one merge/review node, and a brief shared-file conflict that must be resolved before final review.
+The main agent keeps the overall goal, delegates Research, Frontend, Backend and Tests as bounded workstreams, lets them progress independently, then receives their results for integration and review. A shared-file conflict card appears at the end to reinforce that parallel work still needs coordination.
 
-No narration or paid generation is used while the TTS quota is unavailable.
+No narration or paid generation is used while TTS quota is unavailable.
