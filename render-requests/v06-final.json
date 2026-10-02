@@ -2,6 +2,6 @@
   "episode": "v06",
   "requestId": "v06-final-2026-10-02-01",
   "status": "ready",
-  "voicePackageId": "1hFMQfqIH9zG-hXLeJWrWbktCVGuatYdW",
-  "note": "Final V06 render uses the corrected Tesseract visual and saved four-call narration package. No fresh TTS generation."
+  "voicePackageId": "1-pES-JRe8_gSE3iIooXEUdQu2AS2D9te",
+  "note": "Final V06 render uses the approved full Tesseract visual and saved narration package. No fresh TTS generation."
 }
