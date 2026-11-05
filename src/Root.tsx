@@ -12,9 +12,12 @@ import {V03_VOICED_TOTAL_FRAMES} from './content/v03-timeline';
 import {V04, V04Voiced} from './compositions/V04';
 import {V04_VOICED_TOTAL_FRAMES} from './content/v04-timeline';
 import {VIDEO} from './tokens';
+import {OpenAIAgentsReference} from './compositions/OpenAIAgentsReference';
 
 export const RemotionRoot: React.FC = () => <>
   <Folder name="Creator-OS">
+    <Composition id="OpenAI-Agents-Reference-Recreation" component={OpenAIAgentsReference} durationInFrames={1746} fps={30} width={512} height={910}/>
+    <Composition id="OpenAI-Agents-Reference-Recreation-HD" component={OpenAIAgentsReference} durationInFrames={1746} fps={30} width={1080} height={1920}/>
     <Composition
       id="V01-Vibe-Coding-Isnt-Magic"
       component={V01}

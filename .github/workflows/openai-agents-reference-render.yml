@@ -1,0 +1,39 @@
+name: OpenAI Agents Reference Recreation — Render
+on:
+  push:
+    branches: [feat/openai-agents-reference-remotion]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Install
+        run: npm install --no-audit --no-fund
+      - name: Typecheck
+        run: npm run typecheck
+      - name: Browser
+        run: npx remotion browser ensure
+      - name: Render reference review stills
+        run: |
+          mkdir -p out
+          for frame in 30 180 330 480 660 840 1020 1200 1380 1560 1710; do
+            npx remotion still src/index.ts OpenAI-Agents-Reference-Recreation "out/reference-$frame.png" --frame="$frame"
+          done
+      - name: Render first-pass MP4
+        run: npx remotion render src/index.ts OpenAI-Agents-Reference-Recreation out/openai-agents-reference-pass1.mp4 --codec=h264 --concurrency=2
+      - name: Upload review
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: openai-agents-reference-pass1
+          path: out/
+          retention-days: 14
