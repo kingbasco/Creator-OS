@@ -55,6 +55,9 @@ jobs:
       - name: Render silent test
         run: npx remotion render src/index.ts BitcoinExplainerV3 out/bitcoin-v3-silent.mp4 --codec=h264 --concurrency=2
 
+      - name: Install FFmpeg verification tools
+        run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
       - name: Verify video properties
         run: |
           ffprobe -v error -select_streams v:0 -show_entries stream=width,height,r_frame_rate,nb_frames -show_entries format=duration -of json out/bitcoin-v3-silent.mp4 | tee out/video-metadata.json
