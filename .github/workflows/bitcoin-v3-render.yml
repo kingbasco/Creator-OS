@@ -9,6 +9,14 @@ on:
       - 'src/Root.tsx'
       - '.github/workflows/bitcoin-v3-render.yml'
       - 'package.json'
+  pull_request:
+    branches:
+      - main
+    paths:
+      - 'src/compositions/BitcoinExplainerV3.tsx'
+      - 'src/Root.tsx'
+      - '.github/workflows/bitcoin-v3-render.yml'
+      - 'package.json'
   workflow_dispatch:
 
 permissions:
