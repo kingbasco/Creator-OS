@@ -12,6 +12,7 @@ import {V03_VOICED_TOTAL_FRAMES} from './content/v03-timeline';
 import {V04, V04Voiced} from './compositions/V04';
 import {V04_VOICED_TOTAL_FRAMES} from './content/v04-timeline';
 import {VIDEO} from './tokens';
+import {BitcoinExplainerV3} from './compositions/BitcoinExplainerV3';
 
 export const RemotionRoot: React.FC = () => <>
   <Folder name="Creator-OS">
@@ -77,5 +78,6 @@ export const RemotionRoot: React.FC = () => <>
     <Composition id="V03-Demo-To-Product-Final-4K" component={V03Final} durationInFrames={V03_VOICED_TOTAL_FRAMES} fps={VIDEO.fps} width={2160} height={3840}/>
     <Composition id="V04-MCP-Preview" component={V04} durationInFrames={78*VIDEO.fps} fps={VIDEO.fps} width={1080} height={1920}/>
     <Composition id="V04-MCP-Final-4K" component={V04Voiced} durationInFrames={V04_VOICED_TOTAL_FRAMES} fps={VIDEO.fps} width={2160} height={3840}/>
+    <Composition id="BitcoinExplainerV3" component={BitcoinExplainerV3} durationInFrames={300} fps={30} width={1080} height={1920}/>
   </Folder>
 </>;
